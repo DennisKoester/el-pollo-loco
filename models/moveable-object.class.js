@@ -1,11 +1,4 @@
 class MoveableObject extends DrawableObject {
-    x = 150;
-    y = 230;
-    img;
-    height = 150;
-    width = 100;
-    imageCache = {};
-    currentImage = 0;
     speed = 0.15;
     otherDirection = false;
     speedY = 0;
@@ -27,29 +20,6 @@ class MoveableObject extends DrawableObject {
         return this.y < 180; //TODO Why return?
     }
 
-
-    //loadImage('img/test.png')
-    loadImage(path) {
-        this.img = new Image(); // document.getElementById('image') <img id="image>" src>
-        this.img.src = path;
-    }
-
-
-    draw(ctx) {
-        ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
-    }
-
-
-    drawFrame(ctx) {
-
-        if (this instanceof Character || this instanceof Chicken) {
-            ctx.beginPath();
-            ctx.lineWidth = '5';
-            ctx.strokeStyle = 'blue';
-            ctx.rect(this.x, this.y, this.width, this.height);
-            ctx.stroke();
-        }
-    }
 
     // character.isColliding(chicken);
     /*     isColliding(obj) {
@@ -86,20 +56,6 @@ class MoveableObject extends DrawableObject {
 
     isDead() {
         return this.energy == 0;
-    }
-
-
-    /**
-     * 
-     * @param {array} arr ['img/image01.png', 'img/image2.png', ...]
-     */
-    loadImages(arr) {
-        arr.forEach((path) => {
-            let img = new Image();
-            img.src = path;
-            this.imageCache[path] = img;
-        });
-
     }
 
 
