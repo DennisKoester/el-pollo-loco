@@ -3,6 +3,13 @@ class Character extends MoveableObject {
     height = 250;
     speed = 10;
 
+    offset = {
+        top: 100,
+        bottom: 10,
+        right: 20,
+        left: 20
+    }
+
     IMAGES_WALKING = [
         '../img/2_character_pepe/2_walk/W-21.png',
         '../img/2_character_pepe/2_walk/W-22.png',
@@ -45,7 +52,7 @@ class Character extends MoveableObject {
 
 
     constructor() {
-        super().loadImage('../img/2_character_pepe/2_walk/W-21.png');
+        super().loadImage(this.IMAGES_WALKING[0]);
 
         this.loadImages(this.IMAGES_WALKING);
         this.loadImages(this.IMAGES_JUMPING);
