@@ -1,8 +1,8 @@
-class Chicken extends MoveableObject {
+class SmallChicken extends MoveableObject {
 
-    y = 355;
-    height = 70;
-    width = 70;
+    y = 368;
+    height = 55;
+    width = 55;
 
     offset = {
         top: 10,
@@ -12,9 +12,9 @@ class Chicken extends MoveableObject {
     }
 
     IMAGES_WALKING = [
-        './img/3_enemies_chicken/chicken_normal/1_walk/1_w.png',
-        './img/3_enemies_chicken/chicken_normal/1_walk/2_w.png',
-        './img/3_enemies_chicken/chicken_normal/1_walk/3_w.png'
+        './img/3_enemies_chicken/chicken_small/1_walk/1_w.png',
+        './img/3_enemies_chicken/chicken_small/1_walk/2_w.png',
+        './img/3_enemies_chicken/chicken_small/1_walk/3_w.png'
     ];
 
 
@@ -25,7 +25,7 @@ class Chicken extends MoveableObject {
 
         this.x = 800 + Math.random() * 500; // random number between 200 and 700
 
-        this.speed = 0.25 + Math.random() * 0.5; // Math Random generates a number between 0 and 1
+        this.speed = 0.15 + Math.random() * 0.5; // Math Random generates a number between 0 and 1
 
         this.animate();
     }

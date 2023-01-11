@@ -15,8 +15,6 @@ class StatusbarBottle extends StatusbarObject {
         this.loadImages(this.IMAGES_STATUSBAR);
         this.x = 20;
         this.y = 100;
-        this.width = 200;
-        this.height = 60;
         this.setPercentage(0);
     }
 }

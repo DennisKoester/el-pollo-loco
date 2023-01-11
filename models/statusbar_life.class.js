@@ -12,15 +12,13 @@ class StatusbarLife extends StatusbarObject {
     /*  x = 70;
      y = 0;
      width = 200;
-     height = 60; */
+     height = 60; */ // TODO This or down with this.x ?!
 
     constructor() {
         super();
         this.loadImages(this.IMAGES_STATUSBAR);
         this.x = 20;
         this.y = 0;
-        this.width = 200;
-        this.height = 60;
         this.setPercentage(100);
     }
 }
