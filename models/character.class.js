@@ -44,7 +44,12 @@ class Character extends MoveableObject {
         './img/2_character_pepe/5_dead/D-54.png',
         './img/2_character_pepe/5_dead/D-55.png',
         './img/2_character_pepe/5_dead/D-56.png',
-        './img/2_character_pepe/5_dead/D-57.png',
+        './img/2_character_pepe/5_dead/D-56.png',
+        './img/2_character_pepe/5_dead/D-55.png',
+        './img/2_character_pepe/5_dead/D-54.png',
+        './img/2_character_pepe/5_dead/D-53.png',
+        './img/2_character_pepe/5_dead/D-52.png',
+        './img/2_character_pepe/5_dead/D-51.png'
     ];
 
     world;
@@ -112,6 +117,6 @@ class Character extends MoveableObject {
                 }
             }
 
-        }, 50);
+        }, 150);
     }
 }
