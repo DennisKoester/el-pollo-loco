@@ -8,7 +8,7 @@ class Statusbar extends DrawableObject {
         './img/7_statusbars/1_statusbar/2_statusbar_health/blue/100.png'
     ];
 
-    STATUSBAR_COIN = [
+  /*   STATUSBAR_COIN = [
         './img/7_statusbars/1_statusbar/1_statusbar_coin/blue/0.png',
         './img/7_statusbars/1_statusbar/1_statusbar_coin/blue/20.png',
         './img/7_statusbars/1_statusbar/1_statusbar_coin/blue/40.png',
@@ -28,7 +28,7 @@ class Statusbar extends DrawableObject {
 
     STATUSBAR_ENDBOSS = [
         './',
-    ]
+    ] */
 
 
     /*  x = 70;
@@ -41,8 +41,8 @@ class Statusbar extends DrawableObject {
     constructor() {
         super();
         this.loadImages(this.STATUSBAR_LIFE);
-        this.loadImages(this.STATUSBAR_COIN);
-        this.loadImages(this.STATUSBAR_BOTTLE);
+        // this.loadImages(this.STATUSBAR_COIN);
+        // this.loadImages(this.STATUSBAR_BOTTLE);
         this.x = 20;
         this.y = 0;
         this.width = 200;
