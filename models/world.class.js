@@ -31,7 +31,8 @@ class World {
         setInterval(() => {
             this.checkCollisions();
             this.checkThrowObjects();
-        }, 200);
+            this.checkCollionsChicken();
+        }, 1000 / 25);
     }
 
 
@@ -48,6 +49,21 @@ class World {
             if (this.character.isColliding(enemy)) {
                 this.character.hit();
                 this.statusBarLife.setPercentage(this.character.energy);
+            }
+        });
+    }
+
+
+    checkCollionsChicken() {
+        this.level.enemies.forEach((enemy) => {
+            if (this.character.isColliding(enemy) && !this.character.isHurt()) {
+                if (this.character.isAboveGround()) {
+                    console.log('Enmemy smashed');
+                    // this.enemy.smash();
+                }
+                else {
+                    console.log('Chicken NOT Smashed');
+                }
             }
         });
     }
