@@ -56,10 +56,10 @@ class World {
 
     checkCollionsChicken() {
         this.level.enemies.forEach((enemy) => {
-            if (this.character.isColliding(enemy) && !this.character.isHurt()) {
+            if (this.character.isColliding(enemy)) {
                 if (this.character.isAboveGround()) {
-                    console.log('Enmemy smashed');
-                    // this.enemy.smash();
+                    // console.log('Enmemy smashed');
+                    this.energy = 0;
                 }
                 else {
                     console.log('Chicken NOT Smashed');
