@@ -52,7 +52,7 @@ class Character extends MoveableObject {
         './img/2_character_pepe/5_dead/D-51.png'
     ];
 
-    world;
+    world; // TODO Why is wold here?!
     walking_sound = new Audio('./audio/walking.mp3');
 
 

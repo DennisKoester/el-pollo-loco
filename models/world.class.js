@@ -5,11 +5,11 @@ class World {
     ctx;
     keyboard;
     camera_x = 0;
-    statusBarLife = new StatusbarLife;
-    statusBarCoin = new StatusbarCoin;
-    statusBarBottle = new StatusbarBottle;
-    statusBarEndboss = new StatusbarEndboss;
-    statusBarEndbossIcon = new StatusbarEndbossIcon;
+    statusBarLife = new StatusbarLife();
+    statusBarCoin = new StatusbarCoin();
+    statusBarBottle = new StatusbarBottle();
+    statusBarEndboss = new StatusbarEndboss();
+    statusBarEndbossIcon = new StatusbarEndbossIcon();
     throwAbleObject = [];
 
     constructor(canvas, keyboard) {
@@ -32,7 +32,7 @@ class World {
             this.checkCollisions();
             this.checkThrowObjects();
             this.checkCollionsChicken();
-        }, 1000 / 25);
+        }, 100); // TODO May adjust this
     }
 
 
@@ -58,7 +58,7 @@ class World {
         this.level.enemies.forEach((enemy) => {
             if (this.character.isColliding(enemy)) {
                 if (this.character.isAboveGround()) {
-                    // console.log('Enmemy smashed');
+                    console.log('Enmemy smashed');
                     this.energy = 0;
                 }
                 else {
@@ -86,9 +86,12 @@ class World {
         this.ctx.translate(this.camera_x, 0);
 
 
+        this.addObjectsToMap(this.level.bottles);
+        this.addObjectsToMap(this.level.coins);
         this.addObjectsToMap(this.level.enemies);
         this.addObjectsToMap(this.throwAbleObject);
         this.addToMap(this.character);
+
 
         this.ctx.translate(-this.camera_x, 0);
 

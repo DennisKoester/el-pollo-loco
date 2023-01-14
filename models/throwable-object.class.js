@@ -1,6 +1,6 @@
 class ThrowableObject extends MoveableObject {
 
-    bottlehit = false;
+    // bottlehit = false;
 
     offset = {
         top: 5,

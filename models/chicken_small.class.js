@@ -18,12 +18,12 @@ class SmallChicken extends MoveableObject {
     ];
 
 
-    constructor() {
+    constructor(x) {
         super().loadImage(this.IMAGES_WALKING[0]);
 
         this.loadImages(this.IMAGES_WALKING);
 
-        this.x = 800 + Math.random() * 500; // random number between 200 and 700
+        this.x = x + Math.random() * 500; // random number between 200 and 700
 
         this.speed = 0.15 + Math.random() * 0.5; // Math Random generates a number between 0 and 1
 

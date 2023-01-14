@@ -3,7 +3,7 @@ class DrawableObject {
     y = 230;
     height = 150;
     width = 100;
-    img;aa
+    img;
     imageCache = {};
     currentImage = 0;
 
@@ -30,7 +30,12 @@ class DrawableObject {
 
 
     draw(ctx) {
-        ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
+        try {
+            ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
+        } catch (e) {
+            console.warn('error image', e);
+            console.log(this.img.src);
+        }
     }
 
 

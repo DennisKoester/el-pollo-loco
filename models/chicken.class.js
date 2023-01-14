@@ -23,7 +23,7 @@ class Chicken extends MoveableObject {
 
 
     constructor(x) {
-        super().loadImage(this.IMAGES_WALKING[0]);
+        super();
 
         this.loadImages(this.IMAGES_WALKING);
 
@@ -42,7 +42,7 @@ class Chicken extends MoveableObject {
         }, 1000 / 60);
 
         setInterval(() => {
-            if(!this.isDead()){
+            if (!this.isDead()) {
                 this.playAnimation(this.IMAGES_WALKING);
             } else {
                 this.loadImage(this.IMAGE_DEAD);
