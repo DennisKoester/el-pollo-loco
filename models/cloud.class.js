@@ -3,10 +3,10 @@ class Cloud extends MoveableObject {
     height = 300;
     width = 500;
 
-    constructor(imagePath) {
-        super().loadImage(imagePath);
+    constructor(imagePath, x) {
+        super().loadImage(imagePath, x);
 
-        this.x = Math.random() * 500;
+        this.x = x;
 
         this.speed = 0.15 + Math.random() * 0.5; // Math Random generates a number between 0 and 1
 
@@ -17,6 +17,6 @@ class Cloud extends MoveableObject {
     animate() {
         setInterval(() => {
             this.moveLeft();
-        }, 1000 / 60);
+        }, 50);
     }
 }
