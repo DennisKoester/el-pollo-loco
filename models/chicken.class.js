@@ -33,9 +33,9 @@ class Chicken extends MoveableObject {
 
         this.speed = 0.25 + Math.random() * 0.5; // Math Random generates a number between 0 and 1
 
-        this.animate();
+        // this.animate();
 
-        // this.animateChicken();
+        this.animateChicken();
     }
 
 
