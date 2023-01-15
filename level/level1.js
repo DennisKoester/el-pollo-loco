@@ -19,7 +19,10 @@ const level1 = new Level(
         new SmallChicken(2700),
         new SmallChicken(3100),
         new SmallChicken(3400),
-        new SmallChicken(3600),
+        new SmallChicken(3600)
+    ],
+
+    [
         new Endboss()
     ],
 

@@ -81,13 +81,11 @@ class ThrowableObject extends MoveableObject {
         for (let i = 0; i < world.throwAbleObject.length; i++) {
             const bottle = world.throwAbleObject[i];
 
-            world.level.enemies.forEach((enemy) => {
-                if (bottle.isColliding(enemy)) {
+            world.level.endboss.forEach((endboss) => {
+                if (bottle.isColliding(endboss)) {
                     console.log('Bottle hit');
-                    clearInterval(this.animate);
                     this.splash();
                 }
-
             });
         }
     }

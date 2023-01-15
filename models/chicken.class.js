@@ -31,7 +31,7 @@ class Chicken extends MoveableObject {
 
         this.x = x + Math.random() * 500; // random number between 200 and 700
 
-        this.speed = 0.25 + Math.random() * 0.5; // Math Random generates a number between 0 and 1
+        this.speed = 0.20 + Math.random() * 0.5; // Math Random generates a number between 0 and 1
 
         // this.animate();
 
