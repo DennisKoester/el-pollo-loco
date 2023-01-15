@@ -5,6 +5,14 @@ class MoveableObject extends DrawableObject {
     acceleration = 2;
     energy = 100;
     lastHit = 0;
+    progessCoinBar = 0;
+    intervalIds = [];
+
+
+    setStopableInterval(fn, time) {
+        let idIntervall = setInterval(fn, time);
+        intervalIds.push(idIntervall);
+    }
 
 
     applyGravity() {
@@ -53,6 +61,16 @@ class MoveableObject extends DrawableObject {
 
     isDead() {
         return this.energy == 0;
+    }
+
+
+    chickenKilled() {
+        return this.energy = 0;
+    }
+
+
+    raiseProgressbarCoin() {
+        this.progessCoinBar += 5;
     }
 
 

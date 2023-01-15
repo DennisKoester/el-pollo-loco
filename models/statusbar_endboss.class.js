@@ -18,5 +18,4 @@ class StatusbarEndboss extends StatusbarObject {
         this.setPercentage(100);
     }
 
-
 }

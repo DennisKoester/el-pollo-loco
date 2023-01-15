@@ -31,7 +31,7 @@ class World {
         setInterval(() => {
             this.checkCollisions();
             this.checkThrowObjects();
-            this.checkCollionsChicken();
+            this.checkCollisionCoins();
         }, 100); // TODO May adjust this
     }
 
@@ -46,26 +46,52 @@ class World {
 
     checkCollisions() {
         this.level.enemies.forEach((enemy) => {
-            if (this.character.isColliding(enemy)) {
-                this.character.hit();
-                this.statusBarLife.setPercentage(this.character.energy);
+            if (this.character.isColliding(enemy) && !this.character.isHurt()) {
+                if (this.character.isAboveGround()) {
+                    this.killChickenWithJump(enemy);
+                    console.log('Enmemy smashed');
+                }
+                else {
+                    this.character.hit();
+                    this.statusBarLife.setPercentage(this.character.energy);
+                    console.log('Chicken NOT Smashed');
+                }
             }
         });
     }
 
 
-    checkCollionsChicken() {
-        this.level.enemies.forEach((enemy) => {
-            if (this.character.isColliding(enemy)) {
-                if (this.character.isAboveGround()) {
-                    console.log('Enmemy smashed');
-                    this.energy = 0;
-                }
-                else {
-                    console.log('Chicken NOT Smashed');
-                }
+    checkCollisionCoins() {
+        this.level.coins.forEach((coin) => {
+            if (this.character.isColliding(coin)) {
+                this.coinCollected(coin);
+                this.character.raiseProgressbarCoin();
+                console.log('Progess is', this.character.progessCoinBar);
+                this.statusbarCoin.setPercentage(this.character.progessCoinBar);
             }
         });
+    }
+
+
+    coinCollected(coin) {
+        let i = this.level.coins.indexOf(coin);
+        this.level.coins.splice(i, 1);
+    }
+
+
+    killChickenWithJump(enemy) {
+        enemy.chickenKilled();
+        this.character.speedY = 30;
+
+        setTimeout(() => {
+            this.eraseEnemyFromArray(enemy);
+        }, 750);
+    }
+
+
+    eraseEnemyFromArray(enemy) {
+        let i = this.level.enemies.indexOf(enemy);
+        this.level.enemies.splice(i, 1);
     }
 
 
