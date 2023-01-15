@@ -6,6 +6,7 @@ class MoveableObject extends DrawableObject {
     energy = 100;
     lastHit = 0;
     progessCoinBar = 0;
+    progressBottleBar = 0;
     intervalIds = [];
 
 
@@ -71,6 +72,11 @@ class MoveableObject extends DrawableObject {
 
     raiseProgressbarCoin() {
         this.progessCoinBar += 5;
+    }
+
+
+    raiseProgressbarBottle() {
+        this.progressBottleBar += 10;
     }
 
 

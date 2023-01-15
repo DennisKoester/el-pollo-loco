@@ -32,6 +32,7 @@ class World {
             this.checkCollisions();
             this.checkThrowObjects();
             this.checkCollisionCoins();
+            this.checkCollisonBottles();
         }, 100); // TODO May adjust this
     }
 
@@ -66,16 +67,33 @@ class World {
             if (this.character.isColliding(coin)) {
                 this.coinCollected(coin);
                 this.character.raiseProgressbarCoin();
-                console.log('Progess is', this.character.progessCoinBar);
-                this.statusbarCoin.setPercentage(this.character.progessCoinBar);
+                this.statusBarCoin.setPercentage(this.character.progessCoinBar);
             }
         });
+    }
+
+
+    checkCollisonBottles() {
+        this.level.bottles.forEach((bottle) => {
+            if (this.character.isColliding(bottle)) {
+                this.bottleCollected(bottle);
+                this.character.raiseProgressbarBottle();
+                console.log('Progess is', this.character.progressBottleBar);
+                this.statusBarBottle.setPercentage(this.character.progressBottleBar);
+            }
+        })
     }
 
 
     coinCollected(coin) {
         let i = this.level.coins.indexOf(coin);
         this.level.coins.splice(i, 1);
+    }
+
+
+    bottleCollected(bottle) {
+        let i = this.level.bottles.indexOf(bottle);
+        this.level.bottles.splice(i, 1);
     }
 
 

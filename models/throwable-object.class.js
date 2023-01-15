@@ -56,6 +56,9 @@ class ThrowableObject extends MoveableObject {
                 this.x -= 15;
             }
         }, 25);
+        this.progressBottleBar -= 10;
+        console.log('Progess is', this.character.progressBottleBar);
+
     }
 
 

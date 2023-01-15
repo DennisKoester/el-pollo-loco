@@ -51,7 +51,6 @@ class Chicken extends MoveableObject {
             } else {
                 this.loadImage(this.IMAGE_DEAD);
                 console.log('Enmemy smashed');
-
             }
         }, 200);
     }
