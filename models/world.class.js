@@ -42,7 +42,7 @@ class World {
     checkCollisionsWithThrowingBottle() {
         setInterval(() => {
             this.checkThrowObjects();
-            // this.checkCollisionBottleWithEndboss();    
+            this.checkCollisionBottleWithEndboss();
         }, 180);
     }
 
@@ -116,7 +116,6 @@ class World {
             this.level.endboss.forEach(endboss => {
                 if (bottle.isColliding(endboss)) {
                     endboss.hitEndboss(endboss.energy);
-                    // this.statusbarEndbossHealth.setPercentage(world.level.endboss[0].energy);
                     setTimeout(() => {
                         this.eraseThrowingBottleFromArray(bottle);
                     }, 180);
