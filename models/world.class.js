@@ -20,6 +20,7 @@ class World {
         this.draw();
         this.setWorld();
         this.checkCollisions();
+        this.checkCollisionsWithThrowingBottle();
     }
 
 
@@ -34,9 +35,15 @@ class World {
             this.checkCollisionCoins();
             this.checkCollisonsBottles();
             this.checkCollisionsEndboss();
-            this.checkCollisionBottleWithEndboss();
-            this.checkThrowObjects();
         }, 1000 / 25); // TODO May adjust this
+    }
+
+
+    checkCollisionsWithThrowingBottle() {
+        setInterval(() => {
+            this.checkThrowObjects();
+            // this.checkCollisionBottleWithEndboss();    
+        }, 180);
     }
 
 
