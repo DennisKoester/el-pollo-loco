@@ -1,7 +1,5 @@
 class ThrowableObject extends MoveableObject {
 
-    // bottlehit = false;
-
     offset = {
         top: 10,
         bottom: 10,
@@ -33,35 +31,10 @@ class ThrowableObject extends MoveableObject {
         this.y = y;
         this.height = 90;
         this.width = 80;
+        this.otherDirection = otherDirection;
         this.animate();
         this.throwBottle();
-        this.otherDirection = otherDirection;
-        // this.checkHitBottle();
     }
-
-
-    /* throw() {
-        this.speedY = 30;
-        this.applyGravity();
-        setInterval(() => {
-            if (!world.character.otherDirection && world.keyboard.RIGHT) {
-                this.x += 15 + 5;
-            } else
-                if (world.character.otherDirection && world.keyboard.LEFT) {
-                    this.x -= 15 + 5;
-                }
-            if (!world.character.otherDirection) {
-                this.x += 15;
-            }
-            if (world.character.otherDirection) {
-                this.x -= 15;
-            }
-        }, 25);
-        // this.progressBottleBar -= 10;
-        // console.log('Progess is', this.character.progressBottleBar);
-
-    } */
-
 
 
     throwBottle() {
@@ -69,40 +42,23 @@ class ThrowableObject extends MoveableObject {
         this.applyGravity();
         setInterval(() => {
             if (this.otherDirection) {
-                this.x -= 15;
+                this.x -= 20;
             } else {
                 this.otherDirection;
-                this.x += 15;
+                this.x += 20;
             }
         }, 25);
     }
 
 
-
     animate() {
         setInterval(() => {
-            if (!world.level.endboss[0].isHurtEndboss()) {
+            if (!this.bottlehit) {
                 this.playAnimation(this.IMAGES_BOTTLE_ROTATION);
             } else {
                 console.log('Endboss hit');
                 this.playAnimation(this.IMAGES_BOTTLE_SPLASH);
             }
         }, 1000 / 25);
-    }
-
-
-
-    checkHitBottle() {
-
-        for (let i = 0; i < world.throwAbleObject.length; i++) {
-            const bottle = world.throwAbleObject[i];
-
-            world.level.endboss.forEach((endboss) => {
-                if (bottle.isColliding(endboss)) {
-                    console.log('Bottle hit');
-                    this.splash();
-                }
-            });
-        }
     }
 }

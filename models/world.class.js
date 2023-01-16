@@ -19,7 +19,7 @@ class World {
         this.keyboard = keyboard;
         this.draw();
         this.setWorld();
-        this.run();
+        this.checkCollisions();
     }
 
 
@@ -28,18 +28,20 @@ class World {
     }
 
 
-    run() {
+    checkCollisions() {
         setInterval(() => {
-            this.checkCollisions();
-            this.checkThrowObjects();
+            this.checkCollisionsEnemy();
             this.checkCollisionCoins();
-            this.checkCollisonBottles();
-        }, 100); // TODO May adjust this
+            this.checkCollisonsBottles();
+            this.checkCollisionsEndboss();
+            this.checkCollisionBottleWithEndboss();
+            this.checkThrowObjects();
+        }, 1000 / 25); // TODO May adjust this
     }
 
 
     checkThrowObjects() {
-        if (this.keyboard.D && this.collectedBottles > 0) {
+        if (this.keyboard.D) { // && this.collectedBottles > 0
             let bottle = new ThrowableObject(this.character.x, this.character.y + 100, this.character.otherDirection);
             this.throwAbleObject.push(bottle);
             this.collectedBottles--;
@@ -49,7 +51,7 @@ class World {
     }
 
 
-    checkCollisions() {
+    checkCollisionsEnemy() {
         this.level.enemies.forEach((enemy) => {
             if (this.character.isColliding(enemy) && !this.character.isHurt()) {
                 if (this.character.isAboveGround()) {
@@ -60,6 +62,20 @@ class World {
                     this.character.hit();
                     this.statusBarLife.setPercentage(this.character.energy);
                     console.log('Chicken NOT Smashed');
+                }
+            }
+        });
+    }
+
+
+    checkCollisionsEndboss() {
+        this.level.endboss.forEach((endboss) => {
+            if (this.character.isColliding(endboss) && !this.character.isHurt()) {
+                if (this.character.isAboveGround()) {
+                }
+                else {
+                    this.character.hit();
+                    this.statusBarLife.setPercentage(this.character.energy);
                 }
             }
         });
@@ -77,15 +93,29 @@ class World {
     }
 
 
-    checkCollisonBottles() {
+    checkCollisonsBottles() {
         this.level.bottles.forEach((bottle) => {
             if (this.character.isColliding(bottle)) {
                 this.bottleCollected(bottle);
                 this.character.raiseProgressbarBottle();
-                console.log('Progess is', this.character.progressBottleBar);
                 this.statusBarBottle.setPercentage(this.character.progressBottleBar);
             }
         })
+    }
+
+
+    checkCollisionBottleWithEndboss() {
+        this.throwableObject.forEach((bottle) => {
+            this.level.endboss.forEach(endboss => {
+                if (bottle.isColliding(endboss)) {
+                    endboss.hitEndboss(endboss.energy);
+                    // this.statusbarEndbossHealth.setPercentage(world.level.endboss[0].energy);
+                    setTimeout(() => {
+                        this.eraseThrowingBottleFromArray(bottle);
+                    }, 180);
+                }
+            });
+        });
     }
 
 
@@ -115,6 +145,12 @@ class World {
     eraseEnemyFromArray(enemy) {
         let i = this.level.enemies.indexOf(enemy);
         this.level.enemies.splice(i, 1);
+    }
+
+
+    eraseThrowingBottleFromArray(bottle) {
+        let i = this.throwableObject.indexOf(bottle);
+        this.throwableObject.splice(i, 1);
     }
 
 

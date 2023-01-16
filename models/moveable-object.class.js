@@ -25,7 +25,7 @@ class MoveableObject extends DrawableObject {
         }, 1000 / 60);
     }
 
-
+    endboss
     isAboveGround() {
         if (this instanceof ThrowableObject) { // Throwable object should always fall out of the canvas
             return true;
@@ -47,6 +47,16 @@ class MoveableObject extends DrawableObject {
         this.energy -= 2;
         if (this.energy < 0) {
             this.energy = 0;
+        } else {
+            this.lastHit = new Date().getTime();
+        }
+    }
+
+
+    hitEndboss() {
+        this.energy -= 20;
+        if (this.energy < 0) {
+            this.energy = 0
         } else {
             this.lastHit = new Date().getTime();
         }
@@ -86,7 +96,7 @@ class MoveableObject extends DrawableObject {
         this.progressBottleBar += 10;
     }
 
-    
+
     reduceProgressbarBottle(){
         this.progressBottleBar -= 10;
     }
