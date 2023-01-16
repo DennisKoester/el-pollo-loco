@@ -5,6 +5,7 @@ class World {
     ctx;
     keyboard;
     camera_x = 0;
+    collectedBottles = 0;
     statusBarLife = new StatusbarLife();
     statusBarCoin = new StatusbarCoin();
     statusBarBottle = new StatusbarBottle();
@@ -38,9 +39,12 @@ class World {
 
 
     checkThrowObjects() {
-        if (this.keyboard.D) {
-            let bottle = new ThrowableObject(this.character.x + 50, this.character.y + 100);
+        if (this.keyboard.D && this.collectedBottles > 0) {
+            let bottle = new ThrowableObject(this.character.x, this.character.y + 100, this.character.otherDirection);
             this.throwAbleObject.push(bottle);
+            this.collectedBottles--;
+            this.character.reduceProgressbarBottle();
+            this.statusBarBottle.setPercentage(this.character.progressBottleBar);
         }
     }
 
@@ -94,6 +98,7 @@ class World {
     bottleCollected(bottle) {
         let i = this.level.bottles.indexOf(bottle);
         this.level.bottles.splice(i, 1);
+        this.collectedBottles++;
     }
 
 

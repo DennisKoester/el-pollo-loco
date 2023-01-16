@@ -3,10 +3,10 @@ class ThrowableObject extends MoveableObject {
     // bottlehit = false;
 
     offset = {
-        top: 5,
-        bottom: 5,
-        right: 5,
-        left: 5
+        top: 10,
+        bottom: 10,
+        right: 10,
+        left: 10
     }
 
     IMAGES_BOTTLE_ROTATION = [
@@ -25,21 +25,22 @@ class ThrowableObject extends MoveableObject {
         './img/6_salsa_bottle/bottle_rotation/bottle_splash/6_bottle_splash.png',
     ]
 
-    constructor(x, y) {
+    constructor(x, y, otherDirection) {
         super().loadImage('./img/7_statusbars/3_icons/icon_salsa_bottle.png');
         this.loadImages(this.IMAGES_BOTTLE_ROTATION);
         this.loadImages(this.IMAGES_BOTTLE_SPLASH);
         this.x = x;
         this.y = y;
-        this.height = 60;
-        this.width = 50;
-        this.throw();
-        this.checkHitBottle();
+        this.height = 90;
+        this.width = 80;
         this.animate();
+        this.throwBottle();
+        this.otherDirection = otherDirection;
+        // this.checkHitBottle();
     }
 
 
-    throw() {
+    /* throw() {
         this.speedY = 30;
         this.applyGravity();
         setInterval(() => {
@@ -59,21 +60,36 @@ class ThrowableObject extends MoveableObject {
         // this.progressBottleBar -= 10;
         // console.log('Progess is', this.character.progressBottleBar);
 
+    } */
+
+
+
+    throwBottle() {
+        this.speedY = 25;
+        this.applyGravity();
+        setInterval(() => {
+            if (this.otherDirection) {
+                this.x -= 15;
+            } else {
+                this.otherDirection;
+                this.x += 15;
+            }
+        }, 25);
     }
+
 
 
     animate() {
         setInterval(() => {
-            this.playAnimation(this.IMAGES_BOTTLE_ROTATION);
-        }, 50);
+            if (!world.level.endboss[0].isHurtEndboss()) {
+                this.playAnimation(this.IMAGES_BOTTLE_ROTATION);
+            } else {
+                console.log('Endboss hit');
+                this.playAnimation(this.IMAGES_BOTTLE_SPLASH);
+            }
+        }, 1000 / 25);
     }
 
-
-    splash() {
-        setInterval(() => {
-            this.playAnimation(this.IMAGES_BOTTLE_SPLASH);
-        }, 50);
-    }
 
 
     checkHitBottle() {

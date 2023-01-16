@@ -60,6 +60,13 @@ class MoveableObject extends DrawableObject {
     }
 
 
+    isHurtEndboss() {
+        let timepassed = new Date().getTime() - this.lastHit;  // Difference in milliseconds.
+        timepassed = timepassed / 1000;  // Difference in seconds.
+        return timepassed < 0.5;
+    }
+    
+
     isDead() {
         return this.energy == 0;
     }
@@ -77,6 +84,11 @@ class MoveableObject extends DrawableObject {
 
     raiseProgressbarBottle() {
         this.progressBottleBar += 10;
+    }
+
+    
+    reduceProgressbarBottle(){
+        this.progressBottleBar -= 10;
     }
 
 
