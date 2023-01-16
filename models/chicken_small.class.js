@@ -31,22 +31,21 @@ class SmallChicken extends MoveableObject {
 
         this.speed = 0.15 + Math.random() * 0.5; // Math Random generates a number between 0 and 1
 
-        this.animate();
+        this.animateChicken();
     }
 
 
-    animate() {
-
-        setInterval(() => {
+    animateChicken() {
+        let intervalChicken = setInterval(() => {
             this.moveLeft();
         }, 1000 / 60);
-
-        setInterval(() => {
+        this.setStopableInterval(() => {
             if (!this.isDead()) {
                 this.playAnimation(this.IMAGES_WALKING);
             } else {
                 this.loadImage(this.IMAGE_DEAD);
+                clearInterval(intervalChicken);
             }
-        }, 200);
+        }, 100);
     }
 }
