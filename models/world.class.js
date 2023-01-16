@@ -107,13 +107,13 @@ class World {
                 this.character.raiseProgressbarBottle();
                 this.statusBarBottle.setPercentage(this.character.progressBottleBar);
             }
-        })
+        });
     }
 
 
     checkCollisionBottleWithEndboss() {
         this.throwableObject.forEach((bottle) => {
-            this.level.endboss.forEach(endboss => {
+            this.level.endboss.forEach((endboss) => {
                 if (bottle.isColliding(endboss)) {
                     endboss.hitEndboss(endboss.energy);
                     setTimeout(() => {
