@@ -73,22 +73,26 @@ class Endboss extends MoveableObject {
     animateEndbossOnReach() {
         let i = 0;
         setInterval(() => {
-            this.animateEndboss(i);
+            this.animateEndboss();
             i++;
             if (this.endbossReached()) {
                 i = 0;
                 this.hadFirstContact = true;
-                // this.playBackgroundMusicEndboss();
             }
         }, 120);
     }
 
-    animateEndboss(i) {
-        if (i < 15) {
+    animateEndboss() {
+        if (!this.isDead()) {
             this.playAnimation(this.IMAGES_ALERT);
             this.moveLeft();
+            console.log('Endboss alive');
+
         } else if (!this.isDead() && !this.hitEndboss() && this.endbossFightBegins()) {
             this.playAnimation(this.IMAGES_WALKING);
+        } else if (this.isDead()) {
+            console.log('Endboss DEAD');
+            this.playAnimation(this.IMAGES_DEAD);
         }
     }
 
