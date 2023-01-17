@@ -53,10 +53,10 @@ class ThrowableObject extends MoveableObject {
 
     animate() {
         setInterval(() => {
-            if (!this.bottlehit) {
+            if (!world.level.endboss[0].isHurtEndboss()) {
                 this.playAnimation(this.IMAGES_BOTTLE_ROTATION);
             } else {
-                console.log('Endboss hit');
+                console.log('Endboss splash');
                 this.playAnimation(this.IMAGES_BOTTLE_SPLASH);
             }
         }, 1000 / 25);

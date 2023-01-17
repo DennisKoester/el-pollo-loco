@@ -3,6 +3,10 @@ class Character extends MoveableObject {
     height = 250;
     speed = 7;
 
+    world; // TODO Why is wold here?!
+    walking_sound = new Audio('./audio/walking.mp3');
+    characterLastMovement = 0;
+
     offset = {
         top: 100,
         bottom: 10,
@@ -52,8 +56,31 @@ class Character extends MoveableObject {
         './img/2_character_pepe/5_dead/D-51.png'
     ];
 
-    world; // TODO Why is wold here?!
-    walking_sound = new Audio('./audio/walking.mp3');
+    IMAGES_IDLE = [
+        './img/2_character_pepe/1_idle/idle/I-1.png',
+        './img/2_character_pepe/1_idle/idle/I-2.png',
+        './img/2_character_pepe/1_idle/idle/I-3.png',
+        './img/2_character_pepe/1_idle/idle/I-4.png',
+        './img/2_character_pepe/1_idle/idle/I-5.png',
+        './img/2_character_pepe/1_idle/idle/I-6.png',
+        './img/2_character_pepe/1_idle/idle/I-7.png',
+        './img/2_character_pepe/1_idle/idle/I-8.png',
+        './img/2_character_pepe/1_idle/idle/I-9.png',
+        './img/2_character_pepe/1_idle/idle/I-10.png'
+    ];
+
+    IMAGES_IDLE_LONG = [
+        './img/2_character_pepe/1_idle/long_idle/I-11.png',
+        './img/2_character_pepe/1_idle/long_idle/I-12.png',
+        './img/2_character_pepe/1_idle/long_idle/I-13.png',
+        './img/2_character_pepe/1_idle/long_idle/I-14.png',
+        './img/2_character_pepe/1_idle/long_idle/I-15.png',
+        './img/2_character_pepe/1_idle/long_idle/I-16.png',
+        './img/2_character_pepe/1_idle/long_idle/I-17.png',
+        './img/2_character_pepe/1_idle/long_idle/I-18.png',
+        './img/2_character_pepe/1_idle/long_idle/I-19.png',
+        './img/2_character_pepe/1_idle/long_idle/I-20.png'
+    ];
 
 
     constructor() {
@@ -63,6 +90,8 @@ class Character extends MoveableObject {
         this.loadImages(this.IMAGES_JUMPING);
         this.loadImages(this.IMAGES_HURT);
         this.loadImages(this.IMAGES_DEAD);
+        this.loadImages(this.IMAGES_IDLE);
+        this.loadImages(this.IMAGES_IDLE_LONG);
 
         this.applyGravity();
 
@@ -108,15 +137,30 @@ class Character extends MoveableObject {
             } else if (this.isAboveGround()) {
                 this.playAnimation(this.IMAGES_JUMPING);
 
+
+            } else if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
+                this.setTimeStamp();
+                this.playAnimation(this.IMAGES_WALKING);
+
+            } else if (this.characterMoveTimepassed() > 2) {
+                this.playAnimation(this.IMAGES_IDLE_LONG);
             } else {
-
-                if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
-
-                    // Walk animiation
-                    this.playAnimation(this.IMAGES_WALKING);
-                }
+                this.playAnimation(this.IMAGES_IDLE);
             }
 
         }, 150);
     }
+
+
+    characterMoveTimepassed() {
+        let timepassed = new Date().getTime() - this.characterLastMovement;
+        timepassed = timepassed / 1000;
+        return timepassed;
+    }
+
+
+    setTimeStamp() {
+        this.characterLastMovement = new Date().getTime();
+    }
+
 }

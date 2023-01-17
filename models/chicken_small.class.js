@@ -39,7 +39,7 @@ class SmallChicken extends MoveableObject {
         let intervalChicken = setInterval(() => {
             this.moveLeft();
         }, 1000 / 60);
-        this.setStopableInterval(() => {
+        setInterval(() => {
             if (!this.isDead()) {
                 this.playAnimation(this.IMAGES_WALKING);
             } else {

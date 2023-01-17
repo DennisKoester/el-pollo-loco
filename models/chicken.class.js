@@ -20,7 +20,7 @@ class Chicken extends MoveableObject {
     IMAGE_DEAD = [
         './img/3_enemies_chicken/chicken_normal/2_dead/dead.png'
     ];
-    
+
 
     constructor(x) {
         super();
@@ -39,7 +39,7 @@ class Chicken extends MoveableObject {
         let intervalChicken = setInterval(() => {
             this.moveLeft();
         }, 1000 / 60);
-        this.setStopableInterval(() => {
+        setInterval(() => {
             if (!this.isDead()) {
                 this.playAnimation(this.IMAGES_WALKING);
             } else {
