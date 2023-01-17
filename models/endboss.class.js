@@ -98,7 +98,7 @@ class Endboss extends MoveableObject {
 
 
     endbossReached() {
-        return world.character.x > 3500 && !this.hadFirstContact;
+        return world.character.x > 3500 && !this.hadFirstContact; // TODO What's WRONG ??
     }
 
 
