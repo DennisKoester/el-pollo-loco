@@ -25,15 +25,15 @@ class ThrowableObject extends MoveableObject {
 
     constructor(x, y, otherDirection) {
         super().loadImage('./img/7_statusbars/3_icons/icon_salsa_bottle.png');
-        this.loadImages(this.IMAGES_BOTTLE_ROTATION);
-        this.loadImages(this.IMAGES_BOTTLE_SPLASH);
         this.x = x;
         this.y = y;
         this.height = 90;
         this.width = 80;
         this.otherDirection = otherDirection;
-        this.animate();
+        this.loadImages(this.IMAGES_BOTTLE_ROTATION);
+        this.loadImages(this.IMAGES_BOTTLE_SPLASH);
         this.throwBottle();
+        this.animateBottle();
     }
 
 
@@ -47,11 +47,12 @@ class ThrowableObject extends MoveableObject {
                 this.otherDirection;
                 this.x += 20;
             }
+            // world.character.setTimeStamp();
         }, 25);
     }
 
 
-    animate() {
+    animateBottle() {
         setInterval(() => {
             if (!world.level.endboss[0].isHurtEndboss()) {
                 this.playAnimation(this.IMAGES_BOTTLE_ROTATION);

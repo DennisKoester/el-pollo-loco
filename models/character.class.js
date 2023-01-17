@@ -1,4 +1,5 @@
 class Character extends MoveableObject {
+    x = 50;
     y = 50;
     height = 250;
     speed = 7;
@@ -119,6 +120,7 @@ class Character extends MoveableObject {
 
             if (this.world.keyboard.SPACE && !this.isAboveGround()) {
                 this.jump();
+
             }
 
             this.world.camera_x = -this.x + 100;
@@ -130,24 +132,19 @@ class Character extends MoveableObject {
 
             if (this.isDead()) {
                 this.playAnimation(this.IMAGES_DEAD);
-
             } else if (this.isHurt()) {
                 this.playAnimation(this.IMAGES_HURT);
-
             } else if (this.isAboveGround()) {
                 this.playAnimation(this.IMAGES_JUMPING);
-
-
+                this.setTimeStamp();
             } else if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
                 this.setTimeStamp();
                 this.playAnimation(this.IMAGES_WALKING);
-
-            } else if (this.characterMoveTimepassed() > 2) {
+            } else if (this.characterMoveTimepassed() > 3) {
                 this.playAnimation(this.IMAGES_IDLE_LONG);
             } else {
                 this.playAnimation(this.IMAGES_IDLE);
             }
-
         }, 150);
     }
 
@@ -162,5 +159,4 @@ class Character extends MoveableObject {
     setTimeStamp() {
         this.characterLastMovement = new Date().getTime();
     }
-
 }
