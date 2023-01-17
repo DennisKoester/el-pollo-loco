@@ -75,7 +75,7 @@ class MoveableObject extends DrawableObject {
         timepassed = timepassed / 1000;  // Difference in seconds.
         return timepassed < 0.5;
     }
-    
+
 
     isDead() {
         return this.energy == 0;
@@ -97,7 +97,7 @@ class MoveableObject extends DrawableObject {
     }
 
 
-    reduceProgressbarBottle(){
+    reduceProgressbarBottle() {
         this.progressBottleBar -= 10;
     }
 

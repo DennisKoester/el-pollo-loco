@@ -43,7 +43,7 @@ class World {
         setInterval(() => {
             this.checkThrowObjects();
             this.checkCollisionBottleWithEndboss();
-        }, 180);
+        }, 200);
     }
 
 
@@ -112,10 +112,12 @@ class World {
 
 
     checkCollisionBottleWithEndboss() {
-        this.throwableObject.forEach((bottle) => {
+        this.throwAbleObject.forEach((bottle) => {
             this.level.endboss.forEach((endboss) => {
                 if (bottle.isColliding(endboss)) {
                     endboss.hitEndboss(endboss.energy);
+                    this.statusBarEndboss.setPercentage(endboss.energy);
+                    console.log('Endboss hit', endboss.energy);
                     setTimeout(() => {
                         this.eraseThrowingBottleFromArray(bottle);
                     }, 180);
@@ -155,8 +157,8 @@ class World {
 
 
     eraseThrowingBottleFromArray(bottle) {
-        let i = this.throwableObject.indexOf(bottle);
-        this.throwableObject.splice(i, 1);
+        let i = this.throwAbleObject.indexOf(bottle);
+        this.throwAbleObject.splice(i, 1);
     }
 
 
