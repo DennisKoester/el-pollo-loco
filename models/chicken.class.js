@@ -11,7 +11,6 @@ class Chicken extends MoveableObject {
         left: 10
     }
 
-
     IMAGES_WALKING = [
         './img/3_enemies_chicken/chicken_normal/1_walk/1_w.png',
         './img/3_enemies_chicken/chicken_normal/1_walk/2_w.png',
