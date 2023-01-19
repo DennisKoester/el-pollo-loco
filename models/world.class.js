@@ -17,7 +17,7 @@ class World {
     chicken_dead_sound = new Audio('./audio/chicken_dead.mp3');
     throw_sound = new Audio('./audio/throw_bottle.mp3');
     bottle_smash = new Audio('./audio/bottle_smash.mp3');
-    coin_collect_sound = new Audio('./audio.coin.mp3');
+    coin_collect_sound = new Audio('./audio/coin.mp3');
     bottle_collect_sound = new Audio('./audio/bottle.mp3');
 
 
@@ -119,6 +119,7 @@ class World {
                 this.character.raiseProgressbarBottle();
                 this.statusBarBottle.setPercentage(this.character.progressBottleBar);
                 this.bottle_collect_sound.play();
+                this.bottle_collect_sound.volume = 1;
             }
         });
     }
