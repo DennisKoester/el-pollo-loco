@@ -13,6 +13,9 @@ class World {
     statusBarEndbossIcon = new StatusbarEndbossIcon();
     throwAbleObject = [];
 
+    chicken_dead_sound = new Audio('./audio/chicken_dead.mp3')
+
+
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
         this.canvas = canvas;
@@ -142,8 +145,8 @@ class World {
 
     killChickenWithJump(enemy) {
         enemy.chickenKilled();
-        // this.character.speedY = 30;
         this.character.jump();
+        this.chicken_dead_sound.play();
         setTimeout(() => {
             this.eraseEnemyFromArray(enemy);
         }, 750);

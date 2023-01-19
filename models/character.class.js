@@ -3,10 +3,14 @@ class Character extends MoveableObject {
     y = 50;
     height = 250;
     speed = 7;
-
-    world; // TODO Why is wold here?!
-    walking_sound = new Audio('./audio/walking.mp3');
     characterLastMovement = 0;
+    world; // TODO Why is wold here?!
+
+    walking_sound = new Audio('./audio/walking.mp3');
+    jumping_sound = new Audio('./audio/jumping.mp3');
+    snoring_sound = new Audio('./audio/snoring.mp3');
+    hurt_sound = new Audio('./audio/pepe_hurt.mp3');
+    dead_sound = new Audio('./audio/pepe_dead.mp3');
 
     offset = {
         top: 100,
@@ -14,6 +18,7 @@ class Character extends MoveableObject {
         right: 20,
         left: 20
     }
+
 
     IMAGES_WALKING = [
         './img/2_character_pepe/2_walk/W-21.png',
@@ -70,7 +75,7 @@ class Character extends MoveableObject {
         './img/2_character_pepe/1_idle/idle/I-10.png'
     ];
 
-    IMAGES_IDLE_LONG = [
+    IMAGES_SLEEPING = [
         './img/2_character_pepe/1_idle/long_idle/I-11.png',
         './img/2_character_pepe/1_idle/long_idle/I-12.png',
         './img/2_character_pepe/1_idle/long_idle/I-13.png',
@@ -92,16 +97,16 @@ class Character extends MoveableObject {
         this.loadImages(this.IMAGES_HURT);
         this.loadImages(this.IMAGES_DEAD);
         this.loadImages(this.IMAGES_IDLE);
-        this.loadImages(this.IMAGES_IDLE_LONG);
+        this.loadImages(this.IMAGES_SLEEPING);
 
         this.applyGravity();
 
-        this.animate();
+        this.animateCharacter();
 
     }
 
 
-    animate() {
+    animateCharacter() {
 
         setInterval(() => {
             this.walking_sound.pause();
@@ -109,18 +114,18 @@ class Character extends MoveableObject {
             if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
                 this.moveRight();
                 this.otherDirection = false;
-                // this.walking_sound.play();
+                this.walking_sound.play();
             }
 
             if (this.world.keyboard.LEFT && this.x > 0) {
                 this.moveLeft();
                 this.otherDirection = true;
-                // this.walking_sound.play();
+                this.walking_sound.play();
             }
 
             if (this.world.keyboard.SPACE && !this.isAboveGround()) {
                 this.jump();
-
+                this.jumping_sound.play();
             }
 
             this.world.camera_x = -this.x + 100;
@@ -129,11 +134,14 @@ class Character extends MoveableObject {
 
 
         setInterval(() => {
+            this.snoring_sound.pause();
 
             if (this.isDead()) {
                 this.playAnimation(this.IMAGES_DEAD);
+                this.dead_sound.play();
             } else if (this.isHurt()) {
                 this.playAnimation(this.IMAGES_HURT);
+                this.hurt_sound.play();
             } else if (this.isAboveGround()) {
                 this.playAnimation(this.IMAGES_JUMPING);
                 this.setTimeStamp();
@@ -141,7 +149,8 @@ class Character extends MoveableObject {
                 this.setTimeStamp();
                 this.playAnimation(this.IMAGES_WALKING);
             } else if (this.characterMoveTimepassed() > 3) {
-                this.playAnimation(this.IMAGES_IDLE_LONG);
+                this.playAnimation(this.IMAGES_SLEEPING);
+                this.snoring_sound.play();
             } else {
                 this.playAnimation(this.IMAGES_IDLE);
             }
