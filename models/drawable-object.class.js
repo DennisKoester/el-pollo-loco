@@ -30,13 +30,19 @@ class DrawableObject {
 
 
     draw(ctx) {
-        try {
-            ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
-        } catch (e) {
-            console.warn('error image', e);
-            console.log(this.img.src);
-        }
+        ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
     }
+
+
+    /*   draw(ctx) {
+          try {
+              ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
+          } catch (e) {
+              console.warn('error image', e);
+              console.log(this.img.src);
+          }
+      }
+   */
 
 
     drawFrame(ctx) {
