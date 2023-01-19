@@ -35,7 +35,7 @@ class World {
             this.checkCollisionCoins();
             this.checkCollisonsBottles();
             this.checkCollisionsEndboss();
-        }, 1000 / 25); // TODO May adjust this
+        }, 1000 / 60); // TODO May adjust this
     }
 
 
@@ -142,8 +142,8 @@ class World {
 
     killChickenWithJump(enemy) {
         enemy.chickenKilled();
-        this.character.speedY = 30;
-
+        // this.character.speedY = 30;
+        this.character.jump();
         setTimeout(() => {
             this.eraseEnemyFromArray(enemy);
         }, 750);

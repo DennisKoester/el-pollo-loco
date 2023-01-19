@@ -25,7 +25,7 @@ class MoveableObject extends DrawableObject {
         }, 1000 / 60);
     }
 
-    
+
     isAboveGround() {
         if (this instanceof ThrowableObject) { // Throwable object should always fall out of the canvas
             return true;
