@@ -1,9 +1,35 @@
-body{
+* {
+    @font-face {
+        font-family: 'zabars';
+        src: url('fonts/Zabars.ttf') format('truetype');
+    }
+}
+
+body {
+    margin: 0;
+    height: 100vh;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
+    background-image: url('./img/2110.w023.n001.1221B.p1.1221.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
 }
 
 canvas {
     background-color: black;
+    box-shadow: 5px 5px 15px 5px #000000;
+    border-radius: 15px;
+    z-index: 1;
+}
+
+h1 {
+    position: absolute;
+    top: 20px;
+    font-size: 60px;
+    font-family: 'zabars', Arial, Helvetica, sans-serif;
+    letter-spacing: 4px;
 }
