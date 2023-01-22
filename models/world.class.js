@@ -74,12 +74,10 @@ class World {
             if (this.character.isColliding(enemy) && !this.character.isHurt()) {
                 if (this.character.isAboveGround()) {
                     this.killChickenWithJump(enemy);
-                    console.log('Enmemy smashed');
                 }
                 else {
                     this.character.hit();
                     this.statusBarLife.setPercentage(this.character.energy);
-                    console.log('Chicken NOT Smashed');
                 }
             }
         });
@@ -132,7 +130,6 @@ class World {
                     endboss.hitEndboss(endboss.energy);
                     this.statusBarEndboss.setPercentage(endboss.energy);
                     this.playSoundEndbossHit();
-                    console.log('Endboss hit', endboss.energy);
                     setTimeout(() => {
                         this.eraseThrowingBottleFromArray(bottle);
                     }, 180);
@@ -201,14 +198,7 @@ class World {
         this.addObjectsToMap(this.throwAbleObject);
         this.addToMap(this.character);
 
-
         this.ctx.translate(-this.camera_x, 0);
-
-
-        // this.backgroundObjects.forEach(bgo => {
-        //     this.addToMap(bgo);
-        // }) // ! Long version
-
 
         // Draw() repeats all the time
         let self = this;
@@ -256,7 +246,7 @@ class World {
 
     backgroundMusic() {
         this.background_music.play();
-        this.background_music.volume = 0.15;
+        this.background_music.volume = 0.1;
     }
 
     playSoundEndbossHit() {
