@@ -87,7 +87,7 @@ class Endboss extends MoveableObject {
             this.moveLeft();
         } else if (this.isHurtEndboss()) {
             this.playAnimation(this.IMAGES_ATTACK);
-            this.endBossRushForward();
+            this.endbossRushForward();
         } else if (this.isDead()) {
             this.playAnimation(this.IMAGES_DEAD);
         }

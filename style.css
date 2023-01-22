@@ -33,3 +33,36 @@ h1 {
     font-family: 'zabars', Arial, Helvetica, sans-serif;
     letter-spacing: 4px;
 }
+
+.startScreenContainer {
+    position: relative;
+}
+
+.startScreen {
+    width: 820px;
+    height: 480px;
+    box-shadow: 5px 5px 15px 5px #000000;
+    border-radius: 15px;
+}
+
+.btn-container {
+    position: absolute;
+    top: 13px;
+    right: 20px;
+}
+
+.btn-container img {
+    height: 40px;
+    width: 40px;
+    margin-left: 15px;
+    cursor: pointer;
+}
+
+.btn-container img:hover {
+    transition: all 225ms ease-in-out;
+    transform: scale(1.2);
+}
+
+.d-none {
+    display: none;
+}

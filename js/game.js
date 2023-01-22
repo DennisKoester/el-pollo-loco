@@ -3,9 +3,17 @@ let world;
 let keyboard = new Keyboard();
 
 
-function init() {
+function startGame() {
+    hideStartScreen();
     canvas = document.getElementById('canvas');
     world = new World(canvas, keyboard);
+}
+
+
+
+function hideStartScreen() {
+    document.getElementById('startScreenContainer').classList.add('d-none');
+    document.getElementById('canvas').classList.remove('d-none');
 }
 
 
