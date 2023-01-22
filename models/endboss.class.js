@@ -70,7 +70,7 @@ class Endboss extends MoveableObject {
     animateEndbossOnReach() {
         let i = 0;
         setInterval(() => {
-            this.animateEndboss();
+            this.animateEndboss(i);
             i++;
             if (this.endbossReached()) {
                 i = 0;
@@ -79,12 +79,15 @@ class Endboss extends MoveableObject {
         }, 120);
     }
 
-    animateEndboss() {
-        if (!this.isDead()) {
-            this.playAnimation(this.IMAGES_WALKING);
-            this.moveLeft();
+    animateEndboss(i) {
+        if (i < 15) {
+            this.playAnimation(this.IMAGES_ALERT);
         } else if (!this.isDead() && !this.hitEndboss() && this.endbossFightBegins()) {
             this.playAnimation(this.IMAGES_WALKING);
+            this.moveLeft();
+        } else if (this.isHurtEndboss()) {
+            this.playAnimation(this.IMAGES_ATTACK);
+            this.endBossRushForward();
         } else if (this.isDead()) {
             this.playAnimation(this.IMAGES_DEAD);
         }
