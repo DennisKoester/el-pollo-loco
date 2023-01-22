@@ -40,22 +40,24 @@ class ThrowableObject extends MoveableObject {
     throwBottle() {
         this.speedY = 25;
         this.applyGravity();
-        setInterval(() => {
+        let throwBottleInterval = setInterval(() => {
             if (this.otherDirection) {
                 this.x -= 20;
             } else {
                 this.otherDirection;
                 this.x += 20;
             }
-            // world.character.setTimeStamp();
+            world.character.setTimeStamp();
         }, 25);
+        this.setStopableInterval(() => {
+            clearInterval(throwBottleInterval);
+        }, 1500);
     }
 
 
     animateBottle() {
         setInterval(() => {
             if (world.level.endboss[0].isHurtEndboss()) { // TODO Why [0] ??
-                console.log('Endboss splash');
                 this.playAnimation(this.IMAGES_BOTTLE_SPLASH);
             } else {
                 this.playAnimation(this.IMAGES_BOTTLE_ROTATION);

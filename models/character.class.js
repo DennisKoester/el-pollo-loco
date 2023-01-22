@@ -167,5 +167,6 @@ class Character extends MoveableObject {
 
     setTimeStamp() {
         this.characterLastMovement = new Date().getTime();
+        // console.log(this.characterLastMovement);
     }
 }
