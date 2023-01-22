@@ -5,7 +5,7 @@ class Endboss extends MoveableObject {
     x = 3800;
     hadFirstContact = false;
     speedThroughHit = 50;
-    speed = 10;
+    speed = 15;
 
     offset = {
         top: 90,
@@ -67,32 +67,41 @@ class Endboss extends MoveableObject {
     }
 
 
-    animateEndbossOnReach() {
+   /*  animateEndbossOnReach() {
         setInterval(() => {
-            this.animateEndboss();
+            if (world) {
+                this.animateEndboss();
+            }
             if (world && this.endbossReached()) {
                 this.hadFirstContact = true;
+            }
+        }, 120);
+    } */
+
+
+    animateEndbossOnReach() {
+        setInterval(() => {
+            console.log('check', this.endbossReached());
+            if (world && this.endbossReached()) {
+                this.hadFirstContact = true;
+                this.animateEndboss();
             }
         }, 120);
     }
 
 
     animateEndboss() {
-        if (!this.isDead()) {
+        if (this.isDead()) {
+            this.playAnimation(this.IMAGES_DEAD);
+        } else if (!this.isDead() && !this.isHurtEndboss() && this.endbossFightBegins()) {
+            this.playAnimation(this.IMAGES_WALKING);
+            this.moveLeft();
+        } else if (!this.isDead() && !this.endbossFightBegins()) {
             this.playAnimation(this.IMAGES_ALERT);
             console.log('alert');
-            // } else if (this.endbossFightBegins()) {
-            //     console.log('walking');
-            //     this.playAnimation(this.IMAGES_WALKING);
-            //     this.moveLeft();
-        } else if (this.isHurtEndboss()) {
-            console.log('hitted');
-            this.playAnimation(this.IMAGES_ATTACK);
-            // this.endbossRushForward();
-        } else if (this.isDead()) {
-            console.log('dead');
-            this.playAnimation(this.IMAGES_DEAD);
-
+        } else if (!this.isDead() && this.isHurtEndboss() && !this.hadFirstContact) {
+            this.playAnimation(this.IMAGES_HURT);
+            this.endbossRushForward();
         }
     }
 
@@ -103,15 +112,15 @@ class Endboss extends MoveableObject {
     }
 
 
-    // endbossFightBegins() {
-    //     return world.character.x > world.level.endboss[0].x - 250;
-    // }
+    endbossFightBegins() {
+        return world.character.x > world.level.endboss[0].x - 400;
+    }
 
 
-    // endbossRushForward() {
-    //     let speedIncreaseThroughHit = world.level.endboss[0].x -= this.speedThroughHit;
-    //     return speedIncreaseThroughHit;
-    // }
+    endbossRushForward() {
+        let speedIncreaseThroughHit = world.level.endboss[0].x -= this.speedThroughHit;
+        return speedIncreaseThroughHit;
+    }
 }
 
 
