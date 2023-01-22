@@ -68,30 +68,34 @@ class Endboss extends MoveableObject {
 
 
     animateEndbossOnReach() {
-        let i = 0;
         setInterval(() => {
-            this.animateEndboss(i);
-            i++;
-            if (this.endbossReached()) {
-                i = 0;
+            this.animateEndboss();
+            if (world && this.endbossReached()) {
                 this.hadFirstContact = true;
             }
         }, 120);
     }
 
-    animateEndboss(i) {
-        if (i < 15) {
+
+    animateEndboss() {
+        if (!this.isDead()) {
             this.playAnimation(this.IMAGES_ALERT);
-        } else if (!this.isDead() && !this.hitEndboss() && this.endbossFightBegins()) {
-            this.playAnimation(this.IMAGES_WALKING);
-            this.moveLeft();
+            console.log('alert');
+            // } else if (this.endbossFightBegins()) {
+            //     console.log('walking');
+            //     this.playAnimation(this.IMAGES_WALKING);
+            //     this.moveLeft();
         } else if (this.isHurtEndboss()) {
+            console.log('hitted');
             this.playAnimation(this.IMAGES_ATTACK);
-            this.endbossRushForward();
+            // this.endbossRushForward();
         } else if (this.isDead()) {
+            console.log('dead');
             this.playAnimation(this.IMAGES_DEAD);
+
         }
     }
+
 
 
     endbossReached() {
@@ -99,15 +103,15 @@ class Endboss extends MoveableObject {
     }
 
 
-    endbossFightBegins() {
-        return world.character.x > world.level.endboss[0].x - 1000;
-    }
+    // endbossFightBegins() {
+    //     return world.character.x > world.level.endboss[0].x - 250;
+    // }
 
 
-    endbossRushForward() {
-        let speedIncreaseThroughHit = world.level.endboss[0].x -= this.speedThroughHit;
-        return speedIncreaseThroughHit;
-    }
+    // endbossRushForward() {
+    //     let speedIncreaseThroughHit = world.level.endboss[0].x -= this.speedThroughHit;
+    //     return speedIncreaseThroughHit;
+    // }
 }
 
 
