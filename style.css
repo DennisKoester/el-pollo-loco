@@ -1,12 +1,15 @@
 * {
+    box-sizing: border-box;
+    margin: 0;
+
     @font-face {
         font-family: 'zabars';
         src: url('fonts/Zabars.ttf') format('truetype');
     }
+
 }
 
 body {
-    margin: 0;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -33,6 +36,16 @@ h1 {
     font-size: 60px;
     font-family: 'zabars', Arial, Helvetica, sans-serif;
     letter-spacing: 4px;
+}
+
+h2 {
+    font-size: 35px;
+    margin-top: 15px;
+    margin-bottom: 60px; 
+}
+
+span {
+    font-size: 22px;
 }
 
 .startScreenContainer {
@@ -64,6 +77,65 @@ h1 {
     transform: scale(1.2);
 }
 
+
+
+.containerGameDesc {
+    width: 820px;
+    height: 480px;
+    box-shadow: 5px 5px 15px 5px #000000;
+    border-radius: 15px;
+    padding: 20px;
+    background-color: orange;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+
+.arrowBack {
+    position: absolute;
+    left: 25px;
+    top: 25px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+
+.arrowBack:hover {
+    transition: all 225ms ease-in-out;
+    transform: scale(1.2);
+}
+
+.containerGameControls{
+    width: 820px;
+    height: 480px;
+    box-shadow: 5px 5px 15px 5px #000000;
+    border-radius: 15px;
+    padding: 20px;
+    background-color: orange;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.controlBtnsDesc{
+    display: flex;
+    align-items: center;
+    justify-content: space-center;
+    gap: 200px;
+    margin-bottom: 30px;
+}
+
+
+/* Help Classes */
+
 .d-none {
-    display: none;
+    display: none !important;
+}
+
+
+.rotate180{
+    transform: rotate(180deg);
 }

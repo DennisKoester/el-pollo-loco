@@ -17,6 +17,32 @@ function hideStartScreen() {
 }
 
 
+function openGameDesc(){
+    document.getElementById('containerGameDesc').classList.remove('d-none');
+    document.getElementById('startScreenContainer').classList.add('d-none');
+    
+}
+
+
+function closeGameDesc(){
+    document.getElementById('containerGameDesc').classList.add('d-none');
+    document.getElementById('startScreenContainer').classList.remove('d-none');
+}
+
+
+function openControlDesc(){
+    document.getElementById('containerGameControls').classList.remove('d-none');
+    document.getElementById('startScreenContainer').classList.add('d-none');
+}
+
+
+function closeControlDesc(){
+    document.getElementById('containerGameControls').classList.add('d-none');
+    document.getElementById('startScreenContainer').classList.remove('d-none');
+}
+
+
+
 window.addEventListener('keydown', (e) => {
 
     if (e.keyCode == 32) {
