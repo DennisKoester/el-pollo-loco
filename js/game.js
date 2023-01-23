@@ -10,35 +10,66 @@ function startGame() {
 }
 
 
-
 function hideStartScreen() {
     document.getElementById('startScreenContainer').classList.add('d-none');
     document.getElementById('canvas').classList.remove('d-none');
+    document.getElementById('in-game-btns').classList.remove('d-none');
 }
 
 
-function openGameDesc(){
+function openGameDesc() {
     document.getElementById('containerGameDesc').classList.remove('d-none');
     document.getElementById('startScreenContainer').classList.add('d-none');
-    
+
 }
 
 
-function closeGameDesc(){
+function closeGameDesc() {
     document.getElementById('containerGameDesc').classList.add('d-none');
     document.getElementById('startScreenContainer').classList.remove('d-none');
 }
 
 
-function openControlDesc(){
+function openControlDesc() {
     document.getElementById('containerGameControls').classList.remove('d-none');
     document.getElementById('startScreenContainer').classList.add('d-none');
 }
 
 
-function closeControlDesc(){
+function closeControlDesc() {
     document.getElementById('containerGameControls').classList.add('d-none');
     document.getElementById('startScreenContainer').classList.remove('d-none');
+}
+
+
+function turnSoundOff() {
+    audioBackgroundMusicEndboss.muted = true;
+    audioBackgroundMusicInGame.muted = true;
+    audioDeadChicken.muted = true;
+    audioWalkCharacter.muted = true;
+    audioJumpCharacter.muted = true;
+    auidoHurtCharacter.muted = true;
+    audioGameLost.muted = true;
+    audioCoinCollected.muted = true;
+    audioBottleCollected.muted = true;
+    audioThrowBottle.muted = true;
+    audioSplashBottle.muted = true;
+    audioSleepCharacter.muted = true;
+}
+
+function turnSoundOn() {
+    audioBackgroundMusicEndboss.muted = false;
+    audioBackgroundMusicInGame.muted = false;
+    audioDeadChicken.muted = false;
+    audioWalkCharacter.muted = false;
+    audioJumpCharacter.muted = false;
+    auidoHurtCharacter.muted = false;
+    audioGameLost.muted = false;
+    audioCoinCollected.muted = false;
+    audioBottleCollected.muted = false;
+    audioThrowBottle.muted = false;
+    audioSplashBottle.muted = false;
+    audioSleepCharacter.muted = false;
 }
 
 

@@ -6,7 +6,6 @@
         font-family: 'zabars';
         src: url('fonts/Zabars.ttf') format('truetype');
     }
-
 }
 
 body {
@@ -20,12 +19,11 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     overflow: hidden;
-
 }
 
 canvas {
     background-color: black;
-    box-shadow: 5px 5px 15px 5px #000000;
+    /* box-shadow: 5px 5px 15px 5px #000000; */
     border-radius: 15px;
     z-index: 1;
 }
@@ -41,21 +39,34 @@ h1 {
 h2 {
     font-size: 35px;
     margin-top: 15px;
-    margin-bottom: 60px; 
+    margin-bottom: 60px;
+    text-align: center;
 }
 
 span {
     font-size: 22px;
 }
 
-.startScreenContainer {
-    position: relative;
-}
-
-.startScreen {
+.canvas-double {
     width: 820px;
     height: 480px;
     box-shadow: 5px 5px 15px 5px #000000;
+    border-radius: 15px;
+    background-color: rgba(255, 166, 0, 0.445);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+}
+
+.startScreenContainer {
+    position: relative;
+
+}
+
+.startScreenContainer img {
+    width: 820px;
+    height: 480px;
     border-radius: 15px;
 }
 
@@ -77,21 +88,24 @@ span {
     transform: scale(1.2);
 }
 
-
-
-.containerGameDesc {
-    width: 820px;
-    height: 480px;
-    box-shadow: 5px 5px 15px 5px #000000;
-    border-radius: 15px;
-    padding: 20px;
-    background-color: orange;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
+.in-game-btn-container {
+    position: absolute;
+    top: 13px;
+    right: 20px;
+    z-index: 2;
 }
 
+.in-game-btn-container img {
+    height: 35px;
+    width: 35px;
+    margin-left: 15px;
+    cursor: pointer;
+}
+
+.in-game-btn-container img:hover {
+    transition: all 225ms ease-in-out;
+    transform: scale(1.2);
+}
 
 .arrowBack {
     position: absolute;
@@ -107,20 +121,7 @@ span {
     transform: scale(1.2);
 }
 
-.containerGameControls{
-    width: 820px;
-    height: 480px;
-    box-shadow: 5px 5px 15px 5px #000000;
-    border-radius: 15px;
-    padding: 20px;
-    background-color: orange;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-}
-
-.controlBtnsDesc{
+.controlBtnsDesc {
     display: flex;
     align-items: center;
     justify-content: space-center;
@@ -135,7 +136,10 @@ span {
     display: none !important;
 }
 
-
-.rotate180{
+.rotate180 {
     transform: rotate(180deg);
+}
+
+.padding20 {
+    padding: 20px;
 }
