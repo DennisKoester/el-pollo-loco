@@ -109,23 +109,23 @@ class Character extends MoveableObject {
     animateCharacter() {
 
         setInterval(() => {
-            this.walking_sound.pause();
+            walking_sound.pause();
 
             if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
                 this.moveRight();
                 this.otherDirection = false;
-                // this.walking_sound.play();
+                walking_sound.play();
             }
 
             if (this.world.keyboard.LEFT && this.x > 0) {
                 this.moveLeft();
                 this.otherDirection = true;
-                // this.walking_sound.play();
+                walking_sound.play();
             }
 
             if (this.world.keyboard.SPACE && !this.isAboveGround()) {
                 this.jump();
-                // this.jumping_sound.play();
+                jumping_sound.play();
             }
 
             this.world.camera_x = -this.x + 100;
@@ -134,14 +134,14 @@ class Character extends MoveableObject {
 
 
         setInterval(() => {
-            this.snoring_sound.pause();
+            snoring_sound.pause();
 
             if (this.isDead()) {
                 this.playAnimation(this.IMAGES_DEAD);
-                // this.dead_sound.play();
+                dead_sound.play();
             } else if (this.isHurt()) {
                 this.playAnimation(this.IMAGES_HURT);
-                // this.hurt_sound.play();
+                hurt_sound.play();
             } else if (this.isAboveGround()) {
                 this.playAnimation(this.IMAGES_JUMPING);
                 this.setTimeStamp();
@@ -150,7 +150,7 @@ class Character extends MoveableObject {
                 this.playAnimation(this.IMAGES_WALKING);
             } else if (this.characterMoveTimepassed() > 3) {
                 this.playAnimation(this.IMAGES_SLEEPING);
-                // this.snoring_sound.play();
+                snoring_sound.play();
             } else {
                 this.playAnimation(this.IMAGES_IDLE);
             }
@@ -167,6 +167,5 @@ class Character extends MoveableObject {
 
     setTimeStamp() {
         this.characterLastMovement = new Date().getTime();
-        // console.log(this.characterLastMovement);
     }
 }
