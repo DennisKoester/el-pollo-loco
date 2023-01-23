@@ -55,23 +55,24 @@ class Endboss extends MoveableObject {
     }
 
 
-   /*  animateEndbossOnReach() {
-        setInterval(() => {
-            if (world) {
-                this.animateEndboss();
-            }
-            if (world && this.endbossReached()) {
-                this.hadFirstContact = true;
-            }
-        }, 120);
-    } */
+   /*   animateEndbossOnReach() {
+         setInterval(() => {
+             if (world) {
+                 this.animateEndboss();
+             }
+             if (world && this.endbossReached()) {
+                 this.hadFirstContact = true;
+             }
+         }, 120);
+     } */
 
 
     animateEndbossOnReach() {
         setInterval(() => {
-            console.log('check', this.endbossReached());
-            if (world && this.endbossReached()) {
-                this.hadFirstContact = true;
+            if(world){
+               this.endbossReached();  
+            }
+            if (world && this.hadFirstContact == true) {
                 this.animateEndboss();
             }
         }, 120);
@@ -81,21 +82,30 @@ class Endboss extends MoveableObject {
     animateEndboss() {
         if (this.isDead()) {
             this.playAnimation(this.IMAGES_DEAD);
+            console.log('dead');
+            
         } else if (!this.isDead() && !this.isHurtEndboss() && this.endbossFightBegins()) {
             this.playAnimation(this.IMAGES_WALKING);
             this.moveLeft();
+            console.log('walking');
+
         } else if (!this.isDead() && !this.endbossFightBegins()) {
             this.playAnimation(this.IMAGES_ALERT);
             console.log('alert');
-        } else if (!this.isDead() && this.isHurtEndboss() && !this.hadFirstContact) {
+
+        } else if (!this.isDead() && this.isHurtEndboss()) {
             this.playAnimation(this.IMAGES_HURT);
             this.endbossRushForward();
+            console.log('hurt');
+
         }
-    }
+    } 
 
 
     endbossReached() {
-        return world.character.x > 3500 && !this.hadFirstContact; // TODO What's WRONG ??
+        if (world.character.x > 3500 && !this.hadFirstContact) {
+            this.hadFirstContact = true;
+        }
     }
 
 
