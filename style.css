@@ -26,6 +26,8 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 100%;
+    height: 100%;
 }
 
 canvas {
@@ -55,30 +57,33 @@ span {
 }
 
 .canvas-overlay {
-    width: 820px;
-    height: 480px;
+    max-width: 820px;
+    max-height: 480px;
     box-shadow: 5px 5px 15px 5px #000000;
     border-radius: 15px;
     display: flex;
     flex-direction: column;
     align-items: center;
     position: absolute;
+    overflow: hidden;
 }
 
-.bg-color{
-    background-color: rgba(255, 166, 0, 0.445);
 
+.bg-color {
+    background-color: rgba(255, 166, 0, 0.445);
 }
 
 .startScreenContainer {
     position: relative;
-
+    border-radius: 15px;
+    width: 100%;
+    height: 100%;
 }
 
 .startScreenContainer img {
-    width: 820px;
-    height: 480px;
-    border-radius: 15px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .btn-container {
@@ -149,7 +154,7 @@ span {
 
 /* Fullscreen Mode Classes */
 
-.fullscreenMode{
+.fullscreenMode {
     border-radius: unset !important;
 }
 
