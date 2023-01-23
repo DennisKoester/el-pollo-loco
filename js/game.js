@@ -24,6 +24,52 @@ function startGame() {
 }
 
 
+// window.addEventListener("resize", logWindowResize)
+
+
+// function logWindowResize() {
+//     console.log(window.innerWidth, window.innerHeight);
+// }
+
+
+function fixedMobileLandscapeMode() {
+
+}
+
+
+document.addEventListener("orientationchange", function (event) {
+    switch (window.orientation) {
+        case -90: case 90:
+            /* Device is in landscape mode */
+            break;
+        default:
+        /* Device is in portrait mode */
+    }
+});
+
+
+document.addEventListener("DOMContentLoaded", initDetect)
+
+
+function initDetect() {
+    window.addEventListener("resize", detectDevice);
+    // detectDevice();
+}
+
+
+detectDevice = () => {
+    let detectObj = {
+        device: !!navigator.maxTouchPoints ? 'mobile' : 'computer',
+        orientation: !navigator.maxTouchPoints ? 'desktop' : !window.screen.orientation.angle ? 'portrait' : 'landscape'
+    };
+
+
+
+    console.log(detectObj);
+    return detectObj;
+}
+
+
 function openFullscreen() {
 
     let fs = document.getElementById('fullscreenContainer');
@@ -121,10 +167,8 @@ function closeControlDesc() {
 function checkForMobileDevice() {
     if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
         document.getElementById('mobileBtns').classList.remove('d-none');
-        console.log('mobile');
     } else {
         document.getElementById('mobileBtns').classList.add('d-none');
-        console.log('desktop');
     }
 
 }

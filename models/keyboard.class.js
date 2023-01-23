@@ -78,6 +78,7 @@ class Keyboard {
         });
     }
 
+    
     eventTouchpadBtns() {
         setTimeout(() => {
             document.getElementById('btnMobileLeft').addEventListener('touchstart', (event) => {
