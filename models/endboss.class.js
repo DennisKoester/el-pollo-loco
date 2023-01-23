@@ -91,14 +91,14 @@ class Endboss extends MoveableObject {
 
 
     endbossReached() {
-        if (world.character.x > 3500 && !this.hadFirstContact) {
+        if (world.character.x > 3400 && !this.hadFirstContact) {
             this.hadFirstContact = true;
         }
     }
 
 
     endbossFightBegins() {
-        return world.character.x > world.level.endboss[0].x - 400;
+        return world.character.x > world.level.endboss[0].x - 500;
     }
 
 

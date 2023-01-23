@@ -52,7 +52,7 @@ class World {
     checkCollisionsWithThrowingBottle() {
         setInterval(() => {
             this.checkCollisionBottleWithEndboss();
-        }, 300);
+        }, 200);
     }
 
 
