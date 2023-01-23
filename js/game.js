@@ -23,7 +23,7 @@ function startGame() {
 }
 
 
-function openFullscreen(){
+function openFullscreen() {
     let fullScreen = document.getElementsByTagName('BODY')[0];
     if (fullScreen.requestFullscreen) {
         fullScreen.requestFullscreen();
@@ -32,9 +32,7 @@ function openFullscreen(){
     } else if (fullScreen.msRequestFullscreen) { /* IE11 */
         fullScreen.msRequestFullscreen();
     }
-    document.getElementById('canvas').classList.add('canvasFullScreen');
-    document.getElementById('closeFullscreen').classList.remove('d-none');
-    document.getElementById('openFullscreen').classList.add('d-none');
+    addStylesForFullscreen();
 }
 
 
@@ -48,16 +46,22 @@ function closeFullscreen() {
             document.msExitFullscreen();
         }
     }
-    document.getElementById('canvas').classList.remove('canvasFullScreen');
-    document.getElementById('closeFullscreen').classList.add('d-none');
-    document.getElementById('openFullscreen').classList.remove('d-none');
-
-
-   
+    removeStylesForFullscreen();
 }
 
 
+function addStylesForFullscreen() {
+    document.getElementById('canvas').classList.add('canvasFullScreen');
+    document.getElementById('closeFullscreen').classList.remove('d-none');
+    document.getElementById('openFullscreen').classList.add('d-none');
+}
 
+
+function removeStylesForFullscreen() {
+    document.getElementById('canvas').classList.remove('canvasFullScreen');
+    document.getElementById('closeFullscreen').classList.add('d-none');
+    document.getElementById('openFullscreen').classList.remove('d-none');
+}
 
 
 function hideStartScreen() {
