@@ -55,18 +55,6 @@ class Endboss extends MoveableObject {
     }
 
 
-   /*   animateEndbossOnReach() {
-         setInterval(() => {
-             if (world) {
-                 this.animateEndboss();
-             }
-             if (world && this.endbossReached()) {
-                 this.hadFirstContact = true;
-             }
-         }, 120);
-     } */
-
-
     animateEndbossOnReach() {
         setInterval(() => {
             if(world){
