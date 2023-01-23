@@ -13,14 +13,6 @@ class World {
     statusBarEndbossIcon = new StatusbarEndbossIcon();
     throwAbleObject = [];
 
-    // background_music = new Audio('./audio/background_music.mp3');
-    // chicken_dead_sound = new Audio('./audio/chicken_dead.mp3');
-    // throw_sound = new Audio('./audio/throw_bottle.mp3');
-    // bottle_smash = new Audio('./audio/bottle_smash.mp3');
-    // coin_collect_sound = new Audio('./audio/coin.mp3');
-    // bottle_collect_sound = new Audio('./audio/bottle.mp3');
-
-
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
@@ -92,10 +84,9 @@ class World {
 
     checkCollisionsEndboss() {
         this.level.endboss.forEach((endboss) => {
-            if (this.character.isColliding(endboss) && !this.character.isHurt()) {
+            if (this.character.isColliding(endboss) && !this.character.isHurt() && !endboss.isDead()) {
                 if (this.character.isAboveGround()) {
-                }
-                else {
+                } else {
                     this.character.hit();
                     this.statusBarLife.setPercentage(this.character.energy);
                 }
@@ -137,6 +128,7 @@ class World {
                     console.log(endboss.energy);
                     this.statusBarEndboss.setPercentage(endboss.energy);
                     bottle_smash.play();
+                    chicken_dead_sound.play();
                     setTimeout(() => {
                         this.eraseThrowingBottleFromArray(bottle);
                     }, 180);
