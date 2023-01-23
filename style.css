@@ -21,11 +21,18 @@ body {
     overflow: hidden;
 }
 
+#fullscreenContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 canvas {
     background-color: black;
-    /* box-shadow: 5px 5px 15px 5px #000000; */
     border-radius: 15px;
     z-index: 1;
+    width: 100%;
 }
 
 h1 {
@@ -47,16 +54,20 @@ span {
     font-size: 22px;
 }
 
-.canvas-double {
+.canvas-overlay {
     width: 820px;
     height: 480px;
     box-shadow: 5px 5px 15px 5px #000000;
     border-radius: 15px;
-    background-color: rgba(255, 166, 0, 0.445);
     display: flex;
     flex-direction: column;
     align-items: center;
     position: absolute;
+}
+
+.bg-color{
+    background-color: rgba(255, 166, 0, 0.445);
+
 }
 
 .startScreenContainer {
@@ -132,6 +143,14 @@ span {
 .canvasFullScreen {
     width: 100%;
     height: 100%;
+}
+
+
+
+/* Fullscreen Mode Classes */
+
+.fullscreenMode{
+    border-radius: unset !important;
 }
 
 

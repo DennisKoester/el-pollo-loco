@@ -24,19 +24,23 @@ function startGame() {
 
 
 function openFullscreen() {
-    let fullScreen = document.getElementsByTagName('BODY')[0];
-    if (fullScreen.requestFullscreen) {
-        fullScreen.requestFullscreen();
-    } else if (fullScreen.webkitRequestFullscreen) { /* Safari */
-        fullScreen.webkitRequestFullscreen();
-    } else if (fullScreen.msRequestFullscreen) { /* IE11 */
-        fullScreen.msRequestFullscreen();
+
+    let el = document.getElementById('fullscreenContainer');
+
+    if (el.webkitRequestFullScreen) {
+        el.webkitRequestFullScreen();
+    }
+    else {
+        el.mozRequestFullScreen();
     }
     addStylesForFullscreen();
 }
 
 
 function closeFullscreen() {
+
+    let el = document.getElementById('fullscreenContainer');
+
     if (document.fullscreenElement || /* Standard syntax */ document.webkitFullscreenElement || /* Safari and Opera syntax */  document.msFullscreenElement /* IE11 syntax */) {
         if (document.exitFullscreen) {
             document.exitFullscreen();
@@ -51,16 +55,22 @@ function closeFullscreen() {
 
 
 function addStylesForFullscreen() {
-    document.getElementById('canvas').classList.add('canvasFullScreen');
+    document.getElementById('canvas').classList.add('fullscreenMode');
     document.getElementById('closeFullscreen').classList.remove('d-none');
     document.getElementById('openFullscreen').classList.add('d-none');
+    document.getElementById('canvas-overlay').classList.remove('bg-color');
+
 }
 
 
 function removeStylesForFullscreen() {
-    document.getElementById('canvas').classList.remove('canvasFullScreen');
-    document.getElementById('closeFullscreen').classList.add('d-none');
+    document.getElementById('canvas').classList.remove('fullscreenMode');
     document.getElementById('openFullscreen').classList.remove('d-none');
+    document.getElementById('closeFullscreen').classList.add('d-none');
+    document.getElementById('canvas-overlay').classList.add('bg-color');
+
+
+
 }
 
 
