@@ -15,6 +15,11 @@ let hurt_sound = new Audio('./audio/pepe_hurt.mp3');
 let dead_sound = new Audio('./audio/pepe_dead.mp3');
 
 
+function init() {
+    detectDevice();
+}
+
+
 function startGame() {
     hideStartScreen();
     canvas = document.getElementById('canvas');
@@ -32,28 +37,11 @@ function startGame() {
 // }
 
 
-function fixedMobileLandscapeMode() {
-
-}
-
-
-document.addEventListener("orientationchange", function (event) {
-    switch (window.orientation) {
-        case -90: case 90:
-            /* Device is in landscape mode */
-            break;
-        default:
-        /* Device is in portrait mode */
-    }
-});
-
-
 document.addEventListener("DOMContentLoaded", initDetect)
 
 
 function initDetect() {
     window.addEventListener("resize", detectDevice);
-    // detectDevice();
 }
 
 
@@ -63,7 +51,12 @@ detectDevice = () => {
         orientation: !navigator.maxTouchPoints ? 'desktop' : !window.screen.orientation.angle ? 'portrait' : 'landscape'
     };
 
-
+    if (detectObj['device'] == 'mobile') {
+        openFullscreen();
+        document.getElementById('closeFullscreen').classList.add('d-none');
+        // document.getElementById('fullscreenContainer').classList.add('rotate90');
+        console.log('mobile');
+    }
 
     console.log(detectObj);
     return detectObj;
