@@ -145,6 +145,38 @@ span {
     height: 100%;
 }
 
+.btnMobile {
+    width: 40px;
+}
+
+#btnMobileBottle {
+    width: 80px;
+    transform: rotate(30deg);
+}
+
+#btnMobileSpace {
+    width: 60px;
+}
+
+#mobileBtns {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    z-index: 1;
+}
+
+#mobileBtns img {
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.left-right-btn {
+    height: 40px;
+    margin-top: 10px;
+}
 
 
 /* Fullscreen Mode Classes */

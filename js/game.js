@@ -20,6 +20,7 @@ function startGame() {
     canvas = document.getElementById('canvas');
     world = new World(canvas, keyboard);
     backgroundMusic();
+    checkForMobileDevice();
 }
 
 
@@ -115,6 +116,30 @@ function closeControlDesc() {
     document.getElementById('containerGameControls').classList.add('d-none');
     document.getElementById('startScreenContainer').classList.remove('d-none');
 }
+
+
+function checkForMobileDevice() {
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        document.getElementById('mobileBtns').classList.remove('d-none');
+        console.log('mobile');
+    } else {
+        document.getElementById('mobileBtns').classList.add('d-none');
+        console.log('desktop');
+    }
+
+}
+
+
+function showMobileBtns() {
+    document.getElementById('mobileBtns').classList.remove('d-none');
+}
+
+
+function hideMobileBtns() {
+    document.getElementById('mobileBtns').classList.add('d-none');
+
+}
+
 
 
 function turnSoundOff() {
