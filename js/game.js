@@ -23,6 +23,43 @@ function startGame() {
 }
 
 
+function openFullscreen(){
+    let fullScreen = document.getElementsByTagName('BODY')[0];
+    if (fullScreen.requestFullscreen) {
+        fullScreen.requestFullscreen();
+    } else if (fullScreen.webkitRequestFullscreen) { /* Safari */
+        fullScreen.webkitRequestFullscreen();
+    } else if (fullScreen.msRequestFullscreen) { /* IE11 */
+        fullScreen.msRequestFullscreen();
+    }
+    document.getElementById('canvas').classList.add('canvasFullScreen');
+    document.getElementById('closeFullscreen').classList.remove('d-none');
+    document.getElementById('openFullscreen').classList.add('d-none');
+}
+
+
+function closeFullscreen() {
+    if (document.fullscreenElement || /* Standard syntax */ document.webkitFullscreenElement || /* Safari and Opera syntax */  document.msFullscreenElement /* IE11 syntax */) {
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        } else if (document.webkitExitFullscreen) { /* Safari */
+            document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) { /* IE11 */
+            document.msExitFullscreen();
+        }
+    }
+    document.getElementById('canvas').classList.remove('canvasFullScreen');
+    document.getElementById('closeFullscreen').classList.add('d-none');
+    document.getElementById('openFullscreen').classList.remove('d-none');
+
+
+   
+}
+
+
+
+
+
 function hideStartScreen() {
     document.getElementById('startScreenContainer').classList.add('d-none');
     document.getElementById('canvas').classList.remove('d-none');
