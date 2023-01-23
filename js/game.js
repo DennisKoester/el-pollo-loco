@@ -63,22 +63,25 @@ window.addEventListener('keyup', function (event) {
 
 
 function addStylesForFullscreen() {
+    document.getElementById('canvas-overlay').classList.add('fullscreenMode');
     document.getElementById('canvas').classList.add('fullscreenMode');
     document.getElementById('closeFullscreen').classList.remove('d-none');
     document.getElementById('openFullscreen').classList.add('d-none');
     document.getElementById('canvas-overlay').classList.remove('bg-color');
-    document.getElementById('canvas-overlay').style.maxHeight = "unset";
-    document.getElementById('canvas-overlay').style.maxWidth = "unset";
+    document.getElementById('canvas-overlay').style.width = "100%";
+    document.getElementById('canvas-overlay').style.height = "unset";
 }
 
 
 function removeStylesForFullscreen() {
+    document.getElementById('canvas-overlay').classList.remove('fullscreenMode');
     document.getElementById('canvas').classList.remove('fullscreenMode');
     document.getElementById('openFullscreen').classList.remove('d-none');
     document.getElementById('closeFullscreen').classList.add('d-none');
     document.getElementById('canvas-overlay').classList.add('bg-color');
-    document.getElementById('canvas-overlay').style.maxHeight = "480px";
-    document.getElementById('canvas-overlay').style.maxWidth = "820px";
+    document.getElementById('canvas-overlay').style.width = "820px";
+    document.getElementById('canvas-overlay').style.height = "480px";
+
 }
 
 
@@ -86,8 +89,6 @@ function hideStartScreen() {
     document.getElementById('startScreenContainer').classList.add('d-none');
     document.getElementById('canvas').classList.remove('d-none');
     document.getElementById('in-game-btns').classList.remove('d-none');
-    document.getElementById('canvas-overlay').style.width = "100%";
-    document.getElementById('canvas-overlay').style.height = "unset";
 }
 
 
