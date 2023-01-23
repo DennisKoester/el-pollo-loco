@@ -25,13 +25,13 @@ function startGame() {
 
 function openFullscreen() {
 
-    let el = document.getElementById('fullscreenContainer');
+    let fs = document.getElementById('fullscreenContainer');
 
-    if (el.webkitRequestFullScreen) {
-        el.webkitRequestFullScreen();
+    if (fs.webkitRequestFullScreen) {
+        fs.webkitRequestFullScreen();
     }
     else {
-        el.mozRequestFullScreen();
+        fs.mozRequestFullScreen();
     }
     addStylesForFullscreen();
 }
@@ -52,6 +52,14 @@ function closeFullscreen() {
     }
     removeStylesForFullscreen();
 }
+
+
+window.addEventListener('keyup', function (event) {
+    if (event.key === 'Escape') {
+        console.log('ESCAPE');
+        removeStylesForFullscreen();
+    }
+});
 
 
 function addStylesForFullscreen() {
@@ -168,6 +176,10 @@ window.addEventListener('keydown', (e) => {
     if (e.keyCode == 68) {
         keyboard.D = true;
     }
+
+    if (e.keyCode == 27) {
+        keyboard.ESC = true;
+    }
 });
 
 
@@ -194,5 +206,9 @@ window.addEventListener('keyup', (e) => {
 
     if (e.keyCode == 68) {
         keyboard.D = false;
+    }
+
+    if (e.keyCode == 27) {
+        keyboard.ESC = false;
     }
 });
