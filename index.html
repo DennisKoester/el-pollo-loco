@@ -55,6 +55,19 @@
             <!--Start Screen-->
 
 
+            <!--Gameover Screen-->
+            <div class="gameOverScreenContainer d-none" id="gameOverScreenContainer">
+                <img src="./img/9_intro_outro_screens/game_over/oh no you lost!.png" class="gameOverScreen" id="gameOverScreen">
+                <div class="btnContainer">
+                    <button onclick="restartGame()" id="btnRestartGameOverScreen" class="btnRestart">Restart
+                        Game</button>
+                    <button onclick="goBackToStartScreen()" id="btnMainMenuGamOverScreen" class="btnMainMenu">Main
+                        Menu</button>
+                </div>
+            </div>
+            <!--Gameover Screen-->
+
+
             <!--Game Description Menu-->
             <div class="containerGameDesc padding20 d-none" id="containerGameDesc">
                 <img src="./img/icons/icons8-eingekreist-links-2-50.png" class="arrowBack" onclick="closeGameDesc()"

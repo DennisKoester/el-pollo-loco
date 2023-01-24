@@ -181,6 +181,19 @@ span {
 }
 
 
+.gameOverScreenContainer {
+    position: absolute;
+    z-index: 1;
+    height: 480px;
+    width: 820px;
+}
+
+.gameOverScreen {
+    height: 100%;
+    width: 100%;
+}
+
+
 /* Fullscreen Mode Classes */
 
 .fullscreenMode {

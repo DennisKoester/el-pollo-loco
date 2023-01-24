@@ -139,6 +139,7 @@ class Character extends MoveableObject {
             if (this.isDead()) {
                 this.playAnimation(this.IMAGES_DEAD);
                 dead_sound.play();
+                this.gameIsLost();
             } else if (this.isHurt()) {
                 this.playAnimation(this.IMAGES_HURT);
                 hurt_sound.play();
@@ -167,5 +168,15 @@ class Character extends MoveableObject {
 
     setTimeStamp() {
         this.characterLastMovement = new Date().getTime();
+    }
+
+
+    gameIsLost() {
+        setTimeout(() => {
+            showGameOverScreen();
+            resetBackgroundMusic();
+            clearAllIntervals();
+
+        }, 3000);
     }
 }

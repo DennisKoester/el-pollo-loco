@@ -29,6 +29,11 @@ function startGame() {
 }
 
 
+function clearAllIntervals() {
+    for (let i = 1; i < 9999; i++)  window.clearInterval(i);
+}
+
+
 // window.addEventListener("resize", logWindowResize)
 
 
@@ -60,6 +65,16 @@ detectDevice = () => {
 
     console.log(detectObj);
     return detectObj;
+}
+
+
+function checkForMobileDevice() {
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        document.getElementById('mobileBtns').classList.remove('d-none');
+    } else {
+        document.getElementById('mobileBtns').classList.add('d-none');
+    }
+
 }
 
 
@@ -157,14 +172,17 @@ function closeControlDesc() {
 }
 
 
-function checkForMobileDevice() {
-    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-        document.getElementById('mobileBtns').classList.remove('d-none');
-    } else {
-        document.getElementById('mobileBtns').classList.add('d-none');
-    }
+function showGameOverScreen(){
+    document.getElementById('gameOverScreenContainer').classList.remove('d-none');
+    document.getElementById('in-game-btns').classList.add('d-none');
 
 }
+
+
+function showWinScreen(){
+
+}
+
 
 
 function showMobileBtns() {
@@ -215,66 +233,10 @@ function backgroundMusic() {
 }
 
 
-/* 
-window.addEventListener('keydown', (e) => {
-
-    if (e.keyCode == 32) {
-        keyboard.SPACE = true;
-    }
-
-    if (e.keyCode == 37) {
-        keyboard.LEFT = true;
-    }
-
-    if (e.keyCode == 38) {
-        keyboard.UP = true;
-    }
-
-    if (e.keyCode == 39) {
-        keyboard.RIGHT = true;
-    }
-
-    if (e.keyCode == 40) {
-        keyboard.DOWN = true;
-    }
-
-    if (e.keyCode == 68) {
-        keyboard.D = true;
-    }
-
-    if (e.keyCode == 27) {
-        keyboard.ESC = true;
-    }
-});
+function resetBackgroundMusic() {
+    background_music.currentTime = 0;
+    background_music.pause();
+}
 
 
-window.addEventListener('keyup', (e) => {
-    if (e.keyCode == 32) {
-        keyboard.SPACE = false;
-    }
 
-    if (e.keyCode == 37) {
-        keyboard.LEFT = false;
-    }
-
-    if (e.keyCode == 38) {
-        keyboard.UP = false;
-    }
-
-    if (e.keyCode == 39) {
-        keyboard.RIGHT = false;
-    }
-
-    if (e.keyCode == 40) {
-        keyboard.DOWN = false;
-    }
-
-    if (e.keyCode == 68) {
-        keyboard.D = false;
-    }
-
-    if (e.keyCode == 27) {
-        keyboard.ESC = false;
-    }
-});
- */
