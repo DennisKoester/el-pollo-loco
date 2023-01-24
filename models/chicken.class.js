@@ -3,6 +3,7 @@ class Chicken extends MoveableObject {
     y = 355;
     height = 70;
     width = 70;
+    intervalIds = [];
 
     offset = {
         top: 10,
@@ -39,7 +40,7 @@ class Chicken extends MoveableObject {
         let intervalChicken = setInterval(() => {
             this.moveLeft();
         }, 1000 / 60);
-        setInterval(() => {
+        setStopableInterval(() => {
 
             if (!this.isDead()) {
                 this.playAnimation(this.IMAGES_WALKING);

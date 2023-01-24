@@ -13,7 +13,8 @@ let jumping_sound = new Audio('./audio/jumping.mp3');
 let snoring_sound = new Audio('./audio/snoring.mp3');
 let hurt_sound = new Audio('./audio/pepe_hurt.mp3');
 let dead_sound = new Audio('./audio/pepe_dead.mp3');
-
+let i = 1;
+let intervalIds = [];
 
 function init() {
     detectDevice();
@@ -21,6 +22,7 @@ function init() {
 
 
 function startGame() {
+    // initLevel();
     hideStartScreen();
     canvas = document.getElementById('canvas');
     world = new World(canvas, keyboard);
@@ -29,17 +31,22 @@ function startGame() {
 }
 
 
-function clearAllIntervals() {
-    for (let i = 1; i < 9999; i++)  window.clearInterval(i);
+function restartGame() {
+    document.getElementById('gameOverScreenContainer').classList.add('d-none');
+    clearAllIntervals();
+    startGame();
 }
 
 
-// window.addEventListener("resize", logWindowResize)
+function setStopableInterval(fn, time) {
+    let idIntervall = setInterval(fn, time);
+    this.intervalIds.push(idIntervall);
+}
 
 
-// function logWindowResize() {
-//     console.log(window.innerWidth, window.innerHeight);
-// }
+function clearAllIntervals() {
+    for (let i = 1; i < 9999; i++) window.clearInterval(i);
+}
 
 
 document.addEventListener("DOMContentLoaded", initDetect)

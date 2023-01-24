@@ -176,7 +176,6 @@ class Character extends MoveableObject {
             showGameOverScreen();
             resetBackgroundMusic();
             clearAllIntervals();
-
         }, 3000);
     }
 }

@@ -29,12 +29,12 @@ class DrawableObject {
     }
 
 
-    draw(ctx) {
+   /*  draw(ctx) {
         ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
-    }
+    } */
 
-
-    /*   draw(ctx) {
+    
+  draw(ctx) {
           try {
               ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
           } catch (e) {
@@ -42,7 +42,7 @@ class DrawableObject {
               console.log(this.img.src);
           }
       }
-   */
+   
 
 
     drawFrame(ctx) {

@@ -7,14 +7,7 @@ class MoveableObject extends DrawableObject {
     lastHit = 0;
     progessCoinBar = 0;
     progressBottleBar = 0;
-    intervalIds = [];
-
-
-    setStopableInterval(fn, time) {
-        let idIntervall = setInterval(fn, time);
-        this.intervalIds.push(idIntervall);
-    }
-
+    
 
     applyGravity() {
         setInterval(() => {
