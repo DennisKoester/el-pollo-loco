@@ -108,7 +108,7 @@ class Character extends MoveableObject {
 
     animateCharacter() {
 
-        setInterval(() => {
+        setStopableInterval(() => {
             walking_sound.pause();
 
             if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
@@ -133,7 +133,7 @@ class Character extends MoveableObject {
         }, 1000 / 60);
 
 
-        setInterval(() => {
+        tsetStopableInterval(() => {
             snoring_sound.pause();
 
             if (this.isDead()) {
@@ -155,6 +155,8 @@ class Character extends MoveableObject {
             } else {
                 this.playAnimation(this.IMAGES_IDLE);
             }
+            console.log('still moving');
+
         }, 150);
     }
 

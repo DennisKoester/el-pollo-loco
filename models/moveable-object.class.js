@@ -7,7 +7,7 @@ class MoveableObject extends DrawableObject {
     lastHit = 0;
     progessCoinBar = 0;
     progressBottleBar = 0;
-    
+
 
     applyGravity() {
         setInterval(() => {
@@ -119,4 +119,6 @@ class MoveableObject extends DrawableObject {
     jump() {
         this.speedY = 30; //TODO Why no return?
     }
+
+
 }

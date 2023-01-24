@@ -13,8 +13,10 @@ let jumping_sound = new Audio('./audio/jumping.mp3');
 let snoring_sound = new Audio('./audio/snoring.mp3');
 let hurt_sound = new Audio('./audio/pepe_hurt.mp3');
 let dead_sound = new Audio('./audio/pepe_dead.mp3');
-let i = 1;
-let intervalIds = [];
+
+i = 1;
+intervalIds = [];
+
 
 function init() {
     detectDevice();
@@ -47,6 +49,7 @@ function setStopableInterval(fn, time) {
 function clearAllIntervals() {
     for (let i = 1; i < 9999; i++) window.clearInterval(i);
 }
+
 
 
 document.addEventListener("DOMContentLoaded", initDetect)
