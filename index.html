@@ -34,132 +34,138 @@
 
 <body onload="init()">
 
-    <h1>El Pollo Loco</h1>
-
     <div id="fullscreenContainer">
 
-        <div id="canvas-overlay" class="canvas-overlay bg-color">
+        <h1>El Pollo Loco</h1>
+
+        <div id="wrapper" class="wrapper bg-color">
 
             <canvas id="canvas" width="820px" height="480px" class="d-none"></canvas>
 
-            <!--Start Screen-->
-            <div class="startScreenContainer" id="startScreenContainer">
-                <img src="img/9_intro_outro_screens/start/startscreen_1.png" id="startScreen">
-                <div class="btn-container">
-                    <img src="img/icons/icons8-spielen-64.png" class="btnPlay" onclick="startGame()">
-                    <img src="img/icons/icons8-informationen-64.png" class="infoIcon" onclick="openGameDesc()">
-                    <img src="img/icons/icons8-xbox-controller-50.png" class="controlIcon" onclick="openControlDesc()">
+            <!-- <div id="canvas-overlay" class="canvas-overlay bg-color"> -->
+
+
+                <!--Start Screen-->
+                <div class="startScreenContainer" id="startScreenContainer">
+                    <img src="img/9_intro_outro_screens/start/startscreen_1.png" id="startScreen">
+                    <div class="btn-container">
+                        <img src="img/icons/icons8-spielen-64.png" class="btnPlay" onclick="startGame()">
+                        <img src="img/icons/icons8-informationen-64.png" class="infoIcon" onclick="openGameDesc()">
+                        <img src="img/icons/icons8-xbox-controller-50.png" class="controlIcon"
+                            onclick="openControlDesc()">
+                    </div>
+
                 </div>
-
-            </div>
-            <!--Start Screen-->
+                <!--Start Screen-->
 
 
-            <!--Gameover Screen-->
-            <div class="gameOverScreenContainer d-none" id="gameOverScreenContainer">
-                <img src="./img/9_intro_outro_screens/game_over/oh no you lost!.png" class="gameOverScreen" id="gameOverScreen">
-                <div class="btnContainer">
-                    <button onclick="restartGame()" id="btnRestartGameOverScreen" class="btnRestart">Restart
-                        Game</button>
-                    <button onclick="goBackToStartScreen()" id="btnMainMenuGamOverScreen" class="btnMainMenu">Main
-                        Menu</button>
-                </div>
-            </div>
-            <!--Gameover Screen-->
-
-
-            <!--Game Description Menu-->
-            <div class="containerGameDesc padding20 d-none" id="containerGameDesc">
-                <img src="./img/icons/icons8-eingekreist-links-2-50.png" class="arrowBack" onclick="closeGameDesc()"
-                    id="arrowBackGameDescription">
-
-                <h2>Game Description</h2>
-
-                <span>
-                    The little Mexican Pepe want to be his taco back.
-                    <br>
-                    The evil big Chicken has stolen the Taco.
-                    <br>
-                    <br>
-                    He want his Taco back.
-                    <br>
-                    Go to the evil big Chicken and retrieve his Taco.
-                    <br>
-                    <br>
-                    Jump on the litle Chicken to defeat the Chicken.
-                    <br>
-                    Collect the Bottles and Throw they against the big Chicken to defeat him.
-                    <br>
-                    So you can get the tako in time for lunch.
-                    <br>
-                    <br>
-                    Good luck and have Fun with this Funny Game.
-                </span>
-            </div>
-            <!--Game Description Menu-->
-
-
-            <!--Controls Menu-->
-            <div class="containerGameControls padding20 d-none" id="containerGameControls">
-                <img src="./img/icons/icons8-eingekreist-links-2-50.png" class="arrowBack" onclick="closeControlDesc()"
-                    id="arrowBackGameControlls">
-
-                <h2>Game Controls</h2>
-
-                <div>
-                    <div class="controlBtnsDesc">
-                        <img src="img/icons/icons8-eingekreist-links-2-50.png" alt="arrowLeft">
-                        <span>Pepe Move Left</span>
-                    </div>
-                    <div class="controlBtnsDesc">
-                        <img class="rotate180" src="img/icons/icons8-eingekreist-links-2-50.png" alt="arrowRight">
-                        <span>Pepe Move Right</span>
-                    </div>
-                    <div class="controlBtnsDesc">
-                        <img src="./img/icons/icons8-space-key-50.png" alt="Spacebar Icon">
-                        <span>Pepe Jump</span>
-                    </div>
-                    <div class="controlBtnsDesc">
-                        <img src="./img/icons/icons8-d-key-50.png" alt="D Icon">
-                        <span>Throw a bottle</span>
+                <!--Gameover Screen-->
+                <div class="gameOverScreenContainer d-none" id="gameOverScreenContainer">
+                    <img src="./img/9_intro_outro_screens/game_over/oh no you lost!.png" class="gameOverScreen"
+                        id="gameOverScreen">
+                    <div class="btnContainer">
+                        <button onclick="restartGame()" id="btnRestartGameOverScreen" class="btnRestart">Restart
+                            Game</button>
+                        <button onclick="goBackToStartScreen()" id="btnMainMenuGamOverScreen" class="btnMainMenu">Main
+                            Menu</button>
                     </div>
                 </div>
-
-            </div>
-            <!--Controls Menu-->
+                <!--Gameover Screen-->
 
 
-            <!--Game Btns-->
-            <div id="in-game-btns" class="in-game-btn-container d-none">
-                <img src="./img/icons/icons8-ton-50.png" class="audioOnIcon" onclick="turnSoundOn()" id="audioOnIcon">
-                <img src="./img/icons/icons8-kein-ton-50.png" class="audioOffIcon" onclick="turnSoundOff()"
-                    id="audioOffIcon">
-                <img id="openFullscreen" src="./img/icons/icons8-fullscreen.png" alt="Fullscreen"
-                    onclick="openFullscreen()">
-                <img id="closeFullscreen" class="d-none" src="./img/icons/icons8-fullscreen.png" alt="Fullscreen"
-                    onclick="closeFullscreen()">
-            </div>
-            <!--Game Btns-->
+                <!--Game Description Menu-->
+                <div class="containerGameDesc padding20 d-none" id="containerGameDesc">
+                    <img src="./img/icons/icons8-eingekreist-links-2-50.png" class="arrowBack" onclick="closeGameDesc()"
+                        id="arrowBackGameDescription">
 
+                    <h2>Game Description</h2>
 
-            <!--Mobile Buttons-->
-            <div id="mobileBtns" class="d-none">
-                <div class="left-right-btn">
-                    <img src="./img/icons/icons8-eingekreist-links-2-50.png" class="btnMobile" id="btnMobileLeft">
-                    <img src="./img/icons/icons8-eingekreist-links-2-50.png" class="btnMobile rotate180"
-                        id="btnMobileRight">
+                    <span>
+                        The little Mexican Pepe want to be his taco back.
+                        <br>
+                        The evil big Chicken has stolen the Taco.
+                        <br>
+                        <br>
+                        He want his Taco back.
+                        <br>
+                        Go to the evil big Chicken and retrieve his Taco.
+                        <br>
+                        <br>
+                        Jump on the litle Chicken to defeat the Chicken.
+                        <br>
+                        Collect the Bottles and Throw they against the big Chicken to defeat him.
+                        <br>
+                        So you can get the tako in time for lunch.
+                        <br>
+                        <br>
+                        Good luck and have Fun with this Funny Game.
+                    </span>
                 </div>
-                <div>
-                    <img src="./img/icons/icons8-space-key-50.png" class="btnMobile" id="btnMobileSpace">
-                    <img src="./img/6_salsa_bottle/salsa_bottle.png" class="btnMobile" id="btnMobileBottle">
+                <!--Game Description Menu-->
+
+
+                <!--Controls Menu-->
+                <div class="containerGameControls padding20 d-none" id="containerGameControls">
+                    <img src="./img/icons/icons8-eingekreist-links-2-50.png" class="arrowBack"
+                        onclick="closeControlDesc()" id="arrowBackGameControlls">
+
+                    <h2>Game Controls</h2>
+
+                    <div>
+                        <div class="controlBtnsDesc">
+                            <img src="img/icons/icons8-eingekreist-links-2-50.png" alt="arrowLeft">
+                            <span>Pepe Move Left</span>
+                        </div>
+                        <div class="controlBtnsDesc">
+                            <img class="rotate180" src="img/icons/icons8-eingekreist-links-2-50.png" alt="arrowRight">
+                            <span>Pepe Move Right</span>
+                        </div>
+                        <div class="controlBtnsDesc">
+                            <img src="./img/icons/icons8-space-key-50.png" alt="Spacebar Icon">
+                            <span>Pepe Jump</span>
+                        </div>
+                        <div class="controlBtnsDesc">
+                            <img src="./img/icons/icons8-d-key-50.png" alt="D Icon">
+                            <span>Throw a bottle</span>
+                        </div>
+                    </div>
+
                 </div>
-            </div>
-
-            <!--Mobile Buttons-->
+                <!--Controls Menu-->
 
 
+                <!--Game Btns-->
+                <div id="in-game-btns" class="in-game-btn-container d-none">
+                    <img src="./img/icons/icons8-ton-50.png" class="audioOnIcon" onclick="turnSoundOn()"
+                        id="audioOnIcon">
+                    <img src="./img/icons/icons8-kein-ton-50.png" class="audioOffIcon" onclick="turnSoundOff()"
+                        id="audioOffIcon">
+                    <img id="openFullscreen" src="./img/icons/icons8-fullscreen.png" alt="Fullscreen"
+                        onclick="openFullscreen()">
+                    <img id="closeFullscreen" class="d-none" src="./img/icons/icons8-fullscreen.png" alt="Fullscreen"
+                        onclick="closeFullscreen()">
+                </div>
+                <!--Game Btns-->
+
+
+                <!--Mobile Buttons-->
+                <div id="mobileBtns" class="d-none">
+                    <div class="left-right-btn">
+                        <img src="./img/icons/icons8-eingekreist-links-2-50.png" class="btnMobile" id="btnMobileLeft">
+                        <img src="./img/icons/icons8-eingekreist-links-2-50.png" class="btnMobile rotate180"
+                            id="btnMobileRight">
+                    </div>
+                    <div>
+                        <img src="./img/icons/icons8-space-key-50.png" class="btnMobile" id="btnMobileSpace">
+                        <img src="./img/6_salsa_bottle/salsa_bottle.png" class="btnMobile" id="btnMobileBottle">
+                    </div>
+                </div>
+
+                <!--Mobile Buttons-->
+
+
+            <!-- </div> -->
         </div>
-
     </div>
 </body>
 

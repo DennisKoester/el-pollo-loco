@@ -79,31 +79,24 @@ function checkForMobileDevice() {
 
 
 function openFullscreen() {
+    let fullscreen = document.getElementById('fullscreenContainer');
 
-    let fs = document.getElementById('fullscreenContainer');
-
-    if (fs.webkitRequestFullScreen) {
-        fs.webkitRequestFullScreen();
-    }
-    else {
-        fs.mozRequestFullScreen();
+    if (fullscreen.requestFullScreen) {
+        fullscreen.requestFullScreen();
+    } else if (fullscreen.msRequestFullscreen) {
+        fullscreen.msRequestFullscreen();
+    } else if (fullscreen.webkitRequestFullScreen) {
+        fullscreen.webkitRequestFullScreen();
     }
     addStylesForFullscreen();
 }
 
 
 function closeFullscreen() {
-
-    let el = document.getElementById('fullscreenContainer');
-
-    if (document.fullscreenElement || /* Standard syntax */ document.webkitFullscreenElement || /* Safari and Opera syntax */  document.msFullscreenElement /* IE11 syntax */) {
-        if (document.exitFullscreen) {
-            document.exitFullscreen();
-        } else if (document.webkitExitFullscreen) { /* Safari */
-            document.webkitExitFullscreen();
-        } else if (document.msExitFullscreen) { /* IE11 */
-            document.msExitFullscreen();
-        }
+    if (document.exitFullscreen) {
+        document.exitFullscreen();
+    } else if (document.webkitExitFullscreen) { /* Safari */
+        document.webkitExitFullscreen();
     }
     removeStylesForFullscreen();
 }
@@ -118,25 +111,26 @@ window.addEventListener('keyup', function (event) {
 
 
 function addStylesForFullscreen() {
-    document.getElementById('canvas-overlay').classList.add('fullscreenMode');
+    document.getElementById('fullscreenContainer').classList.add('flex-center');
     document.getElementById('canvas').classList.add('fullscreenMode');
+    document.getElementById('wrapper').classList.remove('bg-color');
+    document.getElementById('wrapper').classList.add('flex-center');
+    document.getElementById('wrapper').style.width = "100%";
+    document.getElementById('wrapper').style.height = "unset";
     document.getElementById('closeFullscreen').classList.remove('d-none');
     document.getElementById('openFullscreen').classList.add('d-none');
-    document.getElementById('canvas-overlay').classList.remove('bg-color');
-    document.getElementById('canvas-overlay').style.width = "100%";
-    document.getElementById('canvas-overlay').style.height = "unset";
 }
 
 
 function removeStylesForFullscreen() {
-    document.getElementById('canvas-overlay').classList.remove('fullscreenMode');
+    document.getElementById('fullscreenContainer').classList.remove('flex-center');
     document.getElementById('canvas').classList.remove('fullscreenMode');
+    document.getElementById('wrapper').classList.add('bg-color');
+    document.getElementById('wrapper').classList.remove('flex-center');
+    document.getElementById('wrapper').style.width = "820px";
+    document.getElementById('wrapper').style.height = "480px";
     document.getElementById('openFullscreen').classList.remove('d-none');
     document.getElementById('closeFullscreen').classList.add('d-none');
-    document.getElementById('canvas-overlay').classList.add('bg-color');
-    document.getElementById('canvas-overlay').style.width = "820px";
-    document.getElementById('canvas-overlay').style.height = "480px";
-
 }
 
 
@@ -172,14 +166,14 @@ function closeControlDesc() {
 }
 
 
-function showGameOverScreen(){
+function showGameOverScreen() {
     document.getElementById('gameOverScreenContainer').classList.remove('d-none');
     document.getElementById('in-game-btns').classList.add('d-none');
 
 }
 
 
-function showWinScreen(){
+function showWinScreen() {
 
 }
 
