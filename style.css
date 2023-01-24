@@ -4,7 +4,7 @@
 
     @font-face {
         font-family: 'zabars';
-        src: url('fonts/Zabars.ttf') format('truetype');
+        src: url('./fonts/zabars.ttf') format('truetype');
     }
 }
 
@@ -44,6 +44,7 @@ h1 {
     font-size: 60px;
     font-family: 'zabars', Arial, Helvetica, sans-serif;
     letter-spacing: 4px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
 }
 
 h2 {
