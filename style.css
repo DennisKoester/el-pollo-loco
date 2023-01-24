@@ -24,7 +24,7 @@ body {
     /* display: block; */
 }
 
-.wrapper{
+.wrapper {
     position: relative;
     border-radius: 15px;
     box-shadow: 5px 5px 15px 5px #000000;
@@ -208,6 +208,61 @@ span {
     width: 100%;
 }
 
+.gameOverBtns {
+    margin-top: -70px;
+    margin-left: 20px;
+    margin-right: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btnRestart {
+    background-color: #FFCC00;
+    box-sizing: border-box;
+    border: 1px solid black;
+    border-radius: 5px;
+    height: 50px;
+    width: 180px;
+    padding-left: 30px;
+    padding-right: 30px;
+    font-family: 'zabars';
+    font-weight: bold;
+    letter-spacing: 2px;
+    font-size: 20px;
+    box-shadow: 2px 2px 10px 2px #000000;
+    cursor: pointer;
+}
+
+.btnRestart:hover {
+    transition: all 75ms ease-in-out;
+    transform: scale(1.05);
+}
+
+
+.btnMainMenu {
+    background-color: #FFCC00;
+    box-sizing: border-box;
+    border: 1px solid black;
+    border-radius: 5px;
+    height: 50px;
+    width: 180px;
+    padding-left: 30px;
+    padding-right: 30px;
+    font-family: 'zabars';
+    font-weight: bold;
+    letter-spacing: 2px;
+    font-size: 20px;
+    box-shadow: 2px 2px 10px 2px #000000;
+    cursor: pointer;
+}
+
+
+.btnMainMenu:hover {
+    transition: 75ms ease-in-out;
+    transform: scale(1.05);
+}
+
 
 /* Fullscreen Mode Classes */
 
@@ -235,7 +290,7 @@ span {
     padding: 20px;
 }
 
-.flex-center{
+.flex-center {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -252,7 +307,7 @@ span {
         width: 100%;
     }
 
-    .wrapper{
+    .wrapper {
         width: 100%;
         height: unset;
         /* height: 100%; */
@@ -265,7 +320,7 @@ span {
         height: 100vh;
     }
 
-    .wrapper{
+    .wrapper {
         height: 100vh;
     }
 }
