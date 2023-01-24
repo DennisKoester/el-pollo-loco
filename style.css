@@ -150,7 +150,7 @@ span {
 .controlBtnsDesc {
     display: flex;
     align-items: center;
-    justify-content: space-center;
+    justify-content: center;
     gap: 200px;
     margin-bottom: 30px;
 }
@@ -196,10 +196,11 @@ span {
 
 
 .gameOverScreenContainer {
-    /* position: absolute; */
-    z-index: 1;
-    height: 480px;
-    width: 820px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
 
 .gameOverScreen {
@@ -251,11 +252,6 @@ span {
         width: 100%;
     }
 
-    .canvas-overlay {
-        /* width: 100%; */
-        /* height: unset; */
-    }
-
     .wrapper{
         width: 100%;
         height: unset;
@@ -266,14 +262,10 @@ span {
 
 @media only screen and (max-height: 480px) {
     canvas {
-        /* height: 100vh; */
-    }
-
-    .canvas-overlay {
-        /* height: 100vh; */
+        height: 100vh;
     }
 
     .wrapper{
-        /* height: 100vh; */
+        height: 100vh;
     }
 }
