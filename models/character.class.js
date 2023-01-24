@@ -133,7 +133,7 @@ class Character extends MoveableObject {
         }, 1000 / 60);
 
 
-        tsetStopableInterval(() => {
+        setStopableInterval(() => {
             snoring_sound.pause();
 
             if (this.isDead()) {
