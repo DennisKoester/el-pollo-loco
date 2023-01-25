@@ -131,8 +131,7 @@ function addStylesForFullscreen() {
     document.getElementById('wrapper').classList.add('fullscreenMode');
     document.getElementById('wrapper').classList.remove('bg-color');
     document.getElementById('wrapper').classList.add('flex-center');
-    // document.getElementById('wrapper').style.width = "100%";
-    // document.getElementById('wrapper').style.height = "unset";
+    document.getElementById('wrapper').style.height = "unset";
     document.getElementById('closeFullscreen').classList.remove('d-none');
     document.getElementById('openFullscreen').classList.add('d-none');
 }
@@ -144,8 +143,7 @@ function removeStylesForFullscreen() {
     document.getElementById('wrapper').classList.remove('fullscreenMode');
     document.getElementById('wrapper').classList.add('bg-color');
     document.getElementById('wrapper').classList.remove('flex-center');
-    // document.getElementById('wrapper').style.width = "820px";
-    // document.getElementById('wrapper').style.height = "480px";
+    document.getElementById('wrapper').style.height = "480px";
     document.getElementById('openFullscreen').classList.remove('d-none');
     document.getElementById('closeFullscreen').classList.add('d-none');
 }
