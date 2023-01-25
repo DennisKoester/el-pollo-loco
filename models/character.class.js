@@ -156,7 +156,6 @@ class Character extends MoveableObject {
                 this.playAnimation(this.IMAGES_IDLE);
             }
             console.log('still moving');
-
         }, 150);
     }
 

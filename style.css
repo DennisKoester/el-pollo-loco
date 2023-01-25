@@ -1,11 +1,6 @@
 * {
     box-sizing: border-box;
     margin: 0;
-
-    @font-face {
-        font-family: 'zabars';
-        src: url('./fonts/zabars.ttf') format('truetype');
-    }
 }
 
 body {
@@ -21,7 +16,7 @@ body {
 }
 
 #fullscreenContainer {
-    /* display: block; */
+    display: flex;
 }
 
 .wrapper {
