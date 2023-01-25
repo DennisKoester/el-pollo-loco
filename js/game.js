@@ -40,6 +40,7 @@ function start() {
 
 function restartGame() {
     document.getElementById('gameOverScreenContainer').classList.add('d-none');
+    document.getElementById('winScreenContainer').classList.add('d-none');
     clearAllIntervals();
     startGame();
 }
@@ -184,12 +185,12 @@ function closeControlDesc() {
 function showGameOverScreen() {
     document.getElementById('gameOverScreenContainer').classList.remove('d-none');
     document.getElementById('in-game-btns').classList.add('d-none');
-
 }
 
 
 function showWinScreen() {
-
+document.getElementById('winScreenContainer').classList.remove('d-none');
+document.getElementById('in-game-btns').classList.add('d-none');
 }
 
 

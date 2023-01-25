@@ -13,6 +13,8 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     overflow: hidden;
+    font-family: 'zabars';
+    letter-spacing: 2.5px;
 }
 
 /* #fullscreenContainer {
@@ -42,7 +44,6 @@ h1 {
     left: 0;
     right: 0;
     font-size: 60px;
-    font-family: 'zabars', Arial, Helvetica, sans-serif;
     letter-spacing: 4px;
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
 }
@@ -189,18 +190,41 @@ span {
     right: 0;
 }
 
+.winScreenContainer {
+    height: 480px;
+    width: 820px;
+    position: absolute;
+    top: 0;
+ left: 0;
+}
+
+.winScreenContainer h2 {
+    margin: 20px 0 50px;
+
+}
+
+.taco {
+    height: 30%;
+    width: 30%;
+    margin: auto;
+}
+
+.winBtnContainer{
+    margin-top: 165px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+
 .gameOverScreen {
     height: 100%;
     width: 100%;
 }
 
-.gameOverBtns {
+.gameOverBtnContainer {
     margin-top: -70px;
     margin-left: 20px;
     margin-right: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
 }
 
 .btnRestart {
@@ -282,6 +306,12 @@ span {
     align-items: center;
 }
 
+.flex-center-btw{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .bg-color {
     background-color: rgba(255, 166, 0, 0.445);
 }
@@ -307,4 +337,3 @@ span {
         height: 100vh !important;
     }
 }
-

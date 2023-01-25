@@ -71,7 +71,7 @@ class Endboss extends MoveableObject {
     animateEndboss() {
         if (this.isDead()) {
             this.playAnimation(this.IMAGES_DEAD);
-
+            this.gameIsWon();
         } else if (!this.isDead() && !this.isHurtEndboss() && this.endbossFightBegins() && !this.facingEachOther()) {
             this.playAnimation(this.IMAGES_WALKING);
             this.moveLeft();
@@ -117,6 +117,15 @@ class Endboss extends MoveableObject {
     endbossRushForward() {
         let speedIncreaseThroughHit = world.level.endboss[0].x -= this.speedThroughHit;
         return speedIncreaseThroughHit;
+    }
+
+
+    gameIsWon() {
+        setTimeout(() => {
+            showWinScreen();
+            resetBackgroundMusic();
+            clearAllIntervals();
+        }, 3000);
     }
 }
 

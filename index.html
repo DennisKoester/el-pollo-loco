@@ -59,11 +59,27 @@
             <!--Start Screen-->
 
 
+            <!--Win Screen-->
+            <div class="winScreenContainer d-none" id="winScreenContainer">
+                <h2>Congratulations You Win !</h2>
+                <div class="taco">
+                    <img src="./img/taco.png">
+                </div>
+                <div class="winBtnContainer flex-center-btw">
+                    <button onclick="restartGame()" id="btnRestartWinScreen" class="btnRestart">Restart
+                        Game</button>
+                    <button onclick="goBackToStartScreen()" id="btnMainMenuWinScreen" class="btnMainMenu">Main
+                        Menu</button>
+                </div>
+            </div>
+            <!--Win Screen-->
+
+
             <!--Gameover Screen-->
             <div class="gameOverScreenContainer d-none" id="gameOverScreenContainer">
                 <img src="./img/9_intro_outro_screens/game_over/oh no you lost!.png" class="gameOverScreen"
                     id="gameOverScreen">
-                <div class="gameOverBtns">
+                <div class="gameOverBtnContainer flex-center-btw">
                     <button onclick="restartGame()" id="btnRestartGameOverScreen" class="btnRestart">Restart
                         Game</button>
                     <button onclick="goBackToStartScreen()" id="btnMainMenuGamOverScreen" class="btnMainMenu">Main
@@ -141,8 +157,8 @@
                     id="audioOffIcon">
                 <img id="openFullscreen" src="./img/icons/icons8-fullscreen.png" alt="Fullscreen On"
                     onclick="openFullscreen()">
-                <img id="closeFullscreen" class="d-none" src="./img/icons/icons8-exit_fullscreen.png" alt="Fullscreen Off"
-                    onclick="closeFullscreen()">
+                <img id="closeFullscreen" class="d-none" src="./img/icons/icons8-exit_fullscreen.png"
+                    alt="Fullscreen Off" onclick="closeFullscreen()">
             </div>
             <!--Game Btns-->
 
