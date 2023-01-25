@@ -46,6 +46,15 @@ function restartGame() {
 }
 
 
+function goBackToStartScreen(){
+    document.getElementById('gameOverScreenContainer').classList.add('d-none');
+    document.getElementById('winScreenContainer').classList.add('d-none');
+    document.getElementById('startScreenContainer').classList.remove('d-none');
+    document.getElementById('canvas').classList.add('d-none');
+    clearAllIntervals();
+}
+
+
 function setStopableInterval(fn, time) {
     let idIntervall = setInterval(fn, time);
     this.intervalIds.push(idIntervall);
@@ -150,6 +159,13 @@ function removeStylesForFullscreen() {
 }
 
 
+function showStartScreen(){
+    document.getElementById('startScreenContainer').classList.remove('d-none');
+    document.getElementById('canvas').classList.add('d-none');
+    document.getElementById('in-game-btns').classList.add('d-none');
+}
+
+
 function hideStartScreen() {
     document.getElementById('startScreenContainer').classList.add('d-none');
     document.getElementById('canvas').classList.remove('d-none');
@@ -202,7 +218,6 @@ function showMobileBtns() {
 
 function hideMobileBtns() {
     document.getElementById('mobileBtns').classList.add('d-none');
-
 }
 
 

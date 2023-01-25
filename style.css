@@ -138,7 +138,7 @@ span {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 200px;
+    gap: 10rem;
     margin-bottom: 30px;
 }
 
@@ -346,6 +346,10 @@ span {
     .wrapper {
         width: 100%;
         height: unset;
+    }
+
+    #fullscreenContainer{
+        width: 100%;
     }
 }
 
