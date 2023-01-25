@@ -56,7 +56,7 @@ class Endboss extends MoveableObject {
 
 
     animateEndbossOnReach() {
-        setInterval(() => {
+        setStopableInterval(() => {
             if (world) {
                 this.endbossReached();  //maybe start from world to cut the if statement
             }
@@ -70,22 +70,17 @@ class Endboss extends MoveableObject {
     animateEndboss() {
         if (this.isDead()) {
             this.playAnimation(this.IMAGES_DEAD);
-            console.log('dead');
 
         } else if (!this.isDead() && !this.isHurtEndboss() && this.endbossFightBegins()) {
             this.playAnimation(this.IMAGES_WALKING);
             this.moveLeft();
-            console.log('walking');
 
         } else if (!this.isDead() && !this.endbossFightBegins()) {
             this.playAnimation(this.IMAGES_ALERT);
-            console.log('alert');
 
         } else if (!this.isDead() && this.isHurtEndboss()) {
             this.playAnimation(this.IMAGES_HURT);
             this.endbossRushForward();
-            console.log('hurt');
-
         }
     }
 

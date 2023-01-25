@@ -32,7 +32,7 @@ class World {
 
 
     checkCollisions() {
-        setInterval(() => {
+        setStopableInterval(() => {
             this.checkCollisionsEnemy();
             this.checkCollisionCoins();
             this.checkCollisonsBottles();
@@ -42,14 +42,14 @@ class World {
 
 
     checkCollisionsWithThrowingBottle() {
-        setInterval(() => {
+        setStopableInterval(() => {
             this.checkCollisionBottleWithEndboss();
         }, 200);
     }
 
 
     throwObjectInterval() {
-        setInterval(() => {
+        setStopableInterval(() => {
             this.checkThrowObjects();
         }, 150);
     }
@@ -125,7 +125,6 @@ class World {
             this.level.endboss.forEach((endboss) => {
                 if (bottle.isColliding(endboss)) {
                     endboss.hitEndboss(endboss.energy);
-                    console.log(endboss.energy);
                     this.statusBarEndboss.setPercentage(endboss.energy);
                     bottle_smash.play();
                     chicken_dead_sound.play();

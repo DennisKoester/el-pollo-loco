@@ -30,9 +30,9 @@ function startGame() {
 
 
 function start() {
-    hideStartScreen();
     canvas = document.getElementById('canvas');
     world = new World(canvas, keyboard);
+    hideStartScreen();
     backgroundMusic();
     checkForMobileDevice();
 }

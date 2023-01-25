@@ -59,28 +59,18 @@ span {
 }
 
 .canvas-overlay {
-    /* position: absolute; */
     display: inline;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    /* width: 820px; */
-    /* height: 480px; */
     width: 100%;
     height: 100%;
-    /* box-shadow: 5px 5px 15px 5px #000000; */
     border-radius: 15px;
-    /* display: flex; */
-    /* flex-direction: column; */
-    /* align-items: center; */
-    /* position: absolute; */
     overflow: hidden;
 }
 
 .startScreenContainer {
-    /* position: relative;
-    border-radius: 15px; */
     width: 100%;
     height: 100%;
 }
@@ -305,7 +295,6 @@ span {
     .wrapper {
         width: 100%;
         height: unset;
-        /* height: 100%; */
     }
 }
 

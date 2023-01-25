@@ -49,14 +49,14 @@ class ThrowableObject extends MoveableObject {
             }
             world.character.setTimeStamp();
         }, 25);
-        this.setStopableInterval(() => {
+        setStopableInterval(() => {
             clearInterval(throwBottleInterval);
         }, 1500);
     }
 
 
     animateBottle() {
-        setInterval(() => {
+        setStopableInterval(() => {
             if (world.level.endboss[0].isHurtEndboss()) { // TODO Why [0] ??
                 this.playAnimation(this.IMAGES_BOTTLE_SPLASH);
             } else {

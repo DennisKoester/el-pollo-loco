@@ -40,8 +40,8 @@ class Chicken extends MoveableObject {
         let intervalChicken = setInterval(() => {
             this.moveLeft();
         }, 1000 / 60);
-        setStopableInterval(() => {
 
+        setStopableInterval(() => {
             if (!this.isDead()) {
                 this.playAnimation(this.IMAGES_WALKING);
             } else {
