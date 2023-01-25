@@ -15,7 +15,7 @@ class StatusbarLife extends StatusbarObject {
      height = 60; */ // TODO This or down with this.x ?!
 
     constructor() {
-        super();
+        super().loadImage(this.IMAGES_STATUSBAR[0]);
         this.loadImages(this.IMAGES_STATUSBAR);
         this.x = 20;
         this.y = 0;

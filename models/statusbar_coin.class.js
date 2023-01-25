@@ -11,7 +11,7 @@ class StatusbarCoin extends StatusbarObject {
 
 
     constructor() {
-        super();
+        super().loadImage(this.IMAGES_STATUSBAR[0]);
         this.loadImages(this.IMAGES_STATUSBAR);
         this.x = 20;
         this.y = 50;

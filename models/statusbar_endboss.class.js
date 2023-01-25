@@ -11,7 +11,7 @@ class StatusbarEndboss extends StatusbarObject {
 
 
     constructor() {
-        super();
+        super().loadImage(this.IMAGES_STATUSBAR[0]);
         this.loadImages(this.IMAGES_STATUSBAR);
         this.x = 600;
         this.y = 35;

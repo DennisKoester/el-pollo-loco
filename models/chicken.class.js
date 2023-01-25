@@ -24,7 +24,7 @@ class Chicken extends MoveableObject {
 
 
     constructor(x) {
-        super();
+        super().loadImage(this.IMAGES_WALKING[0]);
 
         this.loadImages(this.IMAGES_WALKING);
 

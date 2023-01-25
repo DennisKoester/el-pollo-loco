@@ -24,7 +24,12 @@ function init() {
 
 
 function startGame() {
-    // initLevel();
+    initLevel();
+    start();
+}
+
+
+function start() {
     hideStartScreen();
     canvas = document.getElementById('canvas');
     world = new World(canvas, keyboard);

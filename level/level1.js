@@ -1,8 +1,8 @@
-// let level1;
+let level1;
 
-// function initLevel() {
+function initLevel() {
 
-const level1 = new Level(
+    level1 = new Level(
         [
             new Chicken(400),
             new Chicken(800),
@@ -123,4 +123,4 @@ const level1 = new Level(
             new Coin(2000),
         ]
     );
-// }
+}
