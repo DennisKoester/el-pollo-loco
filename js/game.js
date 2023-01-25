@@ -33,8 +33,8 @@ function start() {
     canvas = document.getElementById('canvas');
     world = new World(canvas, keyboard);
     hideStartScreen();
-    backgroundMusic();
     checkForMobileDevice();
+    backgroundMusic();
 }
 
 

@@ -15,9 +15,9 @@ body {
     overflow: hidden;
 }
 
-#fullscreenContainer {
+/* #fullscreenContainer {
     display: flex;
-}
+} */
 
 .wrapper {
     position: relative;
@@ -71,6 +71,7 @@ span {
 }
 
 .startScreenContainer {
+    display: flex;
     width: 100%;
     height: 100%;
 }
@@ -305,6 +306,6 @@ span {
     }
 
     .wrapper {
-        height: 100vh;
+        height: 100vh !important;
     }
 }
