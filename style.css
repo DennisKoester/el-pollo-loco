@@ -14,7 +14,7 @@ body {
     background-size: cover;
     overflow: hidden;
     font-family: 'zabars';
-    letter-spacing: 2.5px;
+    letter-spacing: 3px;
 }
 
 /* #fullscreenContainer {
@@ -198,15 +198,18 @@ span {
     position: absolute;
     top: 0;
     left: 0;
-    background-color: rgba(0, 0, 0, 0.459);
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .winScreenContainer h2 {
     position: absolute;
-    margin: 20px 0 50px;
-    top: 0;
+    font-size: 45px;
+    margin: 0 0 50px;
+    top: 30px;
     right: 0;
     left: 0;
+    color: #FFCC00;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
 }
 
 .taco {
