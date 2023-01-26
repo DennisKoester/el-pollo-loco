@@ -261,6 +261,7 @@ span {
     font-weight: bold;
     letter-spacing: 2px;
     font-size: 20px;
+    color: black;
     box-shadow: 2px 2px 10px 2px #000000;
     cursor: pointer;
 }
@@ -284,6 +285,7 @@ span {
     font-weight: bold;
     letter-spacing: 2px;
     font-size: 20px;
+    color: black;
     box-shadow: 2px 2px 10px 2px #000000;
     cursor: pointer;
 }
@@ -348,7 +350,7 @@ span {
         height: unset;
     }
 
-    #fullscreenContainer{
+    #fullscreenContainer {
         width: 100%;
     }
 }

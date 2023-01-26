@@ -6,7 +6,7 @@ class Endboss extends MoveableObject {
     hadFirstContact = false;
     speedThroughHit = 50;
     speed = 15;
-    sameHeight = false;
+
 
     offset = {
         top: 90,

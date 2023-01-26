@@ -46,7 +46,7 @@ function restartGame() {
 }
 
 
-function goBackToStartScreen(){
+function goBackToStartScreen() {
     document.getElementById('gameOverScreenContainer').classList.add('d-none');
     document.getElementById('winScreenContainer').classList.add('d-none');
     document.getElementById('startScreenContainer').classList.remove('d-none');
@@ -159,7 +159,7 @@ function removeStylesForFullscreen() {
 }
 
 
-function showStartScreen(){
+function showStartScreen() {
     document.getElementById('startScreenContainer').classList.remove('d-none');
     document.getElementById('canvas').classList.add('d-none');
     document.getElementById('in-game-btns').classList.add('d-none');
@@ -201,12 +201,14 @@ function closeControlDesc() {
 function showGameOverScreen() {
     document.getElementById('gameOverScreenContainer').classList.remove('d-none');
     document.getElementById('in-game-btns').classList.add('d-none');
+    hideMobileBtns();
 }
 
 
 function showWinScreen() {
-document.getElementById('winScreenContainer').classList.remove('d-none');
-document.getElementById('in-game-btns').classList.add('d-none');
+    document.getElementById('winScreenContainer').classList.remove('d-none');
+    document.getElementById('in-game-btns').classList.add('d-none');
+    hideMobileBtns();
 }
 
 
