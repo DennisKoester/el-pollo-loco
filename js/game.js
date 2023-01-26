@@ -13,6 +13,9 @@ let jumping_sound = new Audio('./audio/jumping.mp3');
 let snoring_sound = new Audio('./audio/snoring.mp3');
 let hurt_sound = new Audio('./audio/pepe_hurt.mp3');
 let dead_sound = new Audio('./audio/pepe_dead.mp3');
+let game_win_sound = new Audio('./audio/game_win.mp3');
+let game_over_sound = new Audio('./audio/game_over.mp3');
+let endboss_fight = new Audio('./audio/enboss_fight.mp3');
 
 i = 1;
 intervalIds = [];
@@ -223,6 +226,21 @@ function hideMobileBtns() {
 }
 
 
+function playGameWinSound() {
+    game_win_sound.play();
+}
+
+
+function playGameOverSound() {
+    game_over_sound.play();
+}
+
+function playEndbossSound(){
+    background_music.pause();
+    endboss_fight.play();
+}
+
+
 
 function turnSoundOff() {
     background_music.muted = true;
@@ -236,6 +254,9 @@ function turnSoundOff() {
     snoring_sound.muted = true;
     hurt_sound.muted = true;
     dead_sound.muted = true;
+    game_win_sound = true;
+    game_over_sound = false;
+    endboss_fight = false;
 }
 
 
@@ -251,6 +272,9 @@ function turnSoundOn() {
     snoring_sound.muted = false;
     hurt_sound.muted = false;
     dead_sound.muted = false;
+    game_win_sound = false;
+    game_over_sound = false;
+    endboss_fight = false;
 }
 
 
@@ -260,10 +284,10 @@ function backgroundMusic() {
 }
 
 
-function resetBackgroundMusic() {
+function resetMusic() {
     background_music.currentTime = 0;
+    endboss_fight.currentTime = 0;
     background_music.pause();
+    endboss_fight.pause();
+
 }
-
-
-

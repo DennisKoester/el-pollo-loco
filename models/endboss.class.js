@@ -75,6 +75,7 @@ class Endboss extends MoveableObject {
         } else if (!this.isDead() && !this.isHurtEndboss() && this.endbossFightBegins() && !this.facingEachOther()) {
             this.playAnimation(this.IMAGES_WALKING);
             this.moveLeft();
+            playEndbossSound();
             this.otherDirection = false;
 
         } else if (!this.isDead() && !this.isHurtEndboss() && this.endbossFightBegins() && this.facingEachOther()) {
@@ -123,7 +124,8 @@ class Endboss extends MoveableObject {
     gameIsWon() {
         setTimeout(() => {
             showWinScreen();
-            resetBackgroundMusic();
+            playGameWinSound();
+            resetMusic();
             clearAllIntervals();
         }, 3000);
     }

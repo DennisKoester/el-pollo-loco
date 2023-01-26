@@ -176,7 +176,8 @@ class Character extends MoveableObject {
     gameIsLost() {
         setTimeout(() => {
             showGameOverScreen();
-            resetBackgroundMusic();
+            playGameOverSound();
+            resetMusic();
             clearAllIntervals();
         }, 3000);
     }
