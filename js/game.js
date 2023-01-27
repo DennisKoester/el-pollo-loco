@@ -45,6 +45,7 @@ function restartGame() {
     document.getElementById('gameOverScreenContainer').classList.add('d-none');
     document.getElementById('winScreenContainer').classList.add('d-none');
     clearAllIntervals();
+    resetMusic();
     startGame();
 }
 
@@ -235,7 +236,7 @@ function playGameOverSound() {
     game_over_sound.play();
 }
 
-function playEndbossSound(){
+function playEndbossSound() {
     background_music.pause();
     endboss_fight.play();
 }
@@ -290,4 +291,24 @@ function resetMusic() {
     background_music.pause();
     endboss_fight.pause();
 
+}
+
+
+function gameIsWon() {
+    setTimeout(() => {
+        showWinScreen();
+        playGameWinSound();
+        resetMusic();
+        clearAllIntervals();
+    }, 3000);
+}
+
+
+function gameIsLost() {
+    setTimeout(() => {
+        showGameOverScreen();
+        playGameOverSound();
+        resetMusic();
+        clearAllIntervals();
+    }, 3000);
 }
