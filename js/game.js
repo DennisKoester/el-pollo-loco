@@ -22,20 +22,31 @@ intervalIds = [];
 
 
 function init() {
+    showLoadingscreen();
     detectDevice();
+
+    setTimeout(() => {
+        hideLoadingscreen();
+    }, 2000);
 }
 
 
 function startGame() {
+    showLoadingscreen();
+    hideStartScreen();
     initLevel();
     start();
+
+    setTimeout(() => {
+        hideLoadingscreen();
+    }, 3000);
 }
 
 
 function start() {
     canvas = document.getElementById('canvas');
     world = new World(canvas, keyboard);
-    hideStartScreen();
+    // hideStartScreen();
     checkForMobileDevice();
     backgroundMusic();
 }
@@ -139,6 +150,19 @@ window.addEventListener('keyup', function (event) {
 });
 
 
+function showLoadingscreen() {
+    document.getElementById('loadingScreen').classList.remove('d-none');
+    document.getElementById('wrapper').classList.add('d-none');
+
+}
+
+
+function hideLoadingscreen() {
+    document.getElementById('loadingScreen').classList.add('d-none');
+    document.getElementById('wrapper').classList.remove('d-none');
+}
+
+
 function addStylesForFullscreen() {
     document.getElementById('fullscreenContainer').classList.add('flex-center');
     document.getElementById('canvas').classList.add('fullscreenMode');
@@ -164,16 +188,29 @@ function removeStylesForFullscreen() {
 
 
 function showStartScreen() {
-    document.getElementById('startScreenContainer').classList.remove('d-none');
-    document.getElementById('canvas').classList.add('d-none');
-    document.getElementById('in-game-btns').classList.add('d-none');
+    document.getElementById('loadingScreen').classList.remove('d-none');
+
+    setTimeout(() => {
+        document.getElementById('startScreenContainer').classList.remove('d-none');
+        document.getElementById('wrapper').classList.remove('d-none');
+        document.getElementById('canvas').classList.add('d-none');
+        document.getElementById('in-game-btns').classList.add('d-none');
+        document.getElementById('loadingScreen').classList.add('d-none');
+    }, 3000);
+
 }
 
 
 function hideStartScreen() {
-    document.getElementById('startScreenContainer').classList.add('d-none');
-    document.getElementById('canvas').classList.remove('d-none');
-    document.getElementById('in-game-btns').classList.remove('d-none');
+    document.getElementById('loadingScreen').classList.remove('d-none');
+
+    setTimeout(() => {
+
+        document.getElementById('startScreenContainer').classList.add('d-none');
+        document.getElementById('canvas').classList.remove('d-none');
+        document.getElementById('in-game-btns').classList.remove('d-none');
+    }, 3000);
+
 }
 
 
