@@ -136,7 +136,7 @@ class World {
         });
     }
 
-
+    
     coinCollected(coin) {
         let i = this.level.coins.indexOf(coin);
         this.level.coins.splice(i, 1);
