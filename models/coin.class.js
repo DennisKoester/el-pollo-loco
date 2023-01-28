@@ -1,5 +1,4 @@
 class Coin extends MoveableObject {
-
     width = 120;
     height = 120;
 
@@ -17,18 +16,14 @@ class Coin extends MoveableObject {
 
     constructor(x) {
         super().loadImage(this.IMAGES_COIN[0]);
-
         this.loadImages(this.IMAGES_COIN);
-
         this.x = x + Math.random() * 2000;
-
         this.y = 100 + Math.random() * 100;
-
-        this.animate();
+        this.animateCoins();
     }
 
 
-    animate() {
+    animateCoins() {
         setStopableInterval(() => {
             this.playAnimation(this.IMAGES_COIN);
         }, 350);

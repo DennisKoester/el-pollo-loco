@@ -1,5 +1,4 @@
 class SmallChicken extends MoveableObject {
-
     y = 368;
     height = 55;
     width = 55;
@@ -24,18 +23,14 @@ class SmallChicken extends MoveableObject {
 
     constructor(x) {
         super().loadImage(this.IMAGES_WALKING[0]);
-
         this.loadImages(this.IMAGES_WALKING);
-
         this.x = x + Math.random() * 500; // random number between 200 and 700
-
         this.speed = 0.15 + Math.random() * 0.5; // Math Random generates a number between 0 and 1
-
-        this.animateChicken();
+        this.animateSmallChicken();
     }
 
 
-    animateChicken() {
+    animateSmallChicken() {
         let intervalChicken = setInterval(() => {
             this.moveLeft();
         }, 1000 / 60);

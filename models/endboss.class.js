@@ -7,7 +7,6 @@ class Endboss extends MoveableObject {
     speedThroughHit = 50;
     speed = 15;
 
-
     offset = {
         top: 90,
         bottom: 20,
@@ -77,15 +76,12 @@ class Endboss extends MoveableObject {
             this.moveLeft();
             playEndbossSound();
             this.otherDirection = false;
-
         } else if (!this.isDead() && !this.isHurtEndboss() && this.endbossFightBegins() && this.facingEachOther()) {
             this.playAnimation(this.IMAGES_WALKING);
             this.moveRight();
             this.otherDirection = true;
-
         } else if (!this.isDead() && !this.endbossFightBegins()) {
             this.playAnimation(this.IMAGES_ALERT);
-
         } else if (!this.isDead() && this.isHurtEndboss()) {
             this.playAnimation(this.IMAGES_HURT);
             this.endbossRushForward();
@@ -93,9 +89,9 @@ class Endboss extends MoveableObject {
     }
 
 
-    sameHeight() {
-        return world.level.endboss[0].x == world.character.x; // TODO Not working. Only animate if not the same x height.
-    }
+    // sameHeight() {
+    //     return world.level.endboss[0].x == world.character.x; // TODO Not working. Only animate if not the same x height.
+    // }
 
 
     facingEachOther() {

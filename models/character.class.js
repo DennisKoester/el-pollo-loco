@@ -6,12 +6,6 @@ class Character extends MoveableObject {
     characterLastMovement = 0;
     world; // TODO Why is wold here?!
 
-    walking_sound = new Audio('./audio/walking.mp3');
-    jumping_sound = new Audio('./audio/jumping.mp3');
-    snoring_sound = new Audio('./audio/snoring.mp3');
-    hurt_sound = new Audio('./audio/pepe_hurt.mp3');
-    dead_sound = new Audio('./audio/pepe_dead.mp3');
-
     offset = {
         top: 100,
         bottom: 10,
@@ -91,16 +85,13 @@ class Character extends MoveableObject {
 
     constructor() {
         super().loadImage(this.IMAGES_WALKING[0]);
-
         this.loadImages(this.IMAGES_WALKING);
         this.loadImages(this.IMAGES_JUMPING);
         this.loadImages(this.IMAGES_HURT);
         this.loadImages(this.IMAGES_DEAD);
         this.loadImages(this.IMAGES_IDLE);
         this.loadImages(this.IMAGES_SLEEPING);
-
         this.applyGravity();
-
         this.animateCharacter();
     }
 
@@ -121,7 +112,7 @@ class Character extends MoveableObject {
                 this.moveLeft();
             if (this.canJump())
                 this.jump();
-            this.world.camera_x = -this.x + 100;
+            this.scrollMap();
         }
     }
 
@@ -130,24 +121,17 @@ class Character extends MoveableObject {
         snoring_sound.pause();
 
         if (this.isDead()) {
-            this.playAnimation(this.IMAGES_DEAD);
-            walking_sound.pause();
-            dead_sound.play();
-            gameIsLost();
+            this.dead();
         } else if (this.isHurt()) {
-            this.playAnimation(this.IMAGES_HURT);
-            hurt_sound.play();
+            this.hurt();
         } else if (this.isAboveGround()) {
-            this.playAnimation(this.IMAGES_JUMPING);
-            this.setTimeStamp();
+            this.jumpAnimation();
         } else if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
-            this.setTimeStamp();
-            this.playAnimation(this.IMAGES_WALKING);
+            this.moveAnimation();
         } else if (this.characterMoveTimepassed() > 3) {
-            this.playAnimation(this.IMAGES_SLEEPING);
-            snoring_sound.play();
+            this.sleepAnimation();
         } else {
-            this.playAnimation(this.IMAGES_IDLE);
+            this.idleAnimation();
         }
     }
 
@@ -186,6 +170,46 @@ class Character extends MoveableObject {
     }
 
 
+    dead() {
+        this.playAnimation(this.IMAGES_DEAD);
+        walking_sound.pause();
+        dead_sound.play();
+        gameIsLost();
+    }
+
+
+    hurt() {
+        this.playAnimation(this.IMAGES_HURT);
+        hurt_sound.play();
+    }
+
+
+    jumpAnimation() {
+        this.playAnimation(this.IMAGES_JUMPING);
+        this.setTimeStamp();
+    }
+
+
+    moveAnimation() {
+        this.setTimeStamp();
+        this.playAnimation(this.IMAGES_WALKING);
+    }
+
+    sleepAnimation() {
+        this.playAnimation(this.IMAGES_SLEEPING);
+        snoring_sound.play();
+    }
+
+    idleAnimation() {
+        this.playAnimation(this.IMAGES_IDLE);
+    }
+
+
+    scrollMap() {
+        this.world.camera_x = -this.x + 100;
+    }
+
+    
     characterMoveTimepassed() {
         let timepassed = new Date().getTime() - this.characterLastMovement;
         timepassed = timepassed / 1000;

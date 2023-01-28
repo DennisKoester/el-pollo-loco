@@ -1,5 +1,4 @@
 class Chicken extends MoveableObject {
-
     y = 355;
     height = 70;
     width = 70;
@@ -25,13 +24,9 @@ class Chicken extends MoveableObject {
 
     constructor(x) {
         super().loadImage(this.IMAGES_WALKING[0]);
-
         this.loadImages(this.IMAGES_WALKING);
-
         this.x = x + Math.random() * 500; // random number between 200 and 700
-
         this.speed = 0.20 + Math.random() * 0.5; // Math Random generates a number between 0 and 1
-
         this.animateChicken();
     }
 
@@ -40,7 +35,6 @@ class Chicken extends MoveableObject {
         let intervalChicken = setInterval(() => {
             this.moveLeft();
         }, 1000 / 60);
-
         setStopableInterval(() => {
             if (!this.isDead()) {
                 this.playAnimation(this.IMAGES_WALKING);
