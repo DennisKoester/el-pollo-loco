@@ -17,6 +17,11 @@ body {
     letter-spacing: 3px;
 }
 
+#fullscreenContainer{
+    display: flex;
+    justify-content: center;
+}
+
 .wrapper {
     position: relative;
     border-radius: 15px;
@@ -46,8 +51,7 @@ h1 {
 
 h2 {
     font-size: 35px;
-    margin-top: 15px;
-    margin-bottom: 60px;
+    margin-bottom: 40px;
     text-align: center;
 }
 
@@ -249,6 +253,18 @@ span {
     margin-right: 20px;
 }
 
+.containerGameControls {
+    background-color: rgba(255, 166, 0, 0.445);
+    height: 100%;
+    min-width: 100%;
+}
+
+.containerGameDesc {
+    background-color: rgba(255, 166, 0, 0.445);
+    height: 100%;
+    min-width: 100%;
+}
+
 table {
     width: 80%;
     max-width: 500px;
@@ -380,19 +396,16 @@ td:nth-child(2) {
 @keyframes ring {
     0% {
         transform: rotate(0deg);
-        /* box-shadow: 1px 5px 2px #e65c00; */
         box-shadow: 1px 5px 2px #FF9701;
     }
 
     50% {
         transform: rotate(180deg);
-        /* box-shadow: 1px 5px 2px #18b201; */
         box-shadow: 1px 5px 2px #A7B622;
     }
 
     100% {
         transform: rotate(360deg);
-        /* box-shadow: 1px 5px 2px #0456c8; */
         box-shadow: 1px 5px 2px #E6426D;
     }
 }

@@ -34,9 +34,36 @@
     #btnMobileBottle {
         width: 60px;
     }
+}
 
+
+
+@media only screen 
+    and (max-device-height: 390px) 
+    and (max-device-width: 844px) 
+    and (-webkit-device-pixel-ratio: 3) 
+    and (orientation : landscape) { 
+        .in-game-btn-container img {
+            height: 25px !important;
+            width: 25px !important;
+    }
+
+    .left-right-btn img {
+        width: 35px;
+        height: 35px;
+    }
+
+    #btnMobileSpace {
+        width: 50px;
+    }
+
+    #btnMobileBottle{
+        width: 60px;
+    }
 
 }
+
+
 
 @media only screen and (max-width: 600px) {
     .btn-container img {
@@ -100,4 +127,3 @@
         height: 100vh !important;
     }
 }
-

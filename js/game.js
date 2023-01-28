@@ -217,25 +217,28 @@ function hideStartScreen() {
 function openGameDesc() {
     document.getElementById('containerGameDesc').classList.remove('d-none');
     document.getElementById('startScreenContainer').classList.add('d-none');
-
+    document.getElementById('fullscreenContainer').classList.add('fullscreenMode');
 }
 
 
 function closeGameDesc() {
     document.getElementById('containerGameDesc').classList.add('d-none');
     document.getElementById('startScreenContainer').classList.remove('d-none');
+    document.getElementById('fullscreenContainer').classList.remove('fullscreenMode');
 }
 
 
 function openControlDesc() {
     document.getElementById('containerGameControls').classList.remove('d-none');
     document.getElementById('startScreenContainer').classList.add('d-none');
+    document.getElementById('fullscreenContainer').classList.add('fullscreenMode');
 }
 
 
 function closeControlDesc() {
     document.getElementById('containerGameControls').classList.add('d-none');
     document.getElementById('startScreenContainer').classList.remove('d-none');
+    document.getElementById('fullscreenContainer').classList.remove('fullscreenMode');
 }
 
 

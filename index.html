@@ -12,6 +12,7 @@
     <script src="./models/world.class.js"></script>
     <script src="./models/drawable-object.class.js"></script>
     <script src="./models/moveable-object.class.js"></script>
+    <script src="./models/throwable-object.class.js"></script>
     <script src="./models/statusbar_object.class.js"></script>
     <script src="./models/statusbar_life.class.js"></script>
     <script src="./models/statusbar_coin.class.js"></script>
@@ -27,7 +28,6 @@
     <script src="./models/background-object.class.js"></script>
     <script src="./models/keyboard.class.js"></script>
     <script src="./models/endboss.class.js"></script>
-    <script src="./models/throwable-object.class.js"></script>
     <script src="./models/chicken.class.js"></script>
     <script src="./level/level1.js"></script>
     <script src="./js/game.js"></script>
@@ -40,30 +40,28 @@
 
         <h1>El Pollo Loco</h1>
 
+
         <!--Loading Screen-->
         <div id="loadingScreen" class="center">
             <div class="ring"></div>
             <span class="loadingText">loading...</span>
-         </div>
+        </div>
         <!--Loading Screen-->
 
 
         <div id="wrapper" class="wrapper bg-color d-none">
 
-
             <canvas id="canvas" width="820px" height="480px" class="d-none"></canvas>
-
-
-            <!-- <div id="canvas-overlay" class="canvas-overlay bg-color"> -->
 
 
             <!--Start Screen-->
             <div class="startScreenContainer" id="startScreenContainer">
-                <img src="img/9_intro_outro_screens/start/startscreen_1.png" id="startScreen">
+                <img src="./img/9_intro_outro_screens/start/startscreen_1.png" id="startScreen">
                 <div class="btn-container">
-                    <img src="img/icons/icons8-spielen-64.png" class="btnPlay" onclick="startGame()">
-                    <img src="img/icons/icons8-informationen-64.png" class="infoIcon" onclick="openGameDesc()">
-                    <img src="img/icons/icons8-xbox-controller-50.png" class="controlIcon" onclick="openControlDesc()">
+                    <img src="./img/icons/icons8-spielen-64.png" class="btnPlay" onclick="startGame()">
+                    <img src="./img/icons/icons8-informationen-64.png" class="infoIcon" onclick="openGameDesc()">
+                    <img src="./img/icons/icons8-xbox-controller-50.png" class="controlIcon"
+                        onclick="openControlDesc()">
                 </div>
 
             </div>
@@ -138,12 +136,11 @@
 
                 <h2>Game Controls</h2>
 
-
                 <table>
                     <tbody>
                         <tr>
                             <td>
-                                <img src="img/icons/icons8-eingekreist-links-2-50.png" alt="arrowLeft">
+                                <img src="./img/icons/icons8-eingekreist-links-2-50.png" alt="arrowLeft">
                             </td>
                             <td>
                                 <span>Pepe Move Left</span>
@@ -151,7 +148,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <img class="rotate180" src="img/icons/icons8-eingekreist-links-2-50.png"
+                                <img class="rotate180" src="./img/icons/icons8-eingekreist-links-2-50.png"
                                     alt="arrowRight">
                             </td>
                             <td>
@@ -176,31 +173,6 @@
                         </tr>
                     </tbody>
                 </table>
-
-
-
-
-
-
-                <!--  <div>
-                    <div class="controlBtnsDesc">
-                        <img src="img/icons/icons8-eingekreist-links-2-50.png" alt="arrowLeft">
-                        <span>Pepe Move Left</span>
-                    </div>
-                    <div class="controlBtnsDesc">
-                        <img class="rotate180" src="img/icons/icons8-eingekreist-links-2-50.png" alt="arrowRight">
-                        <span>Pepe Move Right</span>
-                    </div>
-                    <div class="controlBtnsDesc">
-                        <img src="./img/icons/icons8-space-key-50.png" alt="Spacebar Icon">
-                        <span>Pepe Jump</span>
-                    </div>
-                    <div class="controlBtnsDesc">
-                        <img src="./img/icons/icons8-d-key-50.png" alt="D Icon">
-                        <span>Throw a bottle</span>
-                    </div>
-                </div> -->
-
             </div>
             <!--Controls Menu-->
 
@@ -231,11 +203,9 @@
                     <img src="./img/6_salsa_bottle/salsa_bottle.png" class="btnMobile" id="btnMobileBottle">
                 </div>
             </div>
-
             <!--Mobile Buttons-->
 
 
-            <!-- </div> -->
         </div>
     </div>
 </body>
