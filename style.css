@@ -13,7 +13,7 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     overflow: hidden;
-    font-family: 'zabars';
+    font-family: 'zabars', Arial, Helvetica, sans-serif;
     letter-spacing: 3px;
 }
 
