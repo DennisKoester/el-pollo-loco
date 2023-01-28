@@ -17,10 +17,6 @@ body {
     letter-spacing: 3px;
 }
 
-/* #fullscreenContainer {
-    display: flex;
-} */
-
 .wrapper {
     position: relative;
     border-radius: 15px;
@@ -185,7 +181,6 @@ span {
     width: 40px;
 }
 
-
 .gameOverScreenContainer {
     position: absolute;
     top: 0;
@@ -242,7 +237,6 @@ span {
     left: 0;
     padding: 0 20px 15px 20px;
 }
-
 
 .gameOverScreen {
     height: 100%;
@@ -301,7 +295,6 @@ td:nth-child(2) {
     transform: scale(1.05);
 }
 
-
 .btnMainMenu {
     background-color: #FFCC00;
     box-sizing: border-box;
@@ -320,18 +313,9 @@ td:nth-child(2) {
     cursor: pointer;
 }
 
-
 .btnMainMenu:hover {
     transition: 75ms ease-in-out;
     transform: scale(1.05);
-}
-
-
-/* Fullscreen Mode Classes */
-
-.fullscreenMode {
-    border-radius: unset !important;
-    width: 100%;
 }
 
 
@@ -369,147 +353,51 @@ td:nth-child(2) {
     background-color: rgba(255, 166, 0, 0.445);
 }
 
-
-@media only screen and (max-width: 820px) {
-    canvas {
-        width: 100%;
-    }
-
-    .wrapper {
-        width: 100%;
-        height: unset;
-    }
-
-    #fullscreenContainer {
-        width: 100%;
-    }
-
-    .btn-container img {
-        height: 30px;
-        width: 30px;
-    }
-
-    .in-game-btn-container img {
-        height: 25px;
-        width: 25px;
-    }
-
-    .left-right-btn img {
-        width: 25px;
-        height: 25px;
-    }
-
-    #btnMobileSpace {
-        width: 50px;
-    }
-
-    #btnMobileBottle {
-        width: 60px;
-    }
-
-
-}
-
-@media only screen and (max-width: 600px) {
-    .btn-container img {
-        height: 20px;
-        width: 20px;
-    }
-
-    .in-game-btn-container img {
-        height: 20px;
-        width: 20px;
-    }
-
-    .left-right-btn img {
-        width: 20px;
-        height: 20px;
-    }
-
-    #btnMobileSpace {
-        width: 40px;
-    }
-
-    #btnMobileBottle {
-        width: 50px;
-    }
-
-    .btnRestart {
-        height: 40px;
-        width: 144px;
-        padding: 0;
-    }
-
-    .btnMainMenu {
-        height: 40px;
-        width: 144px;
-        padding: 0;
-    }
-
-    .gameOverBtnContainer {
-        margin-top: -60px;
-    }
-
-    .winScreenContainer h2 {
-        font-size: 30px;
-    }
-
-}
-
-@media only screen and (max-height: 600px) {
-    h1 {
-        display: none;
-    }
+.fullscreenMode {
+    border-radius: unset !important;
+    width: 100%;
 }
 
 
-@media only screen and (max-height: 480px) {
-    canvas {
-        height: 100vh;
-    }
+/* Loading Screen */
 
-    .wrapper {
-        height: 100vh !important;
-    }
-}
-
-
-
-
-
-
-.center{
+.center {
     display: flex;
     text-align: center;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-  }
+}
 
-  .ring{
+.ring {
     position: absolute;
     width: 200px;
     height: 200px;
     border-radius: 50%;
     animation: ring 2s linear infinite;
-  }
+}
 
-  @keyframes ring {
-    0%{
-      transform: rotate(0deg);
-      box-shadow: 1px 5px 2px #e65c00;
+@keyframes ring {
+    0% {
+        transform: rotate(0deg);
+        /* box-shadow: 1px 5px 2px #e65c00; */
+        box-shadow: 1px 5px 2px #FF9701;
     }
-    50%{
-      transform: rotate(180deg);
-      box-shadow: 1px 5px 2px #18b201;
-    }
-    100%{
-      transform: rotate(360deg);
-      box-shadow: 1px 5px 2px #0456c8;
-    }
-  }
 
-  .ring:before{
+    50% {
+        transform: rotate(180deg);
+        /* box-shadow: 1px 5px 2px #18b201; */
+        box-shadow: 1px 5px 2px #A7B622;
+    }
+
+    100% {
+        transform: rotate(360deg);
+        /* box-shadow: 1px 5px 2px #0456c8; */
+        box-shadow: 1px 5px 2px #E6426D;
+    }
+}
+
+.ring:before {
     position: absolute;
     content: '';
     left: 0;
@@ -517,20 +405,20 @@ td:nth-child(2) {
     height: 100%;
     width: 100%;
     border-radius: 50%;
-    box-shadow: 0 0 5px rgba(255,255,255,.3);
-  }
+    box-shadow: 0 0 5px rgba(255, 255, 255, .3);
+}
 
-  .loadingText{
+.loadingText {
     color: #737373;
     font-size: 20px;
     text-transform: uppercase;
     letter-spacing: 1px;
     line-height: 200px;
     animation: text 3s ease-in-out infinite;
-  }
-  
-  @keyframes text {
-    50%{
-      color: black;
+}
+
+@keyframes text {
+    50% {
+        color: black;
     }
-  }
+}

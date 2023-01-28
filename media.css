@@ -1,0 +1,103 @@
+@media only screen and (max-width: 820px) {
+    canvas {
+        width: 100%;
+    }
+
+    .wrapper {
+        width: 100%;
+        height: unset;
+    }
+
+    #fullscreenContainer {
+        width: 100%;
+    }
+
+    .btn-container img {
+        height: 30px;
+        width: 30px;
+    }
+
+    .in-game-btn-container img {
+        height: 25px;
+        width: 25px;
+    }
+
+    .left-right-btn img {
+        width: 25px;
+        height: 25px;
+    }
+
+    #btnMobileSpace {
+        width: 50px;
+    }
+
+    #btnMobileBottle {
+        width: 60px;
+    }
+
+
+}
+
+@media only screen and (max-width: 600px) {
+    .btn-container img {
+        height: 20px;
+        width: 20px;
+    }
+
+    .in-game-btn-container img {
+        height: 20px;
+        width: 20px;
+    }
+
+    .left-right-btn img {
+        width: 20px;
+        height: 20px;
+    }
+
+    #btnMobileSpace {
+        width: 40px;
+    }
+
+    #btnMobileBottle {
+        width: 50px;
+    }
+
+    .btnRestart {
+        height: 40px;
+        width: 144px;
+        padding: 0;
+    }
+
+    .btnMainMenu {
+        height: 40px;
+        width: 144px;
+        padding: 0;
+    }
+
+    .gameOverBtnContainer {
+        margin-top: -60px;
+    }
+
+    .winScreenContainer h2 {
+        font-size: 30px;
+    }
+
+}
+
+@media only screen and (max-height: 600px) {
+    h1 {
+        display: none;
+    }
+}
+
+
+@media only screen and (max-height: 480px) {
+    canvas {
+        height: 100vh;
+    }
+
+    .wrapper {
+        height: 100vh !important;
+    }
+}
+
