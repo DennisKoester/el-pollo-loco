@@ -119,6 +119,8 @@ class Endboss extends MoveableObject {
         let speedIncreaseThroughHit = world.level.endboss[0].x -= this.speedThroughHit;
         return speedIncreaseThroughHit;
     }
+
+
 }
 
 

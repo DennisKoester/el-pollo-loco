@@ -46,7 +46,6 @@ function startGame() {
 function start() {
     canvas = document.getElementById('canvas');
     world = new World(canvas, keyboard);
-    // hideStartScreen();
     checkForMobileDevice();
     backgroundMusic();
 }
@@ -78,43 +77,6 @@ function setStopableInterval(fn, time) {
 
 function clearAllIntervals() {
     for (let i = 1; i < 9999; i++) window.clearInterval(i);
-}
-
-
-
-document.addEventListener("DOMContentLoaded", initDetect)
-
-
-function initDetect() {
-    window.addEventListener("resize", detectDevice);
-}
-
-
-detectDevice = () => {
-    let detectObj = {
-        device: !!navigator.maxTouchPoints ? 'mobile' : 'computer',
-        orientation: !navigator.maxTouchPoints ? 'desktop' : !window.screen.orientation.angle ? 'portrait' : 'landscape'
-    };
-
-    if (detectObj['device'] == 'mobile') {
-        openFullscreen();
-        document.getElementById('closeFullscreen').classList.add('d-none');
-        // document.getElementById('fullscreenContainer').classList.add('rotate90');
-        console.log('mobile');
-    }
-
-    console.log(detectObj);
-    return detectObj;
-}
-
-
-function checkForMobileDevice() {
-    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-        document.getElementById('mobileBtns').classList.remove('d-none');
-    } else {
-        document.getElementById('mobileBtns').classList.add('d-none');
-    }
-
 }
 
 
@@ -276,6 +238,7 @@ function playGameOverSound() {
     game_over_sound.play();
 }
 
+
 function playEndbossSound() {
     background_music.pause();
     endboss_fight.play();
@@ -295,9 +258,9 @@ function turnSoundOff() {
     snoring_sound.muted = true;
     hurt_sound.muted = true;
     dead_sound.muted = true;
-    game_win_sound = true;
-    game_over_sound = false;
-    endboss_fight = false;
+    game_win_sound.muted = true;
+    game_over_sound.muted = true;
+    endboss_fight.muted = true;
 }
 
 
@@ -313,9 +276,9 @@ function turnSoundOn() {
     snoring_sound.muted = false;
     hurt_sound.muted = false;
     dead_sound.muted = false;
-    game_win_sound = false;
-    game_over_sound = false;
-    endboss_fight = false;
+    game_win_sound.muted = false;
+    game_over_sound.muted = false;
+    endboss_fight.muted = false;
 }
 
 
@@ -330,7 +293,6 @@ function resetMusic() {
     endboss_fight.currentTime = 0;
     background_music.pause();
     endboss_fight.pause();
-
 }
 
 
@@ -351,4 +313,41 @@ function gameIsLost() {
         resetMusic();
         clearAllIntervals();
     }, 3000);
+}
+
+// Mobile Section //
+
+document.addEventListener("DOMContentLoaded", initDetect)
+
+
+function initDetect() {
+    window.addEventListener("resize", detectDevice);
+}
+
+
+detectDevice = () => {
+    let detectObj = {
+        device: !!navigator.maxTouchPoints ? 'mobile' : 'computer',
+        orientation: !navigator.maxTouchPoints ? 'desktop' : !window.screen.orientation.angle ? 'portrait' : 'landscape'
+    };
+
+    if (detectObj['device'] == 'mobile') {
+        openFullscreen();
+        document.getElementById('closeFullscreen').classList.add('d-none');
+        // document.getElementById('fullscreenContainer').classList.add('rotate90');
+        console.log('mobile');
+    }
+
+    console.log(detectObj);
+    return detectObj;
+}
+
+
+function checkForMobileDevice() {
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        document.getElementById('mobileBtns').classList.remove('d-none');
+    } else {
+        document.getElementById('mobileBtns').classList.add('d-none');
+    }
+
 }
