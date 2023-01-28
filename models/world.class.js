@@ -37,7 +37,7 @@ class World {
             this.checkCollisionCoins();
             this.checkCollisonsBottles();
             this.checkCollisionsEndboss();
-        }, 1000 / 60); // TODO May adjust this
+        }, 1000 / 60);
     }
 
 

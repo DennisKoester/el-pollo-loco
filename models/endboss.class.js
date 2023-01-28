@@ -120,7 +120,6 @@ class Endboss extends MoveableObject {
         return speedIncreaseThroughHit;
     }
 
-
 }
 
 

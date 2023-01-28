@@ -35,7 +35,7 @@ function startGame() {
     showLoadingscreen();
     hideStartScreen();
     initLevel();
-    start();
+    initWorld();
 
     setTimeout(() => {
         hideLoadingscreen();
@@ -43,11 +43,11 @@ function startGame() {
 }
 
 
-function start() {
+function initWorld() {
     canvas = document.getElementById('canvas');
     world = new World(canvas, keyboard);
-    checkForMobileDevice();
-    backgroundMusic();
+    detectMobileDevice();
+    playBackgroundMusic();
 }
 
 
@@ -95,7 +95,7 @@ function openFullscreen() {
 function closeFullscreen() {
     if (document.exitFullscreen) {
         document.exitFullscreen();
-    } else if (document.webkitExitFullscreen) { /* Safari */
+    } else if (document.webkitExitFullscreen) {
         document.webkitExitFullscreen();
     }
     removeStylesForFullscreen();
@@ -220,7 +220,6 @@ function hideMobileBtns() {
 }
 
 
-
 function hideAllEndScreens() {
     document.getElementById('winScreenContainer').classList.add('d-none');
     document.getElementById('gameOverScreenContainer').classList.add('d-none');
@@ -279,7 +278,7 @@ function turnSoundOn() {
 }
 
 
-function backgroundMusic() {
+function playBackgroundMusic() {
     background_music.play();
     background_music.volume = 0.1;
 }
@@ -312,6 +311,7 @@ function gameIsLost() {
     }, 3000);
 }
 
+
 // Mobile Section //
 
 document.addEventListener("DOMContentLoaded", initDetect)
@@ -340,7 +340,7 @@ detectDevice = () => {
 }
 
 
-function checkForMobileDevice() {
+function detectMobileDevice() {
     if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
         document.getElementById('mobileBtns').classList.remove('d-none');
     } else {
