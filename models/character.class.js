@@ -4,7 +4,6 @@ class Character extends MoveableObject {
     height = 250;
     speed = 7;
     characterLastMovement = 0;
-    world; // TODO Why is wold here?!
 
     offset = {
         top: 100,
@@ -12,7 +11,6 @@ class Character extends MoveableObject {
         right: 20,
         left: 20
     }
-
 
     IMAGES_WALKING = [
         './img/2_character_pepe/2_walk/W-21.png',
@@ -140,6 +138,7 @@ class Character extends MoveableObject {
         return this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x;
     }
 
+
     moveRight() {
         super.moveRight();
         this.otherDirection = false;
@@ -209,7 +208,7 @@ class Character extends MoveableObject {
         this.world.camera_x = -this.x + 100;
     }
 
-    
+
     characterMoveTimepassed() {
         let timepassed = new Date().getTime() - this.characterLastMovement;
         timepassed = timepassed / 1000;

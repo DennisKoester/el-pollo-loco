@@ -2,7 +2,6 @@ class Chicken extends MoveableObject {
     y = 355;
     height = 70;
     width = 70;
-    intervalIds = [];
 
     offset = {
         top: 10,
@@ -25,8 +24,8 @@ class Chicken extends MoveableObject {
     constructor(x) {
         super().loadImage(this.IMAGES_WALKING[0]);
         this.loadImages(this.IMAGES_WALKING);
-        this.x = x + Math.random() * 500; // random number between 200 and 700
-        this.speed = 0.20 + Math.random() * 0.5; // Math Random generates a number between 0 and 1
+        this.x = x + Math.random() * 500; 
+        this.speed = 0.20 + Math.random() * 0.5;
         this.animateChicken();
     }
 

@@ -1,12 +1,12 @@
 class MoveableObject extends DrawableObject {
     speed = 0.15;
-    otherDirection = false;
     speedY = 0;
-    acceleration = 2;
     energy = 100;
     lastHit = 0;
+    acceleration = 2;
     progessCoinBar = 0;
     progressBottleBar = 0;
+    otherDirection = false;
 
 
     applyGravity() {
@@ -22,10 +22,10 @@ class MoveableObject extends DrawableObject {
 
 
     isAboveGround() {
-        if (this instanceof ThrowableObject) { // Throwable object should always fall out of the canvas
+        if (this instanceof ThrowableObject) {
             return true;
         } else {
-            return this.y < 180; //TODO Why return?
+            return this.y < 180;
         }
     }
 
@@ -59,15 +59,15 @@ class MoveableObject extends DrawableObject {
 
 
     isHurt() {
-        let timepassed = new Date().getTime() - this.lastHit; // Difference in ms
-        timepassed = timepassed / 1000; // Difference in s
+        let timepassed = new Date().getTime() - this.lastHit;
+        timepassed = timepassed / 1000;
         return timepassed < 1;
     }
 
 
     isHurtEndboss() {
-        let timepassed = new Date().getTime() - this.lastHit;  // Difference in milliseconds.
-        timepassed = timepassed / 1000;  // Difference in seconds.
+        let timepassed = new Date().getTime() - this.lastHit;
+        timepassed = timepassed / 1000;
         return timepassed < 0.5;
     }
 
@@ -98,8 +98,7 @@ class MoveableObject extends DrawableObject {
 
 
     playAnimation(images) {
-        let i = this.currentImage % images.length; // let i = 0 % 6;
-        // i = 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0
+        let i = this.currentImage % images.length;
         let path = images[i];
         this.img = this.imageCache[path];
         this.currentImage++;
@@ -117,7 +116,7 @@ class MoveableObject extends DrawableObject {
 
 
     jump() {
-        this.speedY = 30; //TODO Why no return?
+        this.speedY = 30;
     }
 
 
