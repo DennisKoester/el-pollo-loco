@@ -41,7 +41,6 @@ class Keyboard {
     }
 
 
-
     /**
     * Adds event listeners on specific keys for up and down. Only for mobile buttons.
     */
