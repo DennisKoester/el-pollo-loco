@@ -3,9 +3,9 @@ class Endboss extends MoveableObject {
     width = 300;
     y = 55;
     x = 3800;
-    hadFirstContact = false;
-    speedThroughHit = 50;
     speed = 15;
+    speedThroughHit = 50;
+    hadFirstContact = false;
 
     offset = {
         top: 90,
@@ -55,6 +55,9 @@ class Endboss extends MoveableObject {
     }
 
 
+    /**
+     * Calls the animations for the endboss only in reach.
+     */
     animateEndbossOnReach() {
         setStopableInterval(() => {
             if (world) {
@@ -67,6 +70,9 @@ class Endboss extends MoveableObject {
     }
 
 
+    /**
+     * Animations for the endboss behavior.
+     */
     animateEndboss() {
         if (this.isDead()) {
             this.playAnimation(this.IMAGES_DEAD);
@@ -89,16 +95,18 @@ class Endboss extends MoveableObject {
     }
 
 
-    // sameHeight() {
-    //     return world.level.endboss[0].x == world.character.x; // TODO Not working. Only animate if not the same x height.
-    // }
-
-
+    /**
+     * Checks if the character has a certain distance to the endboss.
+     * @returns {boolean}
+     */
     facingEachOther() {
         return world.level.endboss[0].x < world.character.x - 100;
     }
 
 
+    /**
+     * Sets the first contact on true when the character has reached a specific position.
+     */
     endbossReached() {
         if (world.character.x > 3400 && !this.hadFirstContact) {
             this.hadFirstContact = true;
@@ -106,16 +114,23 @@ class Endboss extends MoveableObject {
     }
 
 
+    /**
+     * Checks if the character has a certain distance to the endboss.
+     * @returns {boolean}
+     */
     endbossFightBegins() {
         return world.character.x > world.level.endboss[0].x - 500;
     }
 
 
+    /**
+     * Gives the endboss a boost forward when hitted.
+     * @returns {boolean}
+     */
     endbossRushForward() {
         let speedIncreaseThroughHit = world.level.endboss[0].x -= this.speedThroughHit;
         return speedIncreaseThroughHit;
     }
-
 }
 
 

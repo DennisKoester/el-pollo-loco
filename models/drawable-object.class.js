@@ -7,16 +7,18 @@ class DrawableObject {
     imageCache = {};
     currentImage = 0;
 
-
-    //loadImage('img/test.png')
+    /**
+     * Loads an specific image.
+     * @param {string} path The path of the image which will be loaded.
+     */
     loadImage(path) {
-        this.img = new Image(); // document.getElementById('image') <img id="image>" src>
+        this.img = new Image();
         this.img.src = path;
     }
 
 
     /**
-     * 
+     * Loads an array of images.
      * @param {array} arr ['img/image01.png', 'img/image2.png', ...]
      */
     loadImages(arr) {
@@ -25,28 +27,23 @@ class DrawableObject {
             img.src = path;
             this.imageCache[path] = img;
         });
-
     }
 
 
+    /**
+     * Draws an specific image to a specific postion inside the canvas.
+     * @param {string} ctx The context of the canvas.
+     */
     draw(ctx) {
         ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
     }
 
-    
- /*  draw(ctx) {
-          try {
-              ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
-          } catch (e) {
-              console.warn('error image', e);
-              console.log(this.img.src);
-          }
-      } */
-   
 
-
+    /**
+     * Draws frames around specific elements to see the actual hit box.
+     * @param {string} ctx The context of the canvas.
+     */
     drawFrame(ctx) {
-
         if (this instanceof Character || this instanceof Chicken || this instanceof Endboss || this instanceof ThrowableObject || this instanceof SmallChicken) {
             ctx.beginPath();
             ctx.lineWidth = '5';

@@ -14,6 +14,7 @@ class Coin extends MoveableObject {
         './img/8_coin/coin_2.png'
     ];
 
+
     constructor(x) {
         super().loadImage(this.IMAGES_COIN[0]);
         this.loadImages(this.IMAGES_COIN);
@@ -23,6 +24,9 @@ class Coin extends MoveableObject {
     }
 
 
+    /**
+     * Animation for the coins.
+     */
     animateCoins() {
         setStopableInterval(() => {
             this.playAnimation(this.IMAGES_COIN);
