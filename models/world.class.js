@@ -1,11 +1,11 @@
 class World {
-    character = new Character();
     level = level1;
     canvas;
     ctx;
     keyboard;
     camera_x = 0;
     collectedBottles = 0;
+    character = new Character();
     statusBarLife = new StatusbarLife();
     statusBarCoin = new StatusbarCoin();
     statusBarBottle = new StatusbarBottle();
@@ -26,11 +26,17 @@ class World {
     }
 
 
+    /**
+     * Links the world class with the character class.
+     */
     setWorld() {
         this.character.world = this;
     }
 
 
+    /**
+     * Checks all collisions between certain objects.
+     */
     checkCollisions() {
         setStopableInterval(() => {
             this.checkCollisionsEnemy();
@@ -41,6 +47,9 @@ class World {
     }
 
 
+    /**
+     * Checks the collision of a throwing bottle with the endboss.
+     */
     checkCollisionsWithThrowingBottle() {
         setStopableInterval(() => {
             this.checkCollisionBottleWithEndboss();
@@ -48,6 +57,9 @@ class World {
     }
 
 
+    /**
+     * Sets an interval for the throwing bottle.
+     */
     throwObjectInterval() {
         setStopableInterval(() => {
             this.checkThrowObjects();
@@ -55,8 +67,11 @@ class World {
     }
 
 
+    /**
+     * Throws a bottle if possible. Changes statusbar and plays sound.
+     */
     checkThrowObjects() {
-        if (this.keyboard.D && this.collectedBottles > 0) {
+        if (canBottleBeThrown()) {
             let bottle = new ThrowableObject(this.character.x, this.character.y + 100, this.character.otherDirection);
             this.throwAbleObject.push(bottle);
             this.collectedBottles--;
@@ -67,6 +82,18 @@ class World {
     }
 
 
+    /**
+     * Checks if "D" is pressed and bottles are collected.
+     * @returns {boolean}
+     */
+    canBottleBeThrown() {
+        return this.keyboard.D && this.collectedBottles > 0
+    }
+
+
+    /**
+     * Checks collision between character an enemy.
+     */
     checkCollisionsEnemy() {
         this.level.enemies.forEach((enemy) => {
             if (this.character.isColliding(enemy) && !this.character.isHurt()) {
@@ -82,6 +109,9 @@ class World {
     }
 
 
+    /**
+     * Checks collision between character and the endboss.
+     */
     checkCollisionsEndboss() {
         this.level.endboss.forEach((endboss) => {
             if (this.character.isColliding(endboss) && !this.character.isHurt() && !endboss.isDead()) {
@@ -95,6 +125,9 @@ class World {
     }
 
 
+    /**
+     * Checks collision between character and a coin to collect.
+     */
     checkCollisionCoins() {
         this.level.coins.forEach((coin) => {
             if (this.character.isColliding(coin)) {
@@ -107,6 +140,9 @@ class World {
     }
 
 
+    /**
+     * Check collision between character and a bottle to collect.
+     */
     checkCollisonsBottles() {
         this.level.bottles.forEach((bottle) => {
             if (this.character.isColliding(bottle)) {
@@ -120,6 +156,9 @@ class World {
     }
 
 
+    /**
+     * Checks collision between throwing bottle and the endboss.
+     */
     checkCollisionBottleWithEndboss() {
         this.throwAbleObject.forEach((bottle) => {
             this.level.endboss.forEach((endboss) => {
@@ -136,13 +175,19 @@ class World {
         });
     }
 
-    
+
+    /**
+     * Removes the coin of the game when collected.
+     */
     coinCollected(coin) {
         let i = this.level.coins.indexOf(coin);
         this.level.coins.splice(i, 1);
     }
 
 
+    /**
+     * Removes the bottle of the game when collected.
+     */
     bottleCollected(bottle) {
         let i = this.level.bottles.indexOf(bottle);
         this.level.bottles.splice(i, 1);
@@ -150,6 +195,10 @@ class World {
     }
 
 
+    /**
+     * Kills the chicken when jumped on. Plays sound and let the character jump.
+     * @param {string} enemy The current enemy.
+     */
     killChickenWithJump(enemy) {
         enemy.chickenKilled();
         this.character.jump();
@@ -160,18 +209,29 @@ class World {
     }
 
 
+    /**
+     * Removes the enemy from the game when killed.
+     * @param {string} enemy The current enemy.
+     */
     eraseEnemyFromArray(enemy) {
         let i = this.level.enemies.indexOf(enemy);
         this.level.enemies.splice(i, 1);
     }
 
 
+    /**
+     * Removes the bottle from the array when throwed.
+     * @param {string} bottle The current bottle.
+     */
     eraseThrowingBottleFromArray(bottle) {
         let i = this.throwAbleObject.indexOf(bottle);
         this.throwAbleObject.splice(i, 1);
     }
 
 
+    /**
+     * Draws all objects in the canvas.
+     */
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
 
@@ -186,8 +246,8 @@ class World {
         this.addToMap(this.statusBarBottle);
         this.addToMap(this.statusBarEndboss);
         this.addToMap(this.statusBarEndbossIcon);
-        this.ctx.translate(this.camera_x, 0);
 
+        this.ctx.translate(this.camera_x, 0);
 
         this.addObjectsToMap(this.level.bottles);
         this.addObjectsToMap(this.level.coins);
@@ -198,14 +258,16 @@ class World {
 
         this.ctx.translate(-this.camera_x, 0);
 
-        // Draw() repeats all the time
         let self = this;
         requestAnimationFrame(function () {
             self.draw();
         });
     }
 
-
+    /**
+     * Adds all the objects from the current array to the map.
+     * @param {string} objects The specific object which shall be added.
+     */
     addObjectsToMap(objects) {
         objects.forEach(o => {
             this.addToMap(o);
@@ -214,21 +276,26 @@ class World {
     }
 
 
+    /**
+     * Adds the moveable object to the map.
+     * @param {string} mo The specific moveable object which shall be added.
+     */
     addToMap(mo) {
         if (mo.otherDirection) {
             this.flipImage(mo);
         }
-
         mo.draw(this.ctx);
-
         // mo.drawFrame(this.ctx);
-
         if (mo.otherDirection) {
             this.flipImageBack(mo);
         }
     }
 
 
+    /**
+     * Flips the images of the moveable object when direction is changed.
+     * @param {string} mo The specific moveable object which shall be flipped.
+     */
     flipImage(mo) {
         this.ctx.save();
         this.ctx.translate(mo.width, 0);
@@ -237,6 +304,10 @@ class World {
     }
 
 
+    /**
+     * Flips the images back of the moveable object when direction is changed.
+     * @param {string} mo The specific moveable object which shall be flipped.
+     */
     flipImageBack(mo) {
         this.ctx.restore();
         mo.x = mo.x * -1;

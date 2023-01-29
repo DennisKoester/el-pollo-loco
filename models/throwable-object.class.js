@@ -33,17 +33,25 @@ class ThrowableObject extends MoveableObject {
         this.loadImages(this.IMAGES_BOTTLE_ROTATION);
         this.loadImages(this.IMAGES_BOTTLE_SPLASH);
         this.throwBottle();
+    }
+
+
+    /**
+     * Animates the throwing bottle and adds gravity to it.
+     */
+    throwBottle() {
+        this.applyGravityToBottle();
         this.animateBottle();
     }
 
 
     /**
-     * Throws a bottle.
+     * Applies gravity to the bottle.
      */
-    throwBottle() {
+    applyGravityToBottle() {
         this.applyGravity();
         this.speedY = 25;
-        let throwBottleInterval = setInterval(() => {
+        setInterval(() => {
             if (this.otherDirection) {
                 this.x -= 20;
             } else {
@@ -52,15 +60,15 @@ class ThrowableObject extends MoveableObject {
             }
             world.character.setTimeStamp();
         }, 25);
-        setStopableInterval(() => {
-            clearInterval(throwBottleInterval);
-        }, 1500);
     }
 
 
+    /**
+     * Animates the bottle while flying and on collision.
+     */
     animateBottle() {
         setStopableInterval(() => {
-            if (world.level.endboss[0].isHurtEndboss()) { // TODO Why [0] ??
+            if (world.level.endboss[0].isHurtEndboss()) {
                 this.playAnimation(this.IMAGES_BOTTLE_SPLASH);
             } else {
                 this.playAnimation(this.IMAGES_BOTTLE_ROTATION);
