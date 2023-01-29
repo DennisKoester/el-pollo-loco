@@ -60,12 +60,8 @@ class Endboss extends MoveableObject {
      */
     animateEndbossOnReach() {
         setStopableInterval(() => {
-            if (world) {
-                this.endbossReached();  //maybe start from world to cut the if statement
-            }
-            if (world && this.hadFirstContact == true) {
-                this.animateEndboss();
-            }
+            if (world) this.endbossReached();
+            if (world && this.hadFirstContact == true) this.animateEndboss();
         }, 120);
     }
 
