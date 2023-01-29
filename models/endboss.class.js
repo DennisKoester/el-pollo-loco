@@ -102,6 +102,7 @@ class Endboss extends MoveableObject {
         this.otherDirection = true;
     }
 
+    
     /**
      * Starts the animation for the endboss. Endboss is moving left and endboss sound starts.
      */
