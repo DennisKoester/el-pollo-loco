@@ -94,12 +94,18 @@ class Character extends MoveableObject {
     }
 
 
+    /**
+     * Calls the animation functions for the character
+     */
     animateCharacter() {
         setStopableInterval(() => this.moveCharacter(), 1000 / 60);
         setStopableInterval(() => this.playCharacter(), 150);
     }
 
 
+    /**
+     * Animation for the character movement.
+     */
     moveCharacter() {
         walking_sound.pause();
 
@@ -115,6 +121,9 @@ class Character extends MoveableObject {
     }
 
 
+    /**
+     * Animation for the behavior of the character.
+     */
     playCharacter() {
         snoring_sound.pause();
 
@@ -134,11 +143,36 @@ class Character extends MoveableObject {
     }
 
 
+    /**
+     * Checks if the right button is pressed and character has reached the end of level.
+     * @returns {boolean}
+     */
     canMoveRight() {
         return this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x;
     }
 
 
+    /**
+     * Checks if the left button is pressed.
+     * @returns {boolean}
+     */
+    canMoveLeft() {
+        return this.world.keyboard.LEFT && this.x > 0;
+    }
+
+
+    /**
+     * Checks if the Space Bar is pressed and character is not above the ground.
+     * @returns {boolean}
+     */
+    canJump() {
+        return this.world.keyboard.SPACE && !this.isAboveGround();
+    }
+
+
+    /**
+     * Moves the character to the right and plays sound.
+     */
     moveRight() {
         super.moveRight();
         this.otherDirection = false;
@@ -146,6 +180,9 @@ class Character extends MoveableObject {
     }
 
 
+    /**
+    * Moves the character to the left and plays sound.
+    */
     moveLeft() {
         super.moveLeft();
         this.otherDirection = true;
@@ -153,22 +190,18 @@ class Character extends MoveableObject {
     }
 
 
-    canMoveLeft() {
-        return this.world.keyboard.LEFT && this.x > 0;
-    }
-
-
-    canJump() {
-        return this.world.keyboard.SPACE && !this.isAboveGround();
-    }
-
-
+    /**
+     * Lets the character jump and plays sound.
+     */
     jump() {
         super.jump();
         jumping_sound.play();
     }
 
 
+    /**
+     * Plays the dead animation for the character incl. sound and calls the gameIsLost fucntion.
+     */
     dead() {
         this.playAnimation(this.IMAGES_DEAD);
         walking_sound.pause();
@@ -177,38 +210,62 @@ class Character extends MoveableObject {
     }
 
 
+    /**
+     * Plays the hurt animation for the character and plays sound.
+     */
     hurt() {
         this.playAnimation(this.IMAGES_HURT);
         hurt_sound.play();
     }
 
 
+    /**
+     * Plays the jump animation for the character and calls setTimeStamp function.
+     */
     jumpAnimation() {
         this.playAnimation(this.IMAGES_JUMPING);
         this.setTimeStamp();
     }
 
 
+    /**
+     * Plays walking animation for the character and calls setTimeStamp function.
+     */
     moveAnimation() {
-        this.setTimeStamp();
         this.playAnimation(this.IMAGES_WALKING);
+        this.setTimeStamp();
     }
 
+
+    /**
+     * Plays sleeping animation for the character and plays sound.
+     */
     sleepAnimation() {
         this.playAnimation(this.IMAGES_SLEEPING);
         snoring_sound.play();
     }
 
+
+    /**
+     * Plays idle animation for the character.
+     */
     idleAnimation() {
         this.playAnimation(this.IMAGES_IDLE);
     }
 
 
+    /**
+     * Scrolls the map while moving the character.
+     */
     scrollMap() {
         this.world.camera_x = -this.x + 100;
     }
 
 
+    /**
+     * Sets the time which is passed since last movement of the character.
+     * @returns {number}
+     */
     characterMoveTimepassed() {
         let timepassed = new Date().getTime() - this.characterLastMovement;
         timepassed = timepassed / 1000;
@@ -216,10 +273,10 @@ class Character extends MoveableObject {
     }
 
 
+    /**
+     * Sets a time stamp for the last movement of the character.
+     */
     setTimeStamp() {
         this.characterLastMovement = new Date().getTime();
     }
-
-
-
 }

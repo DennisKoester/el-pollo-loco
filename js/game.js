@@ -22,7 +22,7 @@ intervalIds = [];
 
 
 /**
- * Initials the game.
+ * Initializes the game.
  */
 function init() {
     showLoadingscreen();
@@ -50,7 +50,7 @@ function startGame() {
 
 
 /**
- * Initials the whole game.
+ * Initializes the game.
  */
 function initWorld() {
     canvas = document.getElementById('canvas');
