@@ -17,7 +17,7 @@ body {
     letter-spacing: 3px;
 }
 
-#fullscreenContainer{
+#fullscreenContainer {
     display: flex;
     justify-content: center;
 }
