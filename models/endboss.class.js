@@ -71,31 +71,70 @@ class Endboss extends MoveableObject {
      */
     animateEndboss() {
         if (this.isDead()) {
-            this.playAnimation(this.IMAGES_DEAD);
-            gameIsWon();
-        } else if (!this.isDead() && !this.isHurtEndboss() && this.endbossFightBegins() && !this.facingEachOther()) {
-            this.playAnimation(this.IMAGES_WALKING);
+            this.dead();
+        } else if (!this.isDead() && !this.isHurtEndboss() && this.endbossFightBegins() && !this.endbossInReach()) {
             this.moveLeft();
-            playEndbossSound();
-            this.otherDirection = false;
-        } else if (!this.isDead() && !this.isHurtEndboss() && this.endbossFightBegins() && this.facingEachOther()) {
-            this.playAnimation(this.IMAGES_WALKING);
+        } else if (!this.isDead() && !this.isHurtEndboss() && this.endbossFightBegins() && this.endbossInReach()) {
             this.moveRight();
-            this.otherDirection = true;
         } else if (!this.isDead() && !this.endbossFightBegins()) {
-            this.playAnimation(this.IMAGES_ALERT);
+            this.alert();
         } else if (!this.isDead() && this.isHurtEndboss()) {
-            this.playAnimation(this.IMAGES_HURT);
-            this.endbossRushForward();
+            this.hurt();
         }
     }
 
 
     /**
-     * Checks if the character has a certain distance to the endboss.
+      * Plays the dead animation for the endboss and calls the gameIsWon fucntion.
+      */
+    dead() {
+        this.playAnimation(this.IMAGES_DEAD);
+        gameIsWon();
+    }
+
+
+    /**
+     * Animates the endboss while moving right.
+     */
+    moveRight() {
+        super.moveRight();
+        this.playAnimation(this.IMAGES_WALKING);
+        this.otherDirection = true;
+    }
+
+    /**
+     * Starts the animation for the endboss. Endboss is moving left and endboss sound starts.
+     */
+    moveLeft() {
+        super.moveLeft();
+        this.playAnimation(this.IMAGES_WALKING);
+        playEndbossSound();
+        this.otherDirection = false;
+    }
+
+
+    /**
+     * Plays alert animation for the endboss.
+     */
+    alert() {
+        this.playAnimation(this.IMAGES_ALERT);
+    }
+
+
+    /**
+     * Plays the hurt animation for the endboss and let him rush forward.
+     */
+    hurt() {
+        this.playAnimation(this.IMAGES_HURT);
+        this.endbossRushForward();
+    }
+
+
+    /**
+     * Checks if the character is close enough to the endboss to let him move.
      * @returns {boolean}
      */
-    facingEachOther() {
+    endbossInReach() {
         return world.level.endboss[0].x < world.character.x - 100;
     }
 
