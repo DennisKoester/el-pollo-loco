@@ -71,7 +71,7 @@ class World {
      * Throws a bottle if possible. Changes statusbar and plays sound.
      */
     checkThrowObjects() {
-        if (canBottleBeThrown()) {
+        if (this.canBottleBeThrown()) {
             let bottle = new ThrowableObject(this.character.x, this.character.y + 100, this.character.otherDirection);
             this.throwAbleObject.push(bottle);
             this.collectedBottles--;
@@ -236,33 +236,54 @@ class World {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
 
         this.ctx.translate(this.camera_x, 0);
-        this.addObjectsToMap(this.level.backgroundObjects);
-        this.addObjectsToMap(this.level.clouds);
+
+        this.addWoldGraphics();
+        this.addAllMoveableObjects()
 
         this.ctx.translate(-this.camera_x, 0);
-        // ----- Space for fixed objects ----- 
-        this.addToMap(this.statusBarLife);
-        this.addToMap(this.statusBarCoin);
-        this.addToMap(this.statusBarBottle);
-        this.addToMap(this.statusBarEndboss);
-        this.addToMap(this.statusBarEndbossIcon);
 
-        this.ctx.translate(this.camera_x, 0);
-
-        this.addObjectsToMap(this.level.bottles);
-        this.addObjectsToMap(this.level.coins);
-        this.addObjectsToMap(this.level.enemies);
-        this.addObjectsToMap(this.level.endboss);
-        this.addObjectsToMap(this.throwAbleObject);
-        this.addToMap(this.character);
-
-        this.ctx.translate(-this.camera_x, 0);
+        this.addStatusBars();
 
         let self = this;
         requestAnimationFrame(function () {
             self.draw();
         });
     }
+
+
+    /**
+     * Adds all moveable objects to the world.
+     */
+    addAllMoveableObjects() {
+        this.addObjectsToMap(this.level.bottles);
+        this.addObjectsToMap(this.level.coins);
+        this.addObjectsToMap(this.level.enemies);
+        this.addObjectsToMap(this.level.endboss);
+        this.addObjectsToMap(this.throwAbleObject);
+        this.addToMap(this.character);
+    }
+
+
+    /**
+     * Adds all graphics from the world inside.
+     */
+    addWoldGraphics() {
+        this.addObjectsToMap(this.level.backgroundObjects);
+        this.addObjectsToMap(this.level.clouds);
+    }
+
+
+    /**
+     * Add all status bars to the canvas.
+     */
+    addStatusBars() {
+        this.addToMap(this.statusBarLife);
+        this.addToMap(this.statusBarCoin);
+        this.addToMap(this.statusBarBottle);
+        this.addToMap(this.statusBarEndboss);
+        this.addToMap(this.statusBarEndbossIcon);
+    }
+
 
     /**
      * Adds all the objects from the current array to the map.

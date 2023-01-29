@@ -180,9 +180,10 @@
             <!--Game Btns-->
             <div id="in-game-btns" class="in-game-btn-container d-none">
                 <img src="./img/icons/icons8-neustart-50.png" alt="Restart" onclick="restartGame()">
-                <img src="./img/icons/icons8-ton-50.png" class="audioOnIcon" onclick="turnSoundOn()" id="audioOnIcon">
-                <img src="./img/icons/icons8-kein-ton-50.png" class="audioOffIcon" onclick="turnSoundOff()"
-                    id="audioOffIcon">
+                <img src="./img/icons/icons8-ton-50.png" class="audioOnIcon d-none"
+                    onclick="turnSoundOn('audioOffIcon', 'audioOnIcon', 'd-none')" id="audioOnIcon">
+                <img src="./img/icons/icons8-kein-ton-50.png" class="audioOffIcon"
+                    onclick="turnSoundOff('audioOffIcon', 'audioOnIcon', 'd-none')" id="audioOffIcon">
                 <img id="openFullscreen" src="./img/icons/icons8-fullscreen.png" alt="Fullscreen On"
                     onclick="openFullscreen()">
                 <img id="closeFullscreen" class="d-none" src="./img/icons/icons8-exit_fullscreen.png"

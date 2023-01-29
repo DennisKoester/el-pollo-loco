@@ -334,8 +334,12 @@ function playEndbossSound() {
 
 /**
  * Turns all music and effect sounds off.
+ * @param {string} id ID of the first element.
+ * @param {string} id2 ID of the second element.
+ * @param {string} classList Class which will be toggled.
  */
-function turnSoundOff() {
+function turnSoundOff(id, id2, classList) {
+    toggleClassList(id, id2, classList);
     background_music.muted = true;
     chicken_dead_sound.muted = true;
     throw_sound.muted = true;
@@ -355,8 +359,12 @@ function turnSoundOff() {
 
 /**
  * Turns all music and effect sounds on.
+ * @param {string} id ID of the first element.
+ * @param {string} id2 ID of the second element.
+ * @param {string} classList Class which will be toggled.
  */
-function turnSoundOn() {
+function turnSoundOn(id, id2, classList) {
+    toggleClassList(id, id2, classList)
     background_music.muted = false;
     chicken_dead_sound.muted = false;
     throw_sound.muted = false;
@@ -373,6 +381,17 @@ function turnSoundOn() {
     endboss_fight.muted = false;
 }
 
+
+/**
+ * Toggle a certain class of an element.
+ * @param {string} id ID of the first element.
+ * @param {string} id2 ID of the second element.
+ * @param {string} classList Class which will be toggled.
+ */
+function toggleClassList(id, id2, classList) {
+    document.getElementById(id).classList.toggle(classList);
+    document.getElementById(id2).classList.toggle(classList);
+}
 
 /**
  * Plays the background music.
