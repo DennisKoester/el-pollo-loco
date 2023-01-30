@@ -418,6 +418,7 @@ function resetMusic() {
  */
 function gameIsWon() {
     setTimeout(() => {
+        closeFullscreen();
         showWinScreen();
         playGameWinSound();
         resetMusic();
@@ -431,6 +432,7 @@ function gameIsWon() {
  */
 function gameIsLost() {
     setTimeout(() => {
+        closeFullscreen();
         showGameOverScreen();
         playGameOverSound();
         resetMusic();
