@@ -2,6 +2,7 @@ let canvas;
 let world;
 let keyboard = new Keyboard();
 let updateOrientation;
+let isFullScreenMode = false;
 
 let background_music = new Audio("./audio/background_music.mp3");
 let chicken_dead_sound = new Audio("./audio/chicken_dead.mp3");
@@ -27,6 +28,7 @@ intervalIds = [];
 function init() {
 	showLoadingscreen();
 	// detectDevice();
+	setFullScreenHandlers();
 	setTimeout(() => {
 		hideLoadingscreen();
 	}, 2000);
@@ -92,6 +94,58 @@ function setStopableInterval(fn, time) {
  */
 function clearAllIntervals() {
 	for (let i = 1; i < 9999; i++) window.clearInterval(i);
+}
+
+function toggleFullscreen() {
+	const elem = document.getElementById("fullscreenContainer");
+	if (isFullScreenMode) {
+		setParamOnExitFullscreen(false);
+		document.exitFullscreen();
+		removeStylesForFullscreen();
+	} else {
+		setParamOnExitFullscreen(true);
+		elem.requestFullscreen();
+		addStylesForFullscreen();
+	}
+}
+
+/**
+ * Sets event listeners for monitoring fullscreen mode
+ */
+function setFullScreenHandlers() {
+	document.addEventListener("fullscreenchange", exitFullscreenHandler);
+	document.addEventListener("webkitfullscreenchange", exitFullscreenHandler);
+	document.addEventListener("mozfullscreenchange", exitFullscreenHandler);
+	document.addEventListener("MSFullscreenChange", exitFullscreenHandler);
+}
+
+/**
+ * Handles exiting fullscreen
+ */
+function exitFullscreenHandler() {
+	if (
+		!document.fullscreenElement &&
+		!document.webkitIsFullScreen &&
+		!document.mozFullScreen &&
+		!document.msFullscreenElement
+	) {
+		setParamOnExitFullscreen(false);
+	}
+}
+
+/**
+ * Sets the parameters for the control of the fullscreen mode
+ * @param {Boolean} statusFullscreen - The status of the fullscreen mode
+ */
+function setParamOnExitFullscreen(statusFullscreen) {
+	// const btnFullScreen = document.querySelector('#btn-fullscreen > img');
+	isFullScreenMode = statusFullscreen;
+	// if (statusFullscreen) {
+	//     btnFullScreen.src = 'icons/exit-fullscreen.png';
+	// }
+	// else {
+	//     btnFullScreen.src = 'icons/enter-fullscreen.png';
+	// }
 }
 
 /**
