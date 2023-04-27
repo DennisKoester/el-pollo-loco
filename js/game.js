@@ -425,6 +425,9 @@ function gameIsLost() {
 
 // Mobile Section //
 
+document.addEventListener("DOMContentLoaded", handleTurnPhonePopup);
+window.addEventListener("resize", handleTurnPhonePopup);
+
 /**
  * Detects the mobile device and shows or hides the mobile buttons.
  */
@@ -439,9 +442,6 @@ function detectMobileDevice() {
 		hideMobileBtns();
 	}
 }
-
-document.addEventListener("DOMContentLoaded", handleTurnPhonePopup);
-window.addEventListener("resize", handleTurnPhonePopup);
 
 /**
  * Handles the visibility of the turn yout phone message
