@@ -1,121 +1,137 @@
 @media only screen and (max-width: 820px) {
-    canvas {
-        width: 100%;
-    }
+	canvas {
+		width: 100%;
+	}
 
-    .wrapper {
-        width: 100%;
-        height: unset;
-    }
+	.turnPhoneScreen {
+		position: absolute;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		z-index: 99;
+        background-color: black;
+	}
 
-    #fullscreenContainer {
-        width: 100%;
-    }
+	.turnPhoneScreen img {
+		width: 100%;
+		max-width: 400px;
+		height: auto;
+	}
 
-    .btn-container img {
-        height: 30px;
-        width: 30px;
-    }
+	.wrapper {
+		width: 100%;
+		height: unset;
+	}
 
-    .in-game-btn-container img {
-        height: 25px;
-        width: 25px;
-    }
+	#fullscreenContainer {
+		width: 100%;
+	}
 
-    .left-right-btn img {
-        width: 25px;
-        height: 25px;
-    }
+	.btn-container img {
+		height: 30px;
+		width: 30px;
+	}
 
-    #btnMobileSpace {
-        width: 50px;
-    }
+	.in-game-btn-container img {
+		height: 25px;
+		width: 25px;
+	}
 
-    #btnMobileBottle {
-        width: 60px;
-    }
+	.left-right-btn img {
+		width: 25px;
+		height: 25px;
+	}
+
+	#btnMobileSpace {
+		width: 50px;
+	}
+
+	#btnMobileBottle {
+		width: 60px;
+	}
 }
 
-@media only screen and (max-device-height: 390px) and (max-device-width: 844px) and (-webkit-device-pixel-ratio: 3) and (orientation : landscape) {
-    .in-game-btn-container img {
-        height: 25px !important;
-        width: 25px !important;
-    }
+@media only screen and (max-device-height: 390px) and (max-device-width: 844px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape) {
+	.in-game-btn-container img {
+		height: 25px !important;
+		width: 25px !important;
+	}
 
-    .left-right-btn img {
-        width: 35px;
-        height: 35px;
-    }
+	.left-right-btn img {
+		width: 35px;
+		height: 35px;
+	}
 
-    #btnMobileSpace {
-        width: 50px;
-    }
+	#btnMobileSpace {
+		width: 50px;
+	}
 
-    #btnMobileBottle {
-        width: 60px;
-    }
-
+	#btnMobileBottle {
+		width: 60px;
+	}
 }
 
 @media only screen and (max-width: 600px) {
-    .btn-container img {
-        height: 20px;
-        width: 20px;
-    }
+	.btn-container img {
+		height: 20px;
+		width: 20px;
+	}
 
-    .in-game-btn-container img {
-        height: 20px;
-        width: 20px;
-    }
+	.in-game-btn-container img {
+		height: 20px;
+		width: 20px;
+	}
 
-    .left-right-btn img {
-        width: 20px;
-        height: 20px;
-    }
+	.left-right-btn img {
+		width: 20px;
+		height: 20px;
+	}
 
-    #btnMobileSpace {
-        width: 40px;
-    }
+	#btnMobileSpace {
+		width: 40px;
+	}
 
-    #btnMobileBottle {
-        width: 50px;
-    }
+	#btnMobileBottle {
+		width: 50px;
+	}
 
-    .btnRestart {
-        height: 40px;
-        width: 144px;
-        padding: 0;
-    }
+	.btnRestart {
+		height: 40px;
+		width: 144px;
+		padding: 0;
+	}
 
-    .btnMainMenu {
-        height: 40px;
-        width: 144px;
-        padding: 0;
-    }
+	.btnMainMenu {
+		height: 40px;
+		width: 144px;
+		padding: 0;
+	}
 
-    .gameOverBtnContainer {
-        margin-top: -60px;
-    }
+	.gameOverBtnContainer {
+		margin-top: -60px;
+	}
 
-    .winScreenContainer h2 {
-        font-size: 30px;
-    }
-
+	.winScreenContainer h2 {
+		font-size: 30px;
+	}
 }
 
 @media only screen and (max-height: 600px) {
-    h1 {
-        display: none;
-    }
+	h1 {
+		display: none;
+	}
 }
 
-
 @media only screen and (max-height: 480px) {
-    canvas {
-        height: 100vh;
-    }
+	canvas {
+		height: 100vh;
+	}
 
-    .wrapper {
-        height: 100vh !important;
-    }
+	.wrapper {
+		height: 100vh !important;
+	}
 }
