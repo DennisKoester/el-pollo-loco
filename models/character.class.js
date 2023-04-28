@@ -128,7 +128,7 @@ class Character extends MoveableObject {
 			this.jumpAnimation();
 		} else if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
 			this.moveAnimation();
-		} else if (this.characterMoveTimepassed() > 3) {
+		} else if (this.characterMoveTimepassed() > 4) {
 			this.sleepAnimation();
 		} else {
 			this.idleAnimation();
