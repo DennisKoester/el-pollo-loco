@@ -1,7 +1,6 @@
 let canvas;
 let world;
 let keyboard = new Keyboard();
-let updateOrientation;
 let isFullScreenMode = false;
 
 let background_music = new Audio("./audio/background_music.mp3");
@@ -27,7 +26,6 @@ intervalIds = [];
  */
 function init() {
 	showLoadingscreen();
-	// detectDevice();
 	setFullScreenHandlers();
 	setTimeout(() => {
 		hideLoadingscreen();
@@ -101,11 +99,27 @@ function toggleFullscreen() {
 	if (isFullScreenMode) {
 		setParamOnExitFullscreen(false);
 		document.exitFullscreen();
-		removeStylesForFullscreen();
 	} else {
 		setParamOnExitFullscreen(true);
 		elem.requestFullscreen();
-		addStylesForFullscreen();
+	}
+}
+
+/**
+ * Sets the parameters for the control of the fullscreen mode
+ * @param {Boolean} statusFullscreen - The status of the fullscreen mode
+ */
+function setParamOnExitFullscreen(statusFullscreen) {
+	const btnsFullScreen = document.querySelectorAll(".toggleFullscreenBtn");
+	isFullScreenMode = statusFullscreen;
+	for (let i = 0; i < btnsFullScreen.length; i++) {
+		if (statusFullscreen) {
+			btnsFullScreen[i].src = "./img/icons/icons8-exit_fullscreen.png";
+			addStylesForFullscreen();
+		} else {
+			btnsFullScreen[i].src = "./img/icons/icons8-fullscreen.png";
+			removeStylesForFullscreen();
+		}
 	}
 }
 
@@ -133,66 +147,51 @@ function exitFullscreenHandler() {
 	}
 }
 
-/**
- * Sets the parameters for the control of the fullscreen mode
- * @param {Boolean} statusFullscreen - The status of the fullscreen mode
- */
-function setParamOnExitFullscreen(statusFullscreen) {
-	// const btnFullScreen = document.querySelector('#btn-fullscreen > img');
-	isFullScreenMode = statusFullscreen;
-	// if (statusFullscreen) {
-	//     btnFullScreen.src = 'icons/exit-fullscreen.png';
-	// }
-	// else {
-	//     btnFullScreen.src = 'icons/enter-fullscreen.png';
-	// }
-}
+// /**
+//  * Opens the fullscreen mode.
+//  */
+// function openFullscreen() {
+// 	let fullscreen = document.getElementById("fullscreenContainer");
 
-/**
- * Opens the fullscreen mode.
- */
-function openFullscreen() {
-	let fullscreen = document.getElementById("fullscreenContainer");
+// 	if (fullscreen.requestFullScreen) {
+// 		fullscreen.requestFullScreen();
+// 	} else if (fullscreen.msRequestFullscreen) {
+// 		fullscreen.msRequestFullscreen();
+// 	} else if (fullscreen.webkitRequestFullScreen) {
+// 		fullscreen.webkitRequestFullScreen();
+// 	}
+// 	addStylesForFullscreen();
+// }
 
-	if (fullscreen.requestFullScreen) {
-		fullscreen.requestFullScreen();
-	} else if (fullscreen.msRequestFullscreen) {
-		fullscreen.msRequestFullscreen();
-	} else if (fullscreen.webkitRequestFullScreen) {
-		fullscreen.webkitRequestFullScreen();
-	}
-	addStylesForFullscreen();
-}
-
-/**
- * Closes the fullscreen mode.
- */
-function closeFullscreen() {
-	if (
-		window.fullScreen ||
-		(window.innerWidth == screen.width &&
-			window.innerHeight == screen.height)
-	) {
-		if (document.exitFullscreen) {
-			document.exitFullscreen();
-		} else if (document.webkitExitFullscreen) {
-			document.webkitExitFullscreen();
-		} else if (fullscreen.webkitRequestFullScreen) {
-			fullscreen.webkitCancelFullScreen();
-		}
-		removeStylesForFullscreen();
-	}
-}
+// /**
+//  * Closes the fullscreen mode.
+//  */
+// function closeFullscreen() {
+// 	if (
+// 		window.fullScreen ||
+// 		(window.innerWidth == screen.width &&
+// 			window.innerHeight == screen.height)
+// 	) {
+// 		if (document.exitFullscreen) {
+// 			document.exitFullscreen();
+// 		} else if (document.webkitExitFullscreen) {
+// 			document.webkitExitFullscreen();
+// 		} else if (fullscreen.webkitRequestFullScreen) {
+// 			fullscreen.webkitCancelFullScreen();
+// 		}
+// 		removeStylesForFullscreen();
+// 	}
+// }
 
 /**
  * This function can close the fullscreen mode on ESC and bring back all the styles.
  */
-window.addEventListener("keyup", function (event) {
-	if (event.key === "Escape") {
-		console.log("ESCAPE");
-		removeStylesForFullscreen();
-	}
-});
+// window.addEventListener("keyup", function (event) {
+// 	if (event.key === "Escape") {
+// 		console.log("ESCAPE");
+// 		removeStylesForFullscreen();
+// 	}
+// });
 
 /**
  * Shows the loading screen.
@@ -220,8 +219,6 @@ function addStylesForFullscreen() {
 	document.getElementById("wrapper").classList.remove("bg-color");
 	document.getElementById("wrapper").classList.add("flex-center");
 	document.getElementById("wrapper").style.height = "unset";
-	document.getElementById("closeFullscreen").classList.remove("d-none");
-	document.getElementById("openFullscreen").classList.add("d-none");
 }
 
 /**
@@ -235,8 +232,6 @@ function removeStylesForFullscreen() {
 	document.getElementById("wrapper").classList.remove("fullscreenMode");
 	document.getElementById("wrapper").classList.add("bg-color");
 	document.getElementById("wrapper").classList.remove("flex-center");
-	document.getElementById("openFullscreen").classList.remove("d-none");
-	document.getElementById("closeFullscreen").classList.add("d-none");
 }
 
 /**
