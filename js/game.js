@@ -22,14 +22,17 @@ i = 1;
 intervalIds = [];
 
 /**
+ * Handles the preloader
+ */
+window.addEventListener("load", () => {
+	hideLoadingscreen();
+});
+
+/**
  * Initializes the game.
  */
 function init() {
-	showLoadingscreen();
 	setFullScreenHandlers();
-	setTimeout(() => {
-		hideLoadingscreen();
-	}, 2000);
 }
 
 /**
@@ -53,7 +56,9 @@ function initWorld() {
 	canvas = document.getElementById("canvas");
 	world = new World(canvas, keyboard);
 	detectMobileDevice();
-	playBackgroundMusic();
+	setTimeout(() => {
+		playBackgroundMusic();
+	}, 1000);
 }
 
 /**
@@ -94,6 +99,9 @@ function clearAllIntervals() {
 	for (let i = 1; i < 9999; i++) window.clearInterval(i);
 }
 
+/**
+ * Toggles the fullscreen mode
+ */
 function toggleFullscreen() {
 	const elem = document.getElementById("fullscreenContainer");
 	if (isFullScreenMode) {
