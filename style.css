@@ -98,11 +98,6 @@ span {
 	cursor: pointer;
 }
 
-.btn-container img:hover {
-	transition: all 225ms ease-in-out;
-	transform: scale(1.2);
-}
-
 .in-game-btn-container {
 	position: absolute;
 	top: 13px;
@@ -117,23 +112,14 @@ span {
 	cursor: pointer;
 }
 
-.in-game-btn-container img:hover {
-	transition: all 225ms ease-in-out;
-	transform: scale(1.2);
-}
-
 .arrowBack {
 	position: absolute;
-	left: 25px;
+	right: 25px;
 	top: 25px;
 	width: 40px;
 	height: 40px;
 	cursor: pointer;
-}
-
-.arrowBack:hover {
-	transition: all 225ms ease-in-out;
-	transform: scale(1.2);
+	transform: rotate(180deg);
 }
 
 .controlBtnsDesc {
@@ -256,13 +242,13 @@ span {
 }
 
 .containerGameControls {
-	background-color: rgba(255, 166, 0, 0.445);
+	background-color: rgb(255, 166, 0);
 	height: 100%;
 	min-width: 100%;
 }
 
 .containerGameDesc {
-	background-color: rgba(255, 166, 0, 0.445);
+	background-color: rgb(255, 166, 0);
 	height: 100%;
 	min-width: 100%;
 }
@@ -308,11 +294,6 @@ td:nth-child(2) {
 	cursor: pointer;
 }
 
-.btnRestart:hover {
-	transition: all 75ms ease-in-out;
-	transform: scale(1.05);
-}
-
 .btnMainMenu {
 	background-color: #ffcc00;
 	box-sizing: border-box;
@@ -331,11 +312,6 @@ td:nth-child(2) {
 	cursor: pointer;
 }
 
-.btnMainMenu:hover {
-	transition: 75ms ease-in-out;
-	transform: scale(1.05);
-}
-
 /* Help Classes */
 
 .d-none {
@@ -350,8 +326,8 @@ td:nth-child(2) {
 	transform: rotate(90deg);
 }
 
-.padding20 {
-	padding: 20px;
+.padding40 {
+	padding: 40px;
 }
 
 .flex-center {

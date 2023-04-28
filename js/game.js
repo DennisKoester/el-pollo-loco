@@ -147,52 +147,6 @@ function exitFullscreenHandler() {
 	}
 }
 
-// /**
-//  * Opens the fullscreen mode.
-//  */
-// function openFullscreen() {
-// 	let fullscreen = document.getElementById("fullscreenContainer");
-
-// 	if (fullscreen.requestFullScreen) {
-// 		fullscreen.requestFullScreen();
-// 	} else if (fullscreen.msRequestFullscreen) {
-// 		fullscreen.msRequestFullscreen();
-// 	} else if (fullscreen.webkitRequestFullScreen) {
-// 		fullscreen.webkitRequestFullScreen();
-// 	}
-// 	addStylesForFullscreen();
-// }
-
-// /**
-//  * Closes the fullscreen mode.
-//  */
-// function closeFullscreen() {
-// 	if (
-// 		window.fullScreen ||
-// 		(window.innerWidth == screen.width &&
-// 			window.innerHeight == screen.height)
-// 	) {
-// 		if (document.exitFullscreen) {
-// 			document.exitFullscreen();
-// 		} else if (document.webkitExitFullscreen) {
-// 			document.webkitExitFullscreen();
-// 		} else if (fullscreen.webkitRequestFullScreen) {
-// 			fullscreen.webkitCancelFullScreen();
-// 		}
-// 		removeStylesForFullscreen();
-// 	}
-// }
-
-/**
- * This function can close the fullscreen mode on ESC and bring back all the styles.
- */
-// window.addEventListener("keyup", function (event) {
-// 	if (event.key === "Escape") {
-// 		console.log("ESCAPE");
-// 		removeStylesForFullscreen();
-// 	}
-// });
-
 /**
  * Shows the loading screen.
  */
@@ -260,9 +214,6 @@ function hideStartScreen() {
 function openGameDesc() {
 	document.getElementById("containerGameDesc").classList.remove("d-none");
 	document.getElementById("startScreenContainer").classList.add("d-none");
-	document
-		.getElementById("fullscreenContainer")
-		.classList.add("fullscreenMode");
 }
 
 /**
@@ -271,9 +222,6 @@ function openGameDesc() {
 function closeGameDesc() {
 	document.getElementById("containerGameDesc").classList.add("d-none");
 	document.getElementById("startScreenContainer").classList.remove("d-none");
-	document
-		.getElementById("fullscreenContainer")
-		.classList.remove("fullscreenMode");
 }
 
 /**
@@ -282,9 +230,6 @@ function closeGameDesc() {
 function openControlDesc() {
 	document.getElementById("containerGameControls").classList.remove("d-none");
 	document.getElementById("startScreenContainer").classList.add("d-none");
-	document
-		.getElementById("fullscreenContainer")
-		.classList.add("fullscreenMode");
 }
 
 /**
@@ -293,9 +238,6 @@ function openControlDesc() {
 function closeControlDesc() {
 	document.getElementById("containerGameControls").classList.add("d-none");
 	document.getElementById("startScreenContainer").classList.remove("d-none");
-	document
-		.getElementById("fullscreenContainer")
-		.classList.remove("fullscreenMode");
 }
 
 /**
@@ -451,7 +393,6 @@ function resetMusic() {
  */
 function gameIsWon() {
 	setTimeout(() => {
-		closeFullscreen();
 		showWinScreen();
 		playGameWinSound();
 		resetMusic();
@@ -464,7 +405,6 @@ function gameIsWon() {
  */
 function gameIsLost() {
 	setTimeout(() => {
-		closeFullscreen();
 		showGameOverScreen();
 		playGameOverSound();
 		resetMusic();

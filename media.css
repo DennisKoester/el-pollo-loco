@@ -135,3 +135,30 @@
 		height: 100vh !important;
 	}
 }
+
+@media (hover: hover) {
+	.btn-container img:hover {
+		transition: all 125ms ease-in-out;
+		transform: scale(1.2);
+	}
+
+	.in-game-btn-container img:hover {
+		transition: all 125ms ease-in-out;
+		transform: scale(1.2);
+	}
+
+	.arrowBack:hover {
+		transition: all 125ms ease-in-out;
+		transform: scale(1.2) rotate(180deg);
+	}
+
+	.btnRestart:hover {
+		transition: all 125ms ease-in-out;
+		transform: scale(1.05);
+	}
+
+	.btnMainMenu:hover {
+		transition: 125ms ease-in-out;
+		transform: scale(1.05);
+	}
+}
