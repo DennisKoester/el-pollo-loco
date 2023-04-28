@@ -403,11 +403,11 @@ function resetMusic() {
  */
 function gameIsWon() {
 	setTimeout(() => {
+		clearAllIntervals();
 		showWinScreen();
 		playGameWinSound();
 		resetMusic();
-		clearAllIntervals();
-	}, 3000);
+	}, 2000);
 }
 
 /**
@@ -415,11 +415,11 @@ function gameIsWon() {
  */
 function gameIsLost() {
 	setTimeout(() => {
+		clearAllIntervals();
 		showGameOverScreen();
 		playGameOverSound();
 		resetMusic();
-		clearAllIntervals();
-	}, 3000);
+	}, 2000);
 }
 
 // Mobile Section //
