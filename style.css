@@ -57,7 +57,7 @@ h2 {
 	text-align: center;
 }
 
-span {
+p {
 	font-size: 22px;
 }
 
@@ -114,8 +114,8 @@ span {
 
 .arrowBack {
 	position: absolute;
-	right: 25px;
-	top: 25px;
+	right: 40px;
+	top: 20px;
 	width: 40px;
 	height: 40px;
 	cursor: pointer;
@@ -227,7 +227,7 @@ span {
 	height: 100%;
 	top: 0;
 	left: 0;
-	padding: 0 20px 15px 20px;
+	padding: 0 30px 25px 30px;
 }
 
 .gameOverScreen {
@@ -236,9 +236,9 @@ span {
 }
 
 .gameOverBtnContainer {
-	margin-top: -70px;
-	margin-left: 20px;
-	margin-right: 20px;
+	margin-top: -78px;
+	margin-left: 30px;
+	margin-right: 30px;
 }
 
 .containerGameControls {
@@ -251,6 +251,7 @@ span {
 	background-color: rgb(255, 166, 0);
 	height: 100%;
 	min-width: 100%;
+	overflow-y: auto;
 }
 
 table {
@@ -326,8 +327,8 @@ td:nth-child(2) {
 	transform: rotate(90deg);
 }
 
-.padding40 {
-	padding: 40px;
+.paddingDesc {
+	padding: 30px 50px;
 }
 
 .flex-center {
@@ -341,10 +342,6 @@ td:nth-child(2) {
 	justify-content: space-between;
 	align-items: center;
 }
-
-/* .bg-color {
-	background-color: rgba(255, 166, 0, 0.445);
-} */
 
 .fullscreenMode {
 	border-radius: unset !important;

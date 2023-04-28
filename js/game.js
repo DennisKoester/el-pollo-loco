@@ -200,6 +200,7 @@ function showStartScreen() {
  */
 function hideStartScreen() {
 	document.getElementById("loadingScreen").classList.remove("d-none");
+	document.getElementById("wrapper").style.width = "unset";
 
 	setTimeout(() => {
 		document.getElementById("startScreenContainer").classList.add("d-none");
@@ -287,6 +288,7 @@ function hideMobileBtns() {
 function hideAllEndScreens() {
 	document.getElementById("winScreenContainer").classList.add("d-none");
 	document.getElementById("gameOverScreenContainer").classList.add("d-none");
+	document.getElementById("wrapper").style.width = "820px";
 }
 
 /**
