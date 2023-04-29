@@ -56,9 +56,7 @@ function initWorld() {
 	canvas = document.getElementById("canvas");
 	world = new World(canvas, keyboard);
 	detectMobileDevice();
-	setTimeout(() => {
-		playBackgroundMusic();
-	}, 1000);
+	playBackgroundMusic();
 }
 
 /**
@@ -208,7 +206,8 @@ function showStartScreen() {
  */
 function hideStartScreen() {
 	document.getElementById("loadingScreen").classList.remove("d-none");
-	document.getElementById("wrapper").style.width = "unset";
+	// document.getElementById("wrapper").style.width = "unset";
+	document.getElementById("wrapper").style.width = "100%";
 
 	setTimeout(() => {
 		document.getElementById("startScreenContainer").classList.add("d-none");
