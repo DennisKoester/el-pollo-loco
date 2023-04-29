@@ -96,7 +96,7 @@ class Character extends MoveableObject {
 	 * Calls the animation functions for the character
 	 */
 	animateCharacter() {
-		setStopableInterval(() => this.moveCharacter(), 1000 / 30);
+		setStopableInterval(() => this.moveCharacter(), 1000 / 60);
 		setStopableInterval(() => this.playCharacter(), 150);
 	}
 

@@ -192,6 +192,8 @@ function removeStylesForFullscreen() {
 	document.getElementById("wrapper").classList.remove("fullscreenMode");
 	document.getElementById("wrapper").classList.add("bg-color");
 	document.getElementById("wrapper").classList.remove("flex-center");
+	document.getElementById("wrapper").style.height = "480px";
+
 }
 
 /**
