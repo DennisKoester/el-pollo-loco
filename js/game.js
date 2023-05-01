@@ -88,6 +88,7 @@ function goBackToStartScreen() {
 function setStopableInterval(fn, time) {
 	let idIntervall = setInterval(fn, time);
 	this.intervalIds.push(idIntervall);
+	console.log("setStopableInterval");
 }
 
 /**
