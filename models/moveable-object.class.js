@@ -3,7 +3,7 @@ class MoveableObject extends DrawableObject {
 	speedY = 0;
 	energy = 100;
 	lastHit = 0;
-	acceleration = 2;
+	acceleration = 3;
 	progessCoinBar = 0;
 	progressBottleBar = 0;
 	otherDirection = false;
@@ -19,7 +19,7 @@ class MoveableObject extends DrawableObject {
 			} else {
 				return (this.y = 180);
 			}
-		}, 1000 / 60);
+		}, 1000 / 30);
 	}
 
 	/**
@@ -158,6 +158,6 @@ class MoveableObject extends DrawableObject {
 	 * Makes the moveable object jump.
 	 */
 	jump() {
-		this.speedY = 25;
+		this.speedY = 30;
 	}
 }

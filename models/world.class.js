@@ -13,6 +13,23 @@ class World {
 	statusBarEndbossIcon = new StatusbarEndbossIcon();
 	throwAbleObject = [];
 
+	AUDIO = {
+		background_music: new Audio("./audio/background_music.mp3"),
+		chicken_dead_sound: new Audio("./audio/chicken_dead.mp3"),
+		bottle_collect_sound: new Audio("./audio/bottle.mp3"),
+		endboss_fight: new Audio("./audio/enboss_fight.mp3"),
+		bottle_smash: new Audio("./audio/bottle_smash.mp3"),
+		game_over_sound: new Audio("./audio/game_over.mp3"),
+		throw_sound: new Audio("./audio/throw_bottle.mp3"),
+		coin_collect_sound: new Audio("./audio/coin.mp3"),
+		game_win_sound: new Audio("./audio/game_win.mp3"),
+		walking_sound: new Audio("./audio/walking.mp3"),
+		jumping_sound: new Audio("./audio/jumping.mp3"),
+		snoring_sound: new Audio("./audio/snoring.mp3"),
+		hurt_sound: new Audio("./audio/pepe_hurt.mp3"),
+		dead_sound: new Audio("./audio/pepe_dead.mp3"),
+	};
+
 	constructor(canvas, keyboard) {
 		this.ctx = canvas.getContext("2d");
 		this.canvas = canvas;
@@ -40,7 +57,7 @@ class World {
 			this.checkCollisionCoins();
 			this.checkCollisonsBottles();
 			this.checkCollisionsEndboss();
-		}, 1000 / 60);
+		}, 1000 / 30);
 	}
 
 	/**
@@ -77,7 +94,7 @@ class World {
 			this.statusBarBottle.setPercentage(
 				this.character.progressBottleBar
 			);
-			throw_sound.play();
+			this.AUDIO.throw_sound.play();
 		}
 	}
 
@@ -133,7 +150,7 @@ class World {
 				this.coinCollected(coin);
 				this.character.raiseProgressbarCoin();
 				this.statusBarCoin.setPercentage(this.character.progessCoinBar);
-				coin_collect_sound.play();
+				this.AUDIO.coin_collect_sound.play();
 			}
 		});
 	}
@@ -149,8 +166,8 @@ class World {
 				this.statusBarBottle.setPercentage(
 					this.character.progressBottleBar
 				);
-				bottle_collect_sound.play();
-				bottle_collect_sound.volume = 1;
+				this.AUDIO.bottle_collect_sound.play();
+				this.AUDIO.bottle_collect_sound.volume = 1;
 			}
 		});
 	}
@@ -164,8 +181,8 @@ class World {
 				if (bottle.isColliding(endboss)) {
 					endboss.hitEndboss(endboss.energy);
 					this.statusBarEndboss.setPercentage(endboss.energy);
-					bottle_smash.play();
-					chicken_dead_sound.play();
+					this.AUDIO.bottle_smash.play();
+					this.AUDIO.chicken_dead_sound.play();
 					setTimeout(() => {
 						this.eraseThrowingBottleFromArray(bottle);
 					}, 180);
@@ -198,7 +215,7 @@ class World {
 	killChickenWithJump(enemy) {
 		enemy.chickenKilled();
 		this.character.jump();
-		chicken_dead_sound.play();
+		this.AUDIO.chicken_dead_sound.play();
 		setTimeout(() => {
 			this.eraseEnemyFromArray(enemy);
 		}, 750);

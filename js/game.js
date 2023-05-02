@@ -3,20 +3,20 @@ let world;
 let keyboard = new Keyboard();
 let isFullScreenMode = false;
 
-let background_music = new Audio("./audio/background_music.mp3");
-let chicken_dead_sound = new Audio("./audio/chicken_dead.mp3");
-let bottle_collect_sound = new Audio("./audio/bottle.mp3");
-let endboss_fight = new Audio("./audio/enboss_fight.mp3");
-let bottle_smash = new Audio("./audio/bottle_smash.mp3");
-let game_over_sound = new Audio("./audio/game_over.mp3");
-let throw_sound = new Audio("./audio/throw_bottle.mp3");
-let coin_collect_sound = new Audio("./audio/coin.mp3");
-let game_win_sound = new Audio("./audio/game_win.mp3");
-let walking_sound = new Audio("./audio/walking.mp3");
-let jumping_sound = new Audio("./audio/jumping.mp3");
-let snoring_sound = new Audio("./audio/snoring.mp3");
-let hurt_sound = new Audio("./audio/pepe_hurt.mp3");
-let dead_sound = new Audio("./audio/pepe_dead.mp3");
+// let background_music = new Audio("./audio/background_music.mp3");
+// let chicken_dead_sound = new Audio("./audio/chicken_dead.mp3");
+// let bottle_collect_sound = new Audio("./audio/bottle.mp3");
+// let endboss_fight = new Audio("./audio/enboss_fight.mp3");
+// let bottle_smash = new Audio("./audio/bottle_smash.mp3");
+// let game_over_sound = new Audio("./audio/game_over.mp3");
+// let throw_sound = new Audio("./audio/throw_bottle.mp3");
+// let coin_collect_sound = new Audio("./audio/coin.mp3");
+// let game_win_sound = new Audio("./audio/game_win.mp3");
+// let walking_sound = new Audio("./audio/walking.mp3");
+// let jumping_sound = new Audio("./audio/jumping.mp3");
+// let snoring_sound = new Audio("./audio/snoring.mp3");
+// let hurt_sound = new Audio("./audio/pepe_hurt.mp3");
+// let dead_sound = new Audio("./audio/pepe_dead.mp3");
 
 i = 1;
 intervalIds = [];
@@ -43,7 +43,6 @@ function startGame() {
 	hideStartScreen();
 	initLevel();
 	initWorld();
-
 	setTimeout(() => {
 		hideLoadingscreen();
 	}, 3000);
@@ -56,7 +55,7 @@ function initWorld() {
 	canvas = document.getElementById("canvas");
 	world = new World(canvas, keyboard);
 	detectMobileDevice();
-	playBackgroundMusic();
+	// playBackgroundMusic();
 }
 
 /**
@@ -88,14 +87,17 @@ function goBackToStartScreen() {
 function setStopableInterval(fn, time) {
 	let idIntervall = setInterval(fn, time);
 	this.intervalIds.push(idIntervall);
-	console.log("setStopableInterval");
+	console.log(intervalIds.length);
 }
 
 /**
  * Clears all intervals.
  */
 function clearAllIntervals() {
-	for (let i = 1; i < 9999; i++) window.clearInterval(i);
+	for (let i = 1; i < intervalIds.length; i++) {
+		window.clearInterval(i);
+		console.log("all cleared");
+	}
 }
 
 /**
@@ -304,22 +306,22 @@ function hideAllEndScreens() {
  * Plays the game winning sound.
  */
 function playGameWinSound() {
-	game_win_sound.play();
+	world.AUDIO.game_win_sound.play();
 }
 
 /**
  * Plays the game over sound.
  */
 function playGameOverSound() {
-	game_over_sound.play();
+	world.AUDIO.game_over_sound.play();
 }
 
 /**
  * Plays the endboss sound.
  */
 function playEndbossSound() {
-	background_music.pause();
-	endboss_fight.play();
+	world.AUDIO.background_music.pause();
+	world.AUDIO.endboss_fight.play();
 }
 
 /**
@@ -330,20 +332,20 @@ function playEndbossSound() {
  */
 function turnSoundOff(id, id2, classList) {
 	toggleClassList(id, id2, classList);
-	background_music.muted = true;
-	chicken_dead_sound.muted = true;
-	throw_sound.muted = true;
-	bottle_smash.muted = true;
-	coin_collect_sound.muted = true;
-	bottle_collect_sound.muted = true;
-	walking_sound.muted = true;
-	jumping_sound.muted = true;
-	snoring_sound.muted = true;
-	hurt_sound.muted = true;
-	dead_sound.muted = true;
-	game_win_sound.muted = true;
-	game_over_sound.muted = true;
-	endboss_fight.muted = true;
+	world.AUDIO.background_music.muted = true;
+	world.AUDIO.chicken_dead_sound.muted = true;
+	world.AUDIO.throw_sound.muted = true;
+	world.AUDIO.bottle_smash.muted = true;
+	world.AUDIO.coin_collect_sound.muted = true;
+	world.AUDIO.bottle_collect_sound.muted = true;
+	world.AUDIO.walking_sound.muted = true;
+	world.AUDIO.jumping_sound.muted = true;
+	world.AUDIO.snoring_sound.muted = true;
+	world.AUDIO.hurt_sound.muted = true;
+	world.AUDIO.dead_sound.muted = true;
+	world.AUDIO.game_win_sound.muted = true;
+	world.AUDIO.game_over_sound.muted = true;
+	world.AUDIO.endboss_fight.muted = true;
 }
 
 /**
@@ -354,20 +356,20 @@ function turnSoundOff(id, id2, classList) {
  */
 function turnSoundOn(id, id2, classList) {
 	toggleClassList(id, id2, classList);
-	background_music.muted = false;
-	chicken_dead_sound.muted = false;
-	throw_sound.muted = false;
-	bottle_smash.muted = false;
-	coin_collect_sound.muted = false;
-	bottle_collect_sound.muted = false;
-	walking_sound.muted = false;
-	jumping_sound.muted = false;
-	snoring_sound.muted = false;
-	hurt_sound.muted = false;
-	dead_sound.muted = false;
-	game_win_sound.muted = false;
-	game_over_sound.muted = false;
-	endboss_fight.muted = false;
+	world.AUDIO.background_music.muted = false;
+	world.AUDIO.chicken_dead_sound.muted = false;
+	world.AUDIO.throw_sound.muted = false;
+	world.AUDIO.bottle_smash.muted = false;
+	world.AUDIO.coin_collect_sound.muted = false;
+	world.AUDIO.bottle_collect_sound.muted = false;
+	world.AUDIO.walking_sound.muted = false;
+	world.AUDIO.jumping_sound.muted = false;
+	world.AUDIO.snoring_sound.muted = false;
+	world.AUDIO.hurt_sound.muted = false;
+	world.AUDIO.dead_sound.muted = false;
+	world.AUDIO.game_win_sound.muted = false;
+	world.AUDIO.game_over_sound.muted = false;
+	world.AUDIO.endboss_fight.muted = false;
 }
 
 /**
@@ -385,18 +387,18 @@ function toggleClassList(id, id2, classList) {
  * Plays the background music.
  */
 function playBackgroundMusic() {
-	background_music.play();
-	background_music.volume = 0.1;
+	world.AUDIO.background_music.play();
+	world.AUDIO.background_music.volume = 0.1;
 }
 
 /**
  * Resets all music.
  */
 function resetMusic() {
-	background_music.currentTime = 0;
-	endboss_fight.currentTime = 0;
-	background_music.pause();
-	endboss_fight.pause();
+	world.AUDIO.background_music.currentTime = 0;
+	world.AUDIO.endboss_fight.currentTime = 0;
+	world.AUDIO.background_music.pause();
+	world.AUDIO.endboss_fight.pause();
 }
 
 /**
@@ -418,7 +420,11 @@ function gameIsLost() {
 	setTimeout(() => {
 		clearAllIntervals();
 		showGameOverScreen();
-		playGameOverSound();
+		try {
+			playGameOverSound();
+		} catch (error) {
+			console.log(error);
+		}
 		resetMusic();
 	}, 2000);
 }
