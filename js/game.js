@@ -3,21 +3,6 @@ let world;
 let keyboard = new Keyboard();
 let isFullScreenMode = false;
 
-// let background_music = new Audio("./audio/background_music.mp3");
-// let chicken_dead_sound = new Audio("./audio/chicken_dead.mp3");
-// let bottle_collect_sound = new Audio("./audio/bottle.mp3");
-// let endboss_fight = new Audio("./audio/enboss_fight.mp3");
-// let bottle_smash = new Audio("./audio/bottle_smash.mp3");
-// let game_over_sound = new Audio("./audio/game_over.mp3");
-// let throw_sound = new Audio("./audio/throw_bottle.mp3");
-// let coin_collect_sound = new Audio("./audio/coin.mp3");
-// let game_win_sound = new Audio("./audio/game_win.mp3");
-// let walking_sound = new Audio("./audio/walking.mp3");
-// let jumping_sound = new Audio("./audio/jumping.mp3");
-// let snoring_sound = new Audio("./audio/snoring.mp3");
-// let hurt_sound = new Audio("./audio/pepe_hurt.mp3");
-// let dead_sound = new Audio("./audio/pepe_dead.mp3");
-
 i = 1;
 intervalIds = [];
 
@@ -87,7 +72,6 @@ function goBackToStartScreen() {
 function setStopableInterval(fn, time) {
 	let idIntervall = setInterval(fn, time);
 	this.intervalIds.push(idIntervall);
-	console.log(intervalIds.length);
 }
 
 /**
@@ -96,7 +80,6 @@ function setStopableInterval(fn, time) {
 function clearAllIntervals() {
 	for (let i = 1; i < intervalIds.length; i++) {
 		window.clearInterval(i);
-		console.log("all cleared");
 	}
 }
 
@@ -420,17 +403,16 @@ function gameIsLost() {
 	setTimeout(() => {
 		clearAllIntervals();
 		showGameOverScreen();
-		try {
-			playGameOverSound();
-		} catch (error) {
-			console.log(error);
-		}
+		playGameOverSound();
 		resetMusic();
 	}, 2000);
 }
 
 // Mobile Section //
 
+/**
+ * Eventlistener for handleTurnPhonePopup function
+ */
 document.addEventListener("DOMContentLoaded", handleTurnPhonePopup);
 window.addEventListener("resize", handleTurnPhonePopup);
 
@@ -450,12 +432,11 @@ function detectMobileDevice() {
 }
 
 /**
- * Handles the visibility of the turn yout phone message
+ * Handles the visibility of the turn your phone screen
  */
 function handleTurnPhonePopup() {
 	var mql = window.matchMedia("(orientation: portrait)");
 	// If there are matches, we're in portrait
-	console.log(mql);
 	if (mql.matches && window.innerWidth <= 820) {
 		turnPhone.classList.remove("d-none");
 	} else {

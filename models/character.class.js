@@ -146,7 +146,7 @@ class Character extends MoveableObject {
 			this.stopSnooring();
 			return canMove;
 		} else if (this.isWalking && !this.world.keyboard.LEFT) {
-			this.stopSound();
+			this.stopWalkingSound();
 		}
 	}
 
@@ -162,20 +162,24 @@ class Character extends MoveableObject {
 			this.stopSnooring();
 			return canMove;
 		} else if (this.isWalking && !this.world.keyboard.RIGHT) {
-			this.stopSound();
+			this.stopWalkingSound();
 		}
 	}
 
-	stopSound() {
-		this.isWalking = false;
+	/**
+	 * Stops the walking sound.
+	 */
+	stopWalkingSound() {
 		world.AUDIO.walking_sound.pause();
-		console.log("stopping");
+		this.isWalking = false;
 	}
 
+	/**
+	 * Stops the snooring sound.
+	 */
 	stopSnooring() {
 		if (this.isSnooring) {
 			world.AUDIO.snoring_sound.pause();
-			console.log("snooring stop");
 			this.isSnooring = false;
 		}
 	}
