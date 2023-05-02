@@ -6,6 +6,8 @@ class Character extends MoveableObject {
 	characterLastMovement = 0;
 	isWalking = false;
 	isSnooring = false;
+	gameWon = false;
+	gameLost = false;
 
 	offset = {
 		top: 100,
@@ -98,7 +100,7 @@ class Character extends MoveableObject {
 	 * Calls the animation functions for the character
 	 */
 	animateCharacter() {
-		setStopableInterval(() => this.moveCharacter(), 50);
+		setStopableInterval(() => this.moveCharacter(), 1000 / 30);
 		setStopableInterval(() => this.playCharacter(), 150);
 	}
 
@@ -106,12 +108,13 @@ class Character extends MoveableObject {
 	 * Animation for the character movement.
 	 */
 	moveCharacter() {
-		if (!this.isDead()) {
+		if (!this.isDead() && !world.level.endboss[0].isDead()) {
 			if (this.canMoveRight()) this.moveRight();
 			if (this.canMoveLeft()) this.moveLeft();
 			if (this.canJump()) this.jump();
 			this.scrollMap();
 		}
+		console.log("moveCharacter");
 	}
 
 	/**
@@ -131,6 +134,7 @@ class Character extends MoveableObject {
 		} else {
 			this.idleAnimation();
 		}
+		console.log("playCharacter");
 	}
 
 	/**
@@ -222,10 +226,11 @@ class Character extends MoveableObject {
 	 * Plays the dead animation for the character incl. sound and calls the gameIsLost fucntion.
 	 */
 	dead() {
+		gameIsLost();
 		this.playAnimation(this.IMAGES_DEAD);
 		world.AUDIO.walking_sound.pause();
 		world.AUDIO.dead_sound.play();
-		gameIsLost();
+		console.log("dead function");
 	}
 
 	/**
@@ -286,7 +291,7 @@ class Character extends MoveableObject {
 	}
 
 	/**
-	 * Sets a time stamp for the last movement of the character.
+	 * Sets a timestamp for the last movement of the character.
 	 */
 	setTimeStamp() {
 		this.characterLastMovement = new Date().getTime();

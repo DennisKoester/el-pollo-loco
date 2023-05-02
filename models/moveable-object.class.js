@@ -49,7 +49,7 @@ class MoveableObject extends DrawableObject {
 	}
 
 	/**
-	 * Decreases life of the character when hit. Sets time stamp for last hit.
+	 * Decreases life of the character when hit. Sets timestamp for last hit.
 	 */
 	hit() {
 		this.energy -= 10;
@@ -61,7 +61,7 @@ class MoveableObject extends DrawableObject {
 	}
 
 	/**
-	 * Decreases life of the endboss when hit. Sets time stamp for last hit.
+	 * Decreases life of the endboss when hit. Sets timestamp for last hit.
 	 */
 	hitEndboss() {
 		this.energy -= 20;

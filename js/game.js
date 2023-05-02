@@ -31,6 +31,7 @@ function startGame() {
 	setTimeout(() => {
 		hideLoadingscreen();
 	}, 3000);
+	playBackgroundMusic();
 }
 
 /**
@@ -40,7 +41,6 @@ function initWorld() {
 	canvas = document.getElementById("canvas");
 	world = new World(canvas, keyboard);
 	detectMobileDevice();
-	// playBackgroundMusic();
 }
 
 /**
@@ -70,8 +70,9 @@ function goBackToStartScreen() {
  * @param {string} time The interval time in ms.
  */
 function setStopableInterval(fn, time) {
-	let idIntervall = setInterval(fn, time);
-	this.intervalIds.push(idIntervall);
+	let idInterval = setInterval(fn, time);
+	this.intervalIds.push(idInterval);
+	console.log("set interval");
 }
 
 /**
@@ -80,6 +81,7 @@ function setStopableInterval(fn, time) {
 function clearAllIntervals() {
 	for (let i = 1; i < intervalIds.length; i++) {
 		window.clearInterval(i);
+		console.log("intervall cleared");
 	}
 }
 
@@ -290,6 +292,7 @@ function hideAllEndScreens() {
  */
 function playGameWinSound() {
 	world.AUDIO.game_win_sound.play();
+	console.log("win sound");
 }
 
 /**
@@ -297,6 +300,7 @@ function playGameWinSound() {
  */
 function playGameOverSound() {
 	world.AUDIO.game_over_sound.play();
+	console.log("lost sound");
 }
 
 /**
@@ -370,8 +374,10 @@ function toggleClassList(id, id2, classList) {
  * Plays the background music.
  */
 function playBackgroundMusic() {
-	world.AUDIO.background_music.play();
-	world.AUDIO.background_music.volume = 0.1;
+	setTimeout(() => {
+		world.AUDIO.background_music.play();
+		world.AUDIO.background_music.volume = 0.1;
+	}, 1000);
 }
 
 /**
@@ -388,24 +394,26 @@ function resetMusic() {
  * "Game won" animation like the winning screen and sound.
  */
 function gameIsWon() {
+	clearAllIntervals();
 	setTimeout(() => {
-		clearAllIntervals();
 		showWinScreen();
 		playGameWinSound();
 		resetMusic();
 	}, 2000);
+	console.log("game is won");
 }
 
 /**
  * "Game lost" animation like the lost screen and sound.
  */
 function gameIsLost() {
+	clearAllIntervals();
 	setTimeout(() => {
-		clearAllIntervals();
 		showGameOverScreen();
 		playGameOverSound();
 		resetMusic();
 	}, 2000);
+	console.log("game is lost");
 }
 
 // Mobile Section //
