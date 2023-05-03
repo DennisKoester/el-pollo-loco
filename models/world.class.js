@@ -210,12 +210,15 @@ class World {
 
 	/**
 	 * Kills the chicken when jumped on. Plays sound and let the character jump.
-	 * @param {string} enemy The current enemy.
+	 * @param {object} enemy The current enemy.
 	 */
 	killChickenWithJump(enemy) {
 		enemy.chickenKilled();
 		this.character.jump();
 		this.AUDIO.chicken_dead_sound.play();
+		clearInterval(enemy.animateChickenInterval);
+		clearInterval(enemy.moveChickenInterval);
+		enemy.loadImage(enemy.IMAGE_DEAD);
 		setTimeout(() => {
 			this.eraseEnemyFromArray(enemy);
 		}, 750);
@@ -223,7 +226,7 @@ class World {
 
 	/**
 	 * Removes the enemy from the game when killed.
-	 * @param {string} enemy The current enemy.
+	 * @param {object} enemy The current enemy.
 	 */
 	eraseEnemyFromArray(enemy) {
 		let i = this.level.enemies.indexOf(enemy);
@@ -232,7 +235,7 @@ class World {
 
 	/**
 	 * Removes the bottle from the array when throwed.
-	 * @param {string} bottle The current bottle.
+	 * @param {object} bottle The current bottle.
 	 */
 	eraseThrowingBottleFromArray(bottle) {
 		let i = this.throwAbleObject.indexOf(bottle);

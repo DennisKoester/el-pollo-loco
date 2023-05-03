@@ -31,7 +31,7 @@ function startGame() {
 	setTimeout(() => {
 		hideLoadingscreen();
 	}, 3000);
-	playBackgroundMusic();
+	// playBackgroundMusic();
 }
 
 /**
@@ -79,10 +79,12 @@ function setStopableInterval(fn, time) {
  * Clears all intervals.
  */
 function clearAllIntervals() {
-	for (let i = 1; i < intervalIds.length; i++) {
-		window.clearInterval(i);
+	for (let i = 0; i < intervalIds.length; i++) {
+		window.clearInterval(intervalIds[i]);
 		console.log("intervall cleared");
+		console.log(this.intervalIds);
 	}
+	intervalIds = [];
 }
 
 /**
@@ -394,8 +396,8 @@ function resetMusic() {
  * "Game won" animation like the winning screen and sound.
  */
 function gameIsWon() {
-	clearAllIntervals();
 	setTimeout(() => {
+		clearAllIntervals();
 		showWinScreen();
 		playGameWinSound();
 		resetMusic();
@@ -407,8 +409,8 @@ function gameIsWon() {
  * "Game lost" animation like the lost screen and sound.
  */
 function gameIsLost() {
-	clearAllIntervals();
 	setTimeout(() => {
+		clearAllIntervals();
 		showGameOverScreen();
 		playGameOverSound();
 		resetMusic();

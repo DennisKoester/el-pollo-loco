@@ -48,15 +48,15 @@ class ThrowableObject extends MoveableObject {
 	applyGravityToBottle() {
 		this.applyGravity();
 		this.speedY = 25;
-		setInterval(() => {
+		setStopableInterval(() => {
 			if (this.otherDirection) {
 				this.x -= 20;
 			} else {
 				this.otherDirection;
 				this.x += 20;
 			}
-			world.character.setTimeStamp();
 		}, 25);
+		world.character.stopSnoring();
 	}
 
 	/**

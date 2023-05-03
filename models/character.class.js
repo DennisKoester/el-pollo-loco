@@ -5,7 +5,7 @@ class Character extends MoveableObject {
 	speed = 7;
 	characterLastMovement = 0;
 	isWalking = false;
-	isSnooring = false;
+	isSnoring = false;
 	gameWon = false;
 	gameLost = false;
 
@@ -108,13 +108,13 @@ class Character extends MoveableObject {
 	 * Animation for the character movement.
 	 */
 	moveCharacter() {
-		if (!this.isDead() && !world.level.endboss[0].isDead()) {
+		if (!this.isDead()) {
 			if (this.canMoveRight()) this.moveRight();
 			if (this.canMoveLeft()) this.moveLeft();
 			if (this.canJump()) this.jump();
 			this.scrollMap();
 		}
-		console.log("moveCharacter");
+		// console.log("moveCharacter");
 	}
 
 	/**
@@ -125,16 +125,18 @@ class Character extends MoveableObject {
 			this.dead();
 		} else if (this.isHurt()) {
 			this.hurt();
+			console.log("hurt");
 		} else if (this.isAboveGround()) {
 			this.jumpAnimation();
 		} else if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
 			this.moveAnimation();
 		} else if (this.characterMoveTimepassed() > 4) {
 			this.sleepAnimation();
+			console.log("sleeping");
 		} else {
 			this.idleAnimation();
 		}
-		console.log("playCharacter");
+		// console.log("playCharacter");
 	}
 
 	/**
@@ -147,7 +149,6 @@ class Character extends MoveableObject {
 
 		if (canMove) {
 			this.isWalking = true;
-			this.stopSnooring();
 			return canMove;
 		} else if (this.isWalking && !this.world.keyboard.LEFT) {
 			this.stopWalkingSound();
@@ -163,7 +164,6 @@ class Character extends MoveableObject {
 
 		if (canMove) {
 			this.isWalking = true;
-			this.stopSnooring();
 			return canMove;
 		} else if (this.isWalking && !this.world.keyboard.RIGHT) {
 			this.stopWalkingSound();
@@ -179,12 +179,13 @@ class Character extends MoveableObject {
 	}
 
 	/**
-	 * Stops the snooring sound.
+	 * Stops the snoring sound.
 	 */
-	stopSnooring() {
-		if (this.isSnooring) {
+	stopSnoring() {
+		if (this.isSnoring) {
 			world.AUDIO.snoring_sound.pause();
-			this.isSnooring = false;
+			this.isSnoring = false;
+			this.setTimeStamp();
 		}
 	}
 
@@ -202,6 +203,7 @@ class Character extends MoveableObject {
 	moveRight() {
 		super.moveRight();
 		this.otherDirection = false;
+		this.stopSnoring();
 		world.AUDIO.walking_sound.play();
 	}
 
@@ -211,6 +213,7 @@ class Character extends MoveableObject {
 	moveLeft() {
 		super.moveLeft();
 		this.otherDirection = true;
+		this.stopSnoring();
 		world.AUDIO.walking_sound.play();
 	}
 
@@ -220,6 +223,7 @@ class Character extends MoveableObject {
 	jump() {
 		super.jump();
 		world.AUDIO.jumping_sound.play();
+		this.stopSnoring();
 	}
 
 	/**
@@ -230,7 +234,7 @@ class Character extends MoveableObject {
 		this.playAnimation(this.IMAGES_DEAD);
 		world.AUDIO.walking_sound.pause();
 		world.AUDIO.dead_sound.play();
-		console.log("dead function");
+		this.stopSnoring();
 	}
 
 	/**
@@ -239,6 +243,7 @@ class Character extends MoveableObject {
 	hurt() {
 		this.playAnimation(this.IMAGES_HURT);
 		world.AUDIO.hurt_sound.play();
+		this.stopSnoring();
 	}
 
 	/**
@@ -261,7 +266,7 @@ class Character extends MoveableObject {
 	 * Plays sleeping animation for the character and plays sound.
 	 */
 	sleepAnimation() {
-		this.isSnooring = true;
+		this.isSnoring = true;
 		this.playAnimation(this.IMAGES_SLEEPING);
 		world.AUDIO.snoring_sound.play();
 	}

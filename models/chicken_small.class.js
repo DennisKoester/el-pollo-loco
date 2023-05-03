@@ -2,6 +2,8 @@ class SmallChicken extends MoveableObject {
 	y = 368;
 	height = 55;
 	width = 55;
+	moveChickenInterval;
+	animateChickenInterval;
 
 	offset = {
 		top: 10,
@@ -30,16 +32,15 @@ class SmallChicken extends MoveableObject {
 	 * Animation for the smaller chicken for movement and behavior.
 	 */
 	animateSmallChicken() {
-		let intervalChicken = setInterval(() => {
+		this.moveChickenInterval = setInterval(() => {
 			this.moveLeft();
 		}, 1000 / 30);
-		setStopableInterval(() => {
-			if (!this.isDead()) {
-				this.playAnimation(this.IMAGES_WALKING);
-			} else {
-				this.loadImage(this.IMAGE_DEAD);
-				clearInterval(intervalChicken);
-			}
+
+		this.animateChickenInterval = setInterval(() => {
+			this.playAnimation(this.IMAGES_WALKING);
 		}, 100);
+
+		intervalIds.push(this.moveChickenInterval);
+		intervalIds.push(this.animateChickenInterval);
 	}
 }

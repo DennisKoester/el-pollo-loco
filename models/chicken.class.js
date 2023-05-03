@@ -2,6 +2,8 @@ class Chicken extends MoveableObject {
 	y = 355;
 	height = 70;
 	width = 70;
+	moveChickenInterval;
+	animateChickenInterval;
 
 	offset = {
 		top: 10,
@@ -30,16 +32,24 @@ class Chicken extends MoveableObject {
 	 * Animation for the chicken for movement and behavior.
 	 */
 	animateChicken() {
-		let intervalChicken = setInterval(() => {
+		this.moveChickenInterval = setInterval(() => {
 			this.moveLeft();
 		}, 1000 / 30);
-		setStopableInterval(() => {
-			if (!this.isDead()) {
-				this.playAnimation(this.IMAGES_WALKING);
-			} else {
-				this.loadImage(this.IMAGE_DEAD);
-				clearInterval(intervalChicken);
-			}
+
+		this.animateChickenInterval = setInterval(() => {
+			this.playAnimation(this.IMAGES_WALKING);
 		}, 100);
+
+		intervalIds.push(this.moveChickenInterval);
+		intervalIds.push(this.animateChickenInterval);
+
+		// setStopableInterval(() => {
+		// 	if (!this.isDead()) {
+		// 		this.playAnimation(this.IMAGES_WALKING);
+		// 	} else {
+		// 		this.loadImage(this.IMAGE_DEAD);
+		// 		clearInterval(this.intervalChicken);
+		// 	}
+		// }, 100);
 	}
 }
