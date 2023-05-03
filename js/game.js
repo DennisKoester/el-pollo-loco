@@ -31,7 +31,7 @@ function startGame() {
 	setTimeout(() => {
 		hideLoadingscreen();
 	}, 3000);
-	// playBackgroundMusic();
+	playBackgroundMusic();
 }
 
 /**
@@ -385,6 +385,7 @@ function resetMusic() {
 	world.AUDIO.endboss_fight.currentTime = 0;
 	world.AUDIO.background_music.pause();
 	world.AUDIO.endboss_fight.pause();
+	world.character.stopSnoring();
 }
 
 /**
