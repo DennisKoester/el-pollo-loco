@@ -296,7 +296,7 @@ class World {
 
 	/**
 	 * Adds all the objects from the current array to the map.
-	 * @param {string} objects The specific object which shall be added.
+	 * @param {object} objects The specific object which shall be added.
 	 */
 	addObjectsToMap(objects) {
 		objects.forEach((o) => {
@@ -306,14 +306,14 @@ class World {
 
 	/**
 	 * Adds the moveable object to the map.
-	 * @param {string} mo The specific moveable object which shall be added.
+	 * @param {object} mo The specific moveable object which shall be added.
 	 */
 	addToMap(mo) {
 		if (mo.otherDirection) {
 			this.flipImage(mo);
 		}
 		mo.draw(this.ctx);
-		// mo.drawFrame(this.ctx);
+		// mo.drawFrame(this.ctx); For later debugging instances
 		if (mo.otherDirection) {
 			this.flipImageBack(mo);
 		}
@@ -321,7 +321,7 @@ class World {
 
 	/**
 	 * Flips the images of the moveable object when direction is changed.
-	 * @param {string} mo The specific moveable object which shall be flipped.
+	 * @param {object} mo The specific moveable object which shall be flipped.
 	 */
 	flipImage(mo) {
 		this.ctx.save();
@@ -332,7 +332,7 @@ class World {
 
 	/**
 	 * Flips the images back of the moveable object when direction is changed.
-	 * @param {string} mo The specific moveable object which shall be flipped.
+	 * @param {object} mo The specific moveable object which shall be flipped.
 	 */
 	flipImageBack(mo) {
 		this.ctx.restore();

@@ -66,13 +66,12 @@ function goBackToStartScreen() {
 /**
  * This function sets a stopable interval.
  *
- * @param {string} fn Function which is called inside of the interval.
+ * @param {object} fn Function which is called inside of the interval.
  * @param {string} time The interval time in ms.
  */
 function setStopableInterval(fn, time) {
 	let idInterval = setInterval(fn, time);
 	this.intervalIds.push(idInterval);
-	console.log("set interval");
 }
 
 /**
@@ -81,8 +80,6 @@ function setStopableInterval(fn, time) {
 function clearAllIntervals() {
 	for (let i = 0; i < intervalIds.length; i++) {
 		window.clearInterval(intervalIds[i]);
-		console.log("intervall cleared");
-		console.log(this.intervalIds);
 	}
 	intervalIds = [];
 }
@@ -294,7 +291,6 @@ function hideAllEndScreens() {
  */
 function playGameWinSound() {
 	world.AUDIO.game_win_sound.play();
-	console.log("win sound");
 }
 
 /**
@@ -302,7 +298,6 @@ function playGameWinSound() {
  */
 function playGameOverSound() {
 	world.AUDIO.game_over_sound.play();
-	console.log("lost sound");
 }
 
 /**
@@ -402,7 +397,6 @@ function gameIsWon() {
 		playGameWinSound();
 		resetMusic();
 	}, 2000);
-	console.log("game is won");
 }
 
 /**
@@ -415,7 +409,6 @@ function gameIsLost() {
 		playGameOverSound();
 		resetMusic();
 	}, 2000);
-	console.log("game is lost");
 }
 
 // Mobile Section //

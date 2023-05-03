@@ -36,8 +36,8 @@ class MoveableObject extends DrawableObject {
 
 	/**
 	 * Checks if the element collides with an moveable object.
-	 * @param {string} mo A moveable object.
-	 * @returns {number} The collision point of the moveable object and the element.
+	 * @param {object} mo A moveable object.
+	 * @returns {object} The collision point of the moveable object and the element.
 	 */
 	isColliding(mo) {
 		return (

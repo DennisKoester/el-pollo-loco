@@ -42,14 +42,5 @@ class Chicken extends MoveableObject {
 
 		intervalIds.push(this.moveChickenInterval);
 		intervalIds.push(this.animateChickenInterval);
-
-		// setStopableInterval(() => {
-		// 	if (!this.isDead()) {
-		// 		this.playAnimation(this.IMAGES_WALKING);
-		// 	} else {
-		// 		this.loadImage(this.IMAGE_DEAD);
-		// 		clearInterval(this.intervalChicken);
-		// 	}
-		// }, 100);
 	}
 }

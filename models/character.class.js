@@ -114,7 +114,6 @@ class Character extends MoveableObject {
 			if (this.canJump()) this.jump();
 			this.scrollMap();
 		}
-		// console.log("moveCharacter");
 	}
 
 	/**
@@ -125,18 +124,15 @@ class Character extends MoveableObject {
 			this.dead();
 		} else if (this.isHurt()) {
 			this.hurt();
-			console.log("hurt");
 		} else if (this.isAboveGround()) {
 			this.jumpAnimation();
 		} else if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
 			this.moveAnimation();
 		} else if (this.characterMoveTimepassed() > 4) {
 			this.sleepAnimation();
-			console.log("sleeping");
 		} else {
 			this.idleAnimation();
 		}
-		// console.log("playCharacter");
 	}
 
 	/**
