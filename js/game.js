@@ -373,7 +373,6 @@ function toggleClassList(id, id2, classList) {
 function playBackgroundMusic() {
 	setTimeout(() => {
 		world.AUDIO.background_music.play();
-		world.AUDIO.background_music.volume = 0.1;
 	}, 1000);
 }
 

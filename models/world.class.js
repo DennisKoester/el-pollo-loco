@@ -167,7 +167,6 @@ class World {
 					this.character.progressBottleBar
 				);
 				this.AUDIO.bottle_collect_sound.play();
-				this.AUDIO.bottle_collect_sound.volume = 1;
 			}
 		});
 	}
