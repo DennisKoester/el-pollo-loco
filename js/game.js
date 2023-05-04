@@ -194,7 +194,6 @@ function showStartScreen() {
  */
 function hideStartScreen() {
 	document.getElementById("loadingScreen").classList.remove("d-none");
-	// document.getElementById("wrapper").style.width = "unset";
 	document.getElementById("wrapper").style.width = "100%";
 
 	setTimeout(() => {
