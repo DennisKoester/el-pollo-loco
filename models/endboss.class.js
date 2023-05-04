@@ -58,8 +58,10 @@ class Endboss extends MoveableObject {
 	 */
 	animateEndbossOnReach() {
 		setStopableInterval(() => {
-			if (world) this.endbossReached();
-			if (world && this.hadFirstContact == true) this.animateEndboss();
+			this.endbossReached();
+			if (this.hadFirstContact) {
+				this.animateEndboss();
+			}
 		}, 120);
 	}
 
@@ -83,10 +85,10 @@ class Endboss extends MoveableObject {
 			this.endbossInReach()
 		) {
 			this.moveRight();
-		} else if (!this.isDead() && !this.endbossFightBegins()) {
-			this.alert();
 		} else if (!this.isDead() && this.isHurtEndboss()) {
 			this.hurt();
+		} else {
+			this.alert();
 		}
 	}
 
@@ -113,7 +115,6 @@ class Endboss extends MoveableObject {
 	moveLeft() {
 		super.moveLeft();
 		this.playAnimation(this.IMAGES_WALKING);
-		playEndbossSound();
 		this.otherDirection = false;
 	}
 
@@ -144,7 +145,8 @@ class Endboss extends MoveableObject {
 	 * Sets the first contact on true when the character has reached a specific position.
 	 */
 	endbossReached() {
-		if (world.character.x > 3400 && !this.hadFirstContact) {
+		if (world.character.x > 3100) {
+			playEndbossSound();
 			this.hadFirstContact = true;
 		}
 	}

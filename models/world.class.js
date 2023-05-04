@@ -17,7 +17,7 @@ class World {
 		background_music: new Audio("./audio/background_music.mp3"),
 		chicken_dead_sound: new Audio("./audio/chicken_dead.mp3"),
 		bottle_collect_sound: new Audio("./audio/bottle.mp3"),
-		endboss_fight: new Audio("./audio/enboss_fight.mp3"),
+		endboss_fight: new Audio("./audio/endboss_fight.mp3"),
 		bottle_smash: new Audio("./audio/bottle_smash.mp3"),
 		game_over_sound: new Audio("./audio/game_over.mp3"),
 		throw_sound: new Audio("./audio/throw_bottle.mp3"),
