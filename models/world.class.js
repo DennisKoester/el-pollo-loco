@@ -147,6 +147,7 @@ class World {
 	checkCollisionCoins() {
 		this.level.coins.forEach((coin) => {
 			if (this.character.isColliding(coin)) {
+				this.AUDIO.coin_collect_sound.currentTime = 0;
 				this.coinCollected(coin);
 				this.character.raiseProgressbarCoin();
 				this.statusBarCoin.setPercentage(this.character.progessCoinBar);
@@ -166,6 +167,7 @@ class World {
 				this.statusBarBottle.setPercentage(
 					this.character.progressBottleBar
 				);
+				this.AUDIO.bottle_collect_sound.currentTime = 0;
 				this.AUDIO.bottle_collect_sound.play();
 			}
 		});
@@ -180,6 +182,8 @@ class World {
 				if (bottle.isColliding(endboss)) {
 					endboss.hitEndboss(endboss.energy);
 					this.statusBarEndboss.setPercentage(endboss.energy);
+					this.AUDIO.chicken_dead_sound.currentTime = 0;
+					this.AUDIO.bottle_smash.currentTime = 0;
 					this.AUDIO.bottle_smash.play();
 					this.AUDIO.chicken_dead_sound.play();
 					setTimeout(() => {
@@ -212,6 +216,7 @@ class World {
 	 * @param {object} enemy The current enemy.
 	 */
 	killChickenWithJump(enemy) {
+		this.AUDIO.chicken_dead_sound.currentTime = 0;
 		enemy.chickenKilled();
 		this.character.jump();
 		this.AUDIO.chicken_dead_sound.play();
@@ -220,7 +225,7 @@ class World {
 		enemy.loadImage(enemy.IMAGE_DEAD);
 		setTimeout(() => {
 			this.eraseEnemyFromArray(enemy);
-		}, 750);
+		}, 550);
 	}
 
 	/**
