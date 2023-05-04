@@ -104,18 +104,22 @@ class Endboss extends MoveableObject {
 	 * Animates the endboss while moving right.
 	 */
 	moveRight() {
-		super.moveRight();
-		this.playAnimation(this.IMAGES_WALKING);
-		this.otherDirection = true;
+		setTimeout(() => {
+			super.moveRight();
+			this.playAnimation(this.IMAGES_WALKING);
+			this.otherDirection = true;
+		}, 500);
 	}
 
 	/**
 	 * Starts the animation for the endboss. Endboss is moving left and endboss sound starts.
 	 */
 	moveLeft() {
-		super.moveLeft();
-		this.playAnimation(this.IMAGES_WALKING);
-		this.otherDirection = false;
+		setTimeout(() => {
+			super.moveLeft();
+			this.playAnimation(this.IMAGES_WALKING);
+			this.otherDirection = false;
+		}, 500);
 	}
 
 	/**
@@ -161,11 +165,12 @@ class Endboss extends MoveableObject {
 
 	/**
 	 * Gives the endboss a boost forward when hitted.
-	 * @returns {boolean}
 	 */
 	endbossRushForward() {
-		let speedIncreaseThroughHit = (world.level.endboss[0].x -=
-			this.speedThroughHit);
-		return speedIncreaseThroughHit;
+		if (!this.otherDirection) {
+			world.level.endboss[0].x -= this.speedThroughHit;
+		} else {
+			world.level.endboss[0].x += this.speedThroughHit;
+		}
 	}
 }
